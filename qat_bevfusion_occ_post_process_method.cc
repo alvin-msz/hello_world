@@ -9,13 +9,18 @@
 #include "method/qat_bevfusion_occ_post_process_method.h"
 
 #include <cmath>
+#include <fstream>
 #include <iomanip>
 #include <limits>
+#include <sstream>
+#include <sys/stat.h>
 
 #include "base/common_def.h"
 #include "method/method_data.h"
 #include "method/method_factory.h"
 #include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 #include "utils/stop_watch.h"
 #include "utils/tensor_utils.h"
 #include "utils/utils.h"
@@ -38,6 +43,11 @@ float QuantScaleAt(const hbDNNTensor *tensor, int32_t idx) {
   }
   // 当 scaleLen == 1 时使用 sd[0]（标量 scale），否则说明索引越界，返回 1.0
   return (slen == 1) ? sd[0] : 1.0f;
+}
+
+static void EnsureDir(const std::string &dir) {
+  if (dir.empty()) return;
+  mkdir(dir.c_str(), 0755);
 }
 
 }  // namespace
@@ -68,6 +78,13 @@ int QATBevFusionOccPostProcessMethod::InitFromJsonString(
     for (rapidjson::SizeType i = 0; i < resize_value.Size(); ++i) {
       resize_shape_[i] = resize_value[i].GetInt();
     }
+  }
+
+  if (document.HasMember("eval_output_dir")) {
+    eval_output_dir_ = document["eval_output_dir"].GetString();
+    EnsureDir(eval_output_dir_);
+    sample_counter_.store(0);
+    VLOG(EXAMPLE_SYSTEM) << "OCC eval output dir: " << eval_output_dir_;
   }
 
   return 0;
@@ -161,6 +178,51 @@ int QATBevFusionOccPostProcessMethod::PostProcess(
         perception->seg3d.seg[static_cast<size_t>(k)] =
             static_cast<uint32_t>(std::max(0, top_index));
       }
+    }
+  }
+
+  // ---- 保存离线评测结果（与 Python predict_export_res.py 输出一致）----
+  if (!eval_output_dir_.empty()) {
+    int n = sample_counter_.fetch_add(1) + 1;
+    // 保存 pred：flattened int32 argmax，与 Python preds.cpu().numpy().flatten() 对齐
+    std::ostringstream pred_name;
+    pred_name << eval_output_dir_ << "/occ_rank0_" << std::setfill('0')
+              << std::setw(6) << n << ".bin";
+    {
+      std::ofstream ofs(pred_name.str(), std::ios::binary);
+      if (ofs) {
+        // seg3d.seg 是 vector<uint32_t>，每个元素是 argmax class id
+        // 转成 int16 以匹配 Python int 输出并节省空间
+        std::vector<int16_t> pred_i16(perception->seg3d.seg.size());
+        for (size_t i = 0; i < perception->seg3d.seg.size(); ++i) {
+          pred_i16[i] = static_cast<int16_t>(perception->seg3d.seg[i]);
+        }
+        ofs.write(reinterpret_cast<const char *>(pred_i16.data()),
+                  static_cast<std::streamsize>(pred_i16.size() * sizeof(int16_t)));
+      } else {
+        VLOG(EXAMPLE_SYSTEM) << "Failed to write OCC pred: " << pred_name.str();
+      }
+    }
+
+    // 第一个样本时保存 meta.json（形状信息，供评测脚本读取）
+    if (n == 1) {
+      std::string meta_path = eval_output_dir_ + "/meta.json";
+      std::ofstream mf(meta_path);
+      if (mf) {
+        mf << "{\n"
+           << "  \"h\": " << perception->seg3d.h << ",\n"
+           << "  \"w\": " << perception->seg3d.w << ",\n"
+           << "  \"z\": " << perception->seg3d.z << ",\n"
+           << "  \"num_classes\": " << perception->seg3d.num_classes << ",\n"
+           << "  \"dtype\": \"int16\",\n"
+           << "  \"order\": \"HWZ_flattened\"\n"
+           << "}\n";
+      }
+    }
+
+    if (n % 100 == 0) {
+      VLOG(EXAMPLE_SYSTEM) << "Saved " << n << " OCC predictions to "
+                           << eval_output_dir_;
     }
   }
 
