@@ -1,6 +1,2 @@
-/usr/bin/ld: CMakeFiles/example.dir/src/method/qat_bevfusion_multisensor_preprocess_method.cc.o: in function `QATBevFusionMultiSensorPreProcessMethod::DoProcessOfflineRaw(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int,ImageTensor*)':
-qat_bevfusion_multisensor_preprocess_method.cc:(.text+0x7ec0): undefined reference to `QATCenterPointPreProcessMethod::DoProcessFromPoints(float const*, int, int, ImageTensor*)'
-collect2: error: ld returned 1 exit status
-make[2]: *** [CMakeFiles/example.dir/build.make:823: example] Error 1
-make[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/example.dir/all] Error 2
-make: *** [Makefile:136: all] Error 2
+I20260318 10:51:49.942899 418051 qat_bevfusion_multisensor_preprocess_method.cc:490] Load homography npy failed: /root/perception/tros_ai_wrapper/bevfusion_data/lidar2img.npy
+I20260318 10:51:49.943094 418052 infer_method.cc:131] hbDNNInferV2 failed, error code:-100001
