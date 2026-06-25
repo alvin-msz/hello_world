@@ -72,6 +72,15 @@ HBM_VOXELS = 30000
 NORM_RANGE = [-40, -40, -1, 0, 40, 40, 5.4, 255.0]
 NORM_DIMS = [0, 1, 2, 3]
 
+# LSS reference-point parameters
+LSS_Z_RANGE = (-1.0, 5.4)
+LSS_DEPTH = 45
+LSS_NUM_POINTS = 36
+LSS_NUM_VIEWS = 6
+LSS_BEV_SIZE = (40, 40, 0.625)
+LSS_GRID_SIZE = (192, 192)
+LSS_USE_VTV2 = False
+
 CAM_NAMES = [
     "CAM_FRONT_LEFT",
     "CAM_FRONT",
@@ -476,6 +485,166 @@ def build_deploy_model_with_calib_weights(
     return deploy_model
 
 
+def _adjust_coords(coords: Tensor, grid_size: Tuple[int, int]) -> Tensor:
+    """Adjust coords for hnn grid_sample (clone of hat.core.nus_box3d_utils.adjust_coords).
+
+    Args:
+        coords: Coordinates tensor of shape (..., 2).
+        grid_size: BEV grid (W, H).
+
+    Returns:
+        Adjusted coordinates relative to BEV grid centers.
+    """
+    W, H = grid_size
+    bev_x = (
+        torch.linspace(0, W - 1, W, device=coords.device)
+        .reshape((1, W))
+        .repeat(H, 1)
+        .float()
+    )
+    bev_y = (
+        torch.linspace(0, H - 1, H, device=coords.device)
+        .reshape((H, 1))
+        .repeat(1, W)
+        .float()
+    )
+    bev_coords = torch.stack([bev_x, bev_y], dim=-1)
+    coords = coords - bev_coords
+    return coords
+
+
+def compute_lss_reference_points(
+    img: Tensor,
+    ego2img: Tensor,
+    feat_hw: Tuple[int, int],
+) -> Dict[str, Tensor]:
+    device = ego2img.device
+    num_views = LSS_NUM_VIEWS
+    depth = LSS_DEPTH
+    num_points = LSS_NUM_POINTS
+    z_range = LSS_Z_RANGE
+    bev_size = LSS_BEV_SIZE
+    grid_size = LSS_GRID_SIZE
+    use_vtv2 = LSS_USE_VTV2
+
+    # ---- _get_homography ---------------------------------------------------
+    orig_hw = img.shape[2:]                             # (H_img, W_img)
+    scale_h = feat_hw[0] / orig_hw[0]
+    scale_w = feat_hw[1] / orig_hw[1]
+
+    view = torch.eye(4, device=device, dtype=torch.float64)
+    view[0, 0] = scale_w
+    view[1, 1] = scale_h
+    homography = view @ ego2img.double()                 # (V, 4, 4) float64
+
+    # ---- _gen_3d_points ----------------------------------------------------
+    # get_min_max_coords(bev_size)
+    bev_min_x = -bev_size[1] + bev_size[2] / 2.0
+    bev_max_x =  bev_size[1] - bev_size[2] / 2.0
+    bev_min_y = -bev_size[0] + bev_size[2] / 2.0
+    bev_max_y =  bev_size[0] - bev_size[2] / 2.0
+
+    W_bev, H_bev = grid_size                            # 192, 192
+    Z = int(z_range[1] - z_range[0])                    # int(5.4 - (-1)) = 6
+
+    x = (
+        torch.linspace(bev_min_x, bev_max_x, W_bev, device=device)
+        .reshape(1, W_bev, 1).repeat(H_bev, 1, Z)
+        .double()
+    )
+    y = (
+        torch.linspace(bev_min_y, bev_max_y, H_bev, device=device)
+        .reshape(H_bev, 1, 1).repeat(1, W_bev, Z)
+        .double()
+    )
+    z = (
+        torch.linspace(z_range[0], z_range[1], Z, device=device)
+        .reshape(1, 1, Z).repeat(H_bev, W_bev, 1)
+        .double()
+    )
+    ones = torch.ones((H_bev, W_bev, Z), device=device, dtype=torch.float64)
+    coords_3d = torch.stack([x, y, z, ones], dim=-1)    # (H, W, Z, 4)  float64
+
+    # ---- project through each camera ---------------------------------------
+    new_coords_list = []
+    for homo in homography:
+        new_coord = (
+            torch.matmul(coords_3d, homo.permute((1, 0))).float()
+        )                                                   # (H, W, Z, 4)
+        new_coord = new_coord.permute((2, 0, 1, 3))        # (Z, H, W, 4)
+        new_coords_list.append(new_coord)
+    new_coords = torch.stack(new_coords_list, dim=1)        # (Z, V, H, W, 4)
+
+    B = new_coords.shape[1] // num_views
+    new_coords = (
+        new_coords.view(-1, B, num_views, H_bev, W_bev, 4)
+        .permute(0, 2, 1, 3, 4, 5)
+        .contiguous()
+    )                                                       # (Z, V, B, H, W, 4)
+
+    d = torch.clamp(new_coords[..., 2], min=0.05)
+    X_coord = (new_coords[..., 0] / d).long()                # image x
+    Y_coord = (new_coords[..., 1] / d).long()                # image y
+    D_coord = new_coords[..., 2].long()                      # depth z
+
+    idx = (
+        torch.linspace(0, num_views - 1, num_views, device=device)
+        .reshape(1, num_views, 1, 1, 1)
+        .repeat(Z, 1, B, H_bev, W_bev)
+        .long()
+    )
+    new_coords = torch.stack([X_coord, Y_coord, D_coord, idx], dim=-1)
+
+    feat_h, feat_w = feat_hw
+    invalid = (
+        (new_coords[..., 0] < 0)
+        | (new_coords[..., 0] >= feat_w)
+        | (new_coords[..., 1] < 0)
+        | (new_coords[..., 1] >= feat_h)
+        | (new_coords[..., 2] < 0)
+        | (new_coords[..., 2] >= depth)
+    )
+
+    if use_vtv2:
+        raise NotImplementedError("use_vtv2=True path not implemented")
+    else:
+        new_coords[invalid] = torch.tensor(
+            (feat_w - 1, feat_h - 1, depth, num_views - 1),
+            device=device,
+        )
+        new_coords = new_coords.view(-1, B, H_bev, W_bev, 4)  # (Z*V, B, H, W, 4)
+
+        rank = (
+            new_coords[..., 2] * feat_h * feat_w * num_views
+            + new_coords[..., 1] * feat_w * num_views
+            + new_coords[..., 0] * num_views
+            + new_coords[..., 3]
+        )
+        rank, _ = rank.topk(num_points, dim=0, largest=False)  # (N_pts, B, H, W)
+
+        D_sel = rank // (feat_h * feat_w * num_views)
+        rank = rank % (feat_h * feat_w * num_views)
+
+        Y_sel = rank // (feat_w * num_views)
+        rank = rank % (feat_w * num_views)
+
+        X_sel = rank // num_views
+        idx_sel = rank % num_views
+
+    idx_Y = idx_sel * feat_h + Y_sel
+    feat_coords = torch.stack((X_sel, idx_Y), dim=-1)    
+    feat_points = _adjust_coords(feat_coords, grid_size)
+    feat_points = feat_points.view(-1, H_bev, W_bev, 2)
+
+    X_Y = Y_sel * feat_w + X_sel
+    idx_D = idx_sel * depth + D_sel
+    depth_coords = torch.stack((X_Y, idx_D), dim=-1)
+    depth_points = _adjust_coords(depth_coords, grid_size)
+    depth_points = depth_points.view(-1, H_bev, W_bev, 2)
+
+    return {"points0": feat_points, "points1": depth_points}
+
+
 def prepare_deploy_inputs(
     sample: dict,
     deploy_model,
@@ -515,8 +684,8 @@ def prepare_deploy_inputs(
         )
 
     vt_input_hw = cfg.vt_input_hw
-    ref_points = deploy_model.camera_net.export_reference_points(
-        {"img": img, "ego2img": ego2img}, feat_wh=tuple(vt_input_hw)
+    ref_points = compute_lss_reference_points(
+        img, ego2img, feat_hw=tuple(vt_input_hw)
     )
 
     return {
@@ -524,8 +693,8 @@ def prepare_deploy_inputs(
         "coors": coords.to(torch.int32),
         "img": img,
         "ego2img": ego2img,
-        "points0": ref_points["points0"].to(device),
-        "points1": ref_points["points1"].to(device),
+        "points0": ref_points["points0"],
+        "points1": ref_points["points1"],
     }
 
 
