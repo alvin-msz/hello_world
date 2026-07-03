@@ -1,79 +1,97 @@
+/usr/local/lib/python3.10/dist-packages/hat/data/collates/nusc_collates.py:175: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(
+/usr/local/lib/python3.10/dist-packages/hat/data/collates/nusc_collates.py:175: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(
+/usr/local/lib/python3.10/dist-packages/hat/data/collates/nusc_collates.py:175: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(
+/usr/local/lib/python3.10/dist-packages/hat/data/collates/nusc_collates.py:175: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(
+/usr/local/lib/python3.10/dist-packages/hat/data/collates/nusc_collates.py:175: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(
+/usr/local/lib/python3.10/dist-packages/hat/data/collates/nusc_collates.py:175: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(
+/usr/local/lib/python3.10/dist-packages/hat/data/collates/nusc_collates.py:175: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(
+/usr/local/lib/python3.10/dist-packages/hat/data/collates/nusc_collates.py:175: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(
+/usr/local/lib/python3.10/dist-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/usr/local/lib/python3.10/dist-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+2026-07-03 16:44:05,155 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
     trainer.fit()
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 542, in fit
-    _, batch = next(self.data_loader_pr)
-  File "/usr/local/lib/python3.10/dist-packages/hat/profiler/profilers.py", line 263, in profile_iterable
-    value = next(iterator)
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/generator.py", line 15, in prefetch_iterator
-    last = next(it)
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 708, in __next__
-    data = self._next_data()
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 1480, in _next_data
-    return self._process_data(data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 1505, in _process_data
-    data.reraise()
-  File "/usr/local/lib/python3.10/dist-packages/torch/_utils.py", line 733, in reraise
-    raise exception
-KeyError: Caught KeyError in DataLoader worker process 0.
-Original Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
-    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
-    data = [self.dataset[idx] for idx in possibly_batched_index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
-    data = [self.dataset[idx] for idx in possibly_batched_index]
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1985, in __getitem__
-    data = super().__getitem__(idx)
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1762, in __getitem__
-    data = self.transforms(data)
-  File "/usr/local/lib/python3.10/dist-packages/hat/core/compose_transform.py", line 10, in __call__
-    img = t(img)
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/flashocc_transforms.py", line 295, in __call__
-    semantics = torch.tensor(data["gt_occ_info"]["voxel_semantics"], dtype=torch.uint8)
-KeyError: 'gt_occ_info'
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
+    self.batch_processor(
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
+    result = func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
+    model_outs = model(*_as_list(batch_i))
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevfusion_with_bev_encoder.py", line 65, in forward
+    return self.post_process(data, pts_feats)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 123, in post_process
+    result = bev_decoder(pts_feats, data)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/decoder.py", line 271, in forward
+    bev_embed = self.get_bev_embed(bev_embed)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/decoder.py", line 265, in get_bev_embed
+    if bev_embed.dim() == 4:
+AttributeError: 'list' object has no attribute 'dim'
 
-
-2026-07-03 16:34:02,725 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
+2026-07-03 16:44:05,168 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
     trainer.fit()
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 542, in fit
-    _, batch = next(self.data_loader_pr)
-  File "/usr/local/lib/python3.10/dist-packages/hat/profiler/profilers.py", line 263, in profile_iterable
-    value = next(iterator)
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/generator.py", line 15, in prefetch_iterator
-    last = next(it)
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 708, in __next__
-    data = self._next_data()
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 1480, in _next_data
-    return self._process_data(data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 1505, in _process_data
-    data.reraise()
-  File "/usr/local/lib/python3.10/dist-packages/torch/_utils.py", line 733, in reraise
-    raise exception
-KeyError: Caught KeyError in DataLoader worker process 0.
-Original Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
-    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
-    data = [self.dataset[idx] for idx in possibly_batched_index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
-    data = [self.dataset[idx] for idx in possibly_batched_index]
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1985, in __getitem__
-    data = super().__getitem__(idx)
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1762, in __getitem__
-    data = self.transforms(data)
-  File "/usr/local/lib/python3.10/dist-packages/hat/core/compose_transform.py", line 10, in __call__
-    img = t(img)
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/flashocc_transforms.py", line 295, in __call__
-    semantics = torch.tensor(data["gt_occ_info"]["voxel_semantics"], dtype=torch.uint8)
-KeyError: 'gt_occ_info'
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
+    self.batch_processor(
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
+    result = func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
+    model_outs = model(*_as_list(batch_i))
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevfusion_with_bev_encoder.py", line 65, in forward
+    return self.post_process(data, pts_feats)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 123, in post_process
+    result = bev_decoder(pts_feats, data)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/decoder.py", line 271, in forward
+    bev_embed = self.get_bev_embed(bev_embed)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/decoder.py", line 265, in get_bev_embed
+    if bev_embed.dim() == 4:
+AttributeError: 'list' object has no attribute 'dim'
 
-
-W0703 16:34:03.683000 55319 torch/multiprocessing/spawn.py:169] Terminating process 55461 via signal SIGTERM
 ERROR:__main__:train failed! process 0 terminated with exit code 1
 Traceback (most recent call last):
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
