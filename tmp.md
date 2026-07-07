@@ -1,202 +1,154 @@
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
+ File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
     trainer.fit()
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 651, in fit
+    self.on_epoch_end(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 451, in on_epoch_end
+    super(LoopBase, self).on_epoch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 116, in on_epoch_end
+    cb.on_epoch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/validation.py", line 228, in on_epoch_end
+    self._do_val(epoch_id, model, ema_model, device, val_metrics)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/validation.py", line 191, in _do_val
+    self.predictor.fit()
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/predictor.py", line 121, in fit
+    super().fit()
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
     self.batch_processor(
   File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
     result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 116, in forward
-    results = self.post_process(data, pts_feats)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 123, in post_process
-    result = bev_decoder(pts_feats, data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 148, in forward
-    return self._post_process(meta, pred)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 167, in _post_process
-    target = self.target(gts, pred)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 381, in forward
-    self._get_task_targets(label, task_preds, task)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 89, in _get_task_targets
-    heatmaps, indices, bbox_targets_list = multi_apply(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/apply_func.py", line 483, in multi_apply
-    map_results = list(map(pfunc, *args))
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 262, in get_targets_single
-    (feat_size[0], feat_size[1], bbox_dim)
-IndexError: tuple index out of range
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 840, in __call__
+    batch_end_callback(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 136, in on_batch_end
+    cb.on_batch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/metric_updater.py", line 283, in on_batch_end
+    self.metric_update_func(metrics, batch, model_outs)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/configs/lidar_bevfusion/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_argmax_bpu.py", line 556, in update_metric
+    metrics[idx].update(batch, _get_centerpoint_preds(model_outs[idx]))
+  File "/usr/local/lib/python3.10/dist-packages/torchmetrics/metric.py", line 248, in wrapped_func
+    return update(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/metrics/nuscenes_metric.py", line 259, in update
+    meta = meta[self.meta_key]
+KeyError: 'meta'
 
-2026-07-07 10:59:11,484 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
+2026-07-07 11:53:40,043 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
     trainer.fit()
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 651, in fit
+    self.on_epoch_end(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 451, in on_epoch_end
+    super(LoopBase, self).on_epoch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 116, in on_epoch_end
+    cb.on_epoch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/validation.py", line 228, in on_epoch_end
+    self._do_val(epoch_id, model, ema_model, device, val_metrics)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/validation.py", line 191, in _do_val
+    self.predictor.fit()
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/predictor.py", line 121, in fit
+    super().fit()
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
     self.batch_processor(
   File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
     result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 116, in forward
-    results = self.post_process(data, pts_feats)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 123, in post_process
-    result = bev_decoder(pts_feats, data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 148, in forward
-    return self._post_process(meta, pred)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 167, in _post_process
-    target = self.target(gts, pred)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 381, in forward
-    self._get_task_targets(label, task_preds, task)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 89, in _get_task_targets
-    heatmaps, indices, bbox_targets_list = multi_apply(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/apply_func.py", line 483, in multi_apply
-    map_results = list(map(pfunc, *args))
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 262, in get_targets_single
-    (feat_size[0], feat_size[1], bbox_dim)
-IndexError: tuple index out of range
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 840, in __call__
+    batch_end_callback(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 136, in on_batch_end
+    cb.on_batch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/metric_updater.py", line 283, in on_batch_end
+    self.metric_update_func(metrics, batch, model_outs)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/configs/lidar_bevfusion/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_argmax_bpu.py", line 556, in update_metric
+    metrics[idx].update(batch, _get_centerpoint_preds(model_outs[idx]))
+  File "/usr/local/lib/python3.10/dist-packages/torchmetrics/metric.py", line 248, in wrapped_func
+    return update(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/metrics/nuscenes_metric.py", line 259, in update
+    meta = meta[self.meta_key]
+KeyError: 'meta'
 
-2026-07-07 10:59:11,486 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
+2026-07-07 11:53:40,144 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
     trainer.fit()
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 651, in fit
+    self.on_epoch_end(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 451, in on_epoch_end
+    super(LoopBase, self).on_epoch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 116, in on_epoch_end
+    cb.on_epoch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/validation.py", line 228, in on_epoch_end
+    self._do_val(epoch_id, model, ema_model, device, val_metrics)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/validation.py", line 191, in _do_val
+    self.predictor.fit()
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/predictor.py", line 121, in fit
+    super().fit()
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
     self.batch_processor(
   File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
     result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 116, in forward
-    results = self.post_process(data, pts_feats)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 123, in post_process
-    result = bev_decoder(pts_feats, data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 148, in forward
-    return self._post_process(meta, pred)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 167, in _post_process
-    target = self.target(gts, pred)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 381, in forward
-    self._get_task_targets(label, task_preds, task)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 89, in _get_task_targets
-    heatmaps, indices, bbox_targets_list = multi_apply(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/apply_func.py", line 483, in multi_apply
-    map_results = list(map(pfunc, *args))
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 262, in get_targets_single
-    (feat_size[0], feat_size[1], bbox_dim)
-IndexError: tuple index out of range
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 840, in __call__
+    batch_end_callback(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 136, in on_batch_end
+    cb.on_batch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/metric_updater.py", line 283, in on_batch_end
+    self.metric_update_func(metrics, batch, model_outs)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/configs/lidar_bevfusion/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_argmax_bpu.py", line 556, in update_metric
+    metrics[idx].update(batch, _get_centerpoint_preds(model_outs[idx]))
+  File "/usr/local/lib/python3.10/dist-packages/torchmetrics/metric.py", line 248, in wrapped_func
+    return update(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/metrics/nuscenes_metric.py", line 259, in update
+    meta = meta[self.meta_key]
+KeyError: 'meta'
 
-2026-07-07 10:59:11,501 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
+2026-07-07 11:53:40,263 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
     trainer.fit()
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 651, in fit
+    self.on_epoch_end(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 451, in on_epoch_end
+    super(LoopBase, self).on_epoch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 116, in on_epoch_end
+    cb.on_epoch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/validation.py", line 228, in on_epoch_end
+    self._do_val(epoch_id, model, ema_model, device, val_metrics)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/validation.py", line 191, in _do_val
+    self.predictor.fit()
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/predictor.py", line 121, in fit
+    super().fit()
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
     self.batch_processor(
   File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
     result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 116, in forward
-    results = self.post_process(data, pts_feats)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 123, in post_process
-    result = bev_decoder(pts_feats, data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 148, in forward
-    return self._post_process(meta, pred)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 167, in _post_process
-    target = self.target(gts, pred)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 381, in forward
-    self._get_task_targets(label, task_preds, task)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 89, in _get_task_targets
-    heatmaps, indices, bbox_targets_list = multi_apply(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/apply_func.py", line 483, in multi_apply
-    map_results = list(map(pfunc, *args))
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 262, in get_targets_single
-    (feat_size[0], feat_size[1], bbox_dim)
-IndexError: tuple index out of range
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 840, in __call__
+    batch_end_callback(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 136, in on_batch_end
+    cb.on_batch_end(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/callbacks/metric_updater.py", line 283, in on_batch_end
+    self.metric_update_func(metrics, batch, model_outs)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/configs/lidar_bevfusion/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_argmax_bpu.py", line 556, in update_metric
+    metrics[idx].update(batch, _get_centerpoint_preds(model_outs[idx]))
+  File "/usr/local/lib/python3.10/dist-packages/torchmetrics/metric.py", line 248, in wrapped_func
+    return update(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/metrics/nuscenes_metric.py", line 259, in update
+    meta = meta[self.meta_key]
+KeyError: 'meta'
 
-W0707 10:59:13.522000 2873 torch/multiprocessing/spawn.py:169] Terminating process 3015 via signal SIGTERM
-W0707 10:59:13.524000 2873 torch/multiprocessing/spawn.py:169] Terminating process 3016 via signal SIGTERM
-W0707 10:59:13.525000 2873 torch/multiprocessing/spawn.py:169] Terminating process 3017 via signal SIGTERM
-ERROR:__main__:train failed! process 0 terminated with exit code 1
+W0707 11:53:42.494000 5716 torch/multiprocessing/spawn.py:169] Terminating process 5857 via signal SIGTERM
+W0707 11:53:42.496000 5716 torch/multiprocessing/spawn.py:169] Terminating process 5858 via signal SIGTERM
+W0707 11:53:42.497000 5716 torch/multiprocessing/spawn.py:169] Terminating process 5860 via signal SIGTERM
+ERROR:__main__:train failed! process 2 terminated with exit code 1
 Traceback (most recent call last):
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
     raise e
@@ -212,4 +164,4 @@ Traceback (most recent call last):
     while not context.join():
   File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
     raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
+torch.multiprocessing.spawn.ProcessExitedException: process 2 terminated with exit code 1
