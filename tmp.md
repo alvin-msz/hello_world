@@ -1,12 +1,3 @@
-/usr/local/lib/python3.10/dist-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
-  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
-/usr/local/lib/python3.10/dist-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
-  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
-/usr/local/lib/python3.10/dist-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
-  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
-/usr/local/lib/python3.10/dist-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
-  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
-2026-07-07 10:50:51,518 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -39,13 +30,23 @@
     return forward_call(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 148, in forward
     return self._post_process(meta, pred)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 166, in _post_process
-    gts = self._get_gts(meta)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 297, in _get_gts
-    return meta["bev_bboxes_labels"]
-KeyError: 'bev_bboxes_labels'
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 167, in _post_process
+    target = self.target(gts, pred)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 381, in forward
+    self._get_task_targets(label, task_preds, task)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 89, in _get_task_targets
+    heatmaps, indices, bbox_targets_list = multi_apply(
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/apply_func.py", line 483, in multi_apply
+    map_results = list(map(pfunc, *args))
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 262, in get_targets_single
+    (feat_size[0], feat_size[1], bbox_dim)
+IndexError: tuple index out of range
 
-2026-07-07 10:50:51,520 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
+2026-07-07 10:59:11,484 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -78,13 +79,23 @@ KeyError: 'bev_bboxes_labels'
     return forward_call(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 148, in forward
     return self._post_process(meta, pred)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 166, in _post_process
-    gts = self._get_gts(meta)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 297, in _get_gts
-    return meta["bev_bboxes_labels"]
-KeyError: 'bev_bboxes_labels'
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 167, in _post_process
+    target = self.target(gts, pred)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 381, in forward
+    self._get_task_targets(label, task_preds, task)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 89, in _get_task_targets
+    heatmaps, indices, bbox_targets_list = multi_apply(
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/apply_func.py", line 483, in multi_apply
+    map_results = list(map(pfunc, *args))
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 262, in get_targets_single
+    (feat_size[0], feat_size[1], bbox_dim)
+IndexError: tuple index out of range
 
-2026-07-07 10:50:51,520 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
+2026-07-07 10:59:11,486 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -117,13 +128,23 @@ KeyError: 'bev_bboxes_labels'
     return forward_call(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 148, in forward
     return self._post_process(meta, pred)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 166, in _post_process
-    gts = self._get_gts(meta)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 297, in _get_gts
-    return meta["bev_bboxes_labels"]
-KeyError: 'bev_bboxes_labels'
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 167, in _post_process
+    target = self.target(gts, pred)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 381, in forward
+    self._get_task_targets(label, task_preds, task)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 89, in _get_task_targets
+    heatmaps, indices, bbox_targets_list = multi_apply(
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/apply_func.py", line 483, in multi_apply
+    map_results = list(map(pfunc, *args))
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 262, in get_targets_single
+    (feat_size[0], feat_size[1], bbox_dim)
+IndexError: tuple index out of range
 
-2026-07-07 10:50:51,524 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
+2026-07-07 10:59:11,501 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -156,16 +177,26 @@ KeyError: 'bev_bboxes_labels'
     return forward_call(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 148, in forward
     return self._post_process(meta, pred)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 166, in _post_process
-    gts = self._get_gts(meta)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 297, in _get_gts
-    return meta["bev_bboxes_labels"]
-KeyError: 'bev_bboxes_labels'
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/view_fusion/decoder.py", line 167, in _post_process
+    target = self.target(gts, pred)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 381, in forward
+    self._get_task_targets(label, task_preds, task)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 89, in _get_task_targets
+    heatmaps, indices, bbox_targets_list = multi_apply(
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/apply_func.py", line 483, in multi_apply
+    map_results = list(map(pfunc, *args))
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/centerpoint/target.py", line 262, in get_targets_single
+    (feat_size[0], feat_size[1], bbox_dim)
+IndexError: tuple index out of range
 
-W0707 10:50:53.393000 29 torch/multiprocessing/spawn.py:169] Terminating process 170 via signal SIGTERM
-W0707 10:50:53.395000 29 torch/multiprocessing/spawn.py:169] Terminating process 171 via signal SIGTERM
-W0707 10:50:53.395000 29 torch/multiprocessing/spawn.py:169] Terminating process 173 via signal SIGTERM
-ERROR:__main__:train failed! process 2 terminated with exit code 1
+W0707 10:59:13.522000 2873 torch/multiprocessing/spawn.py:169] Terminating process 3015 via signal SIGTERM
+W0707 10:59:13.524000 2873 torch/multiprocessing/spawn.py:169] Terminating process 3016 via signal SIGTERM
+W0707 10:59:13.525000 2873 torch/multiprocessing/spawn.py:169] Terminating process 3017 via signal SIGTERM
+ERROR:__main__:train failed! process 0 terminated with exit code 1
 Traceback (most recent call last):
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
     raise e
@@ -181,4 +212,4 @@ Traceback (most recent call last):
     while not context.join():
   File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
     raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 2 terminated with exit code 1
+torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
