@@ -1,60 +1,45 @@
-2026-07-09 08:49:54,831 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
-    trainer.fit()
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
-    self.batch_processor(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
-    result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 99, in forward
-    camera_feature = self.forward_camera_feature(data)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 90, in forward_camera_feature
-    feats = self.camera_net.extract_feat(imgs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/detectors/bevformer.py", line 46, in extract_feat
-    x = self.backbone(img)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/backbones/henet.py", line 222, in forward
-    x = self.stages[idx](x)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/base_modules/basic_henet_module.py", line 551, in forward
-    return self.block(x)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 250, in forward
-    input = module(input)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/base_modules/basic_henet_module.py", line 204, in forward
-    x = self.act(x)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/activation.py", line 734, in forward
-    return F.gelu(input, approximate=self.approximate)
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 90.00 MiB. GPU 0 has a total capacity of 23.52 GiB of which 32.06 MiB is free. Process 323138 has 2.16 GiB memory in use. Process 2514068 has 21.30 GiB memory in use. Of the allocated memory 1.52 GiB is allocated by PyTorch, and 85.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+^CERROR:hat.engine.ddp_trainer:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 426, in launch
+    mp.spawn(
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 340, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 296, in start_processes
+    while not context.join():
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 144, in join
+    ready = multiprocessing.connection.wait(
+  File "/usr/lib/python3.10/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+Killed
+root@OE-GPU-3-7-0:/open_explorer# python3 samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py   --stage float   --config samples/ai_toolchain/horizon_model_train_sample/scripts/configs/lidar_bevfusion/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_argmax_bpu.py   --device-ids 4,5,6,7
+`aidisdk` dependency is not available.
+WARNING:hat.utils.setup_env:The file `/etc/nccl.conf` does not exist.
+WARNING:horizon_plugin_pytorch.fx.fx_helper:wrap usage has been changed, please pass necessary args
+ERROR:__main__:train failed! Cannot import CenterPointPreProcess from HAT
+Traceback (most recent call last):
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
+    raise e
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 273, in <module>
+    train(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 224, in train
+    config_info = Config.fromfile(config)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/config.py", line 76, in fromfile
+    mod = import_module(module_name)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/configs/lidar_bevfusion/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_argmax_bpu.py", line 35, in <module>
+    import bevfusion_centerpoint_bboxes_adapter  # noqa: F401
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevfusion_centerpoint_bboxes_adapter.py", line 341, in <module>
+    CenterPointPreProcess = _import_centerpoint_preprocess()
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevfusion_centerpoint_bboxes_adapter.py", line 58, in _import_centerpoint_preprocess
+    raise ImportError("Cannot import CenterPointPreProcess from HAT")
+ImportError: Cannot import CenterPointPreProcess from HAT
