@@ -1,151 +1,148 @@
-2026-07-09 09:10:38,003 INFO [monitor.py:143] Node[0] Epoch[0] Begin ==================================================
-2026-07-09 09:10:38,004 INFO [lr_updater.py:204] Node[0] Epoch[0] Step[0] GlobalStep[0] lr=0.000400
-2026-07-09 09:15:20,839 INFO [monitor.py:131] Node[0] Epoch[0] Step[0-199] Cost Time: 282.834s Speed: 2.83 samples/sec Remaining Time: 16:35:16 Remaining step percent: 99.53%
-2026-07-09 09:15:22,013 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[199] GlobalStep[199] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.3531] loss_bbox[0.6141] d0.loss_cls[0.4235] d0.loss_bbox[0.7456] d1.loss_cls[0.3722] d1.loss_bbox[0.6602] d2.loss_cls[0.3752] d2.loss_bbox[0.6284] d3.loss_cls[0.3766] d3.loss_bbox[0.6215] d4.loss_cls[0.3561] d4.loss_bbox[0.6147] loss_occ[2.6248] 
-2026-07-09 09:19:38,556 INFO [monitor.py:131] Node[0] Epoch[0] Step[200-399] Cost Time: 257.715s Speed: 3.10 samples/sec Remaining Time: 14:58:02 Remaining step percent: 99.05%
-2026-07-09 09:19:39,857 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[399] GlobalStep[399] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2844] loss_bbox[0.5230] d0.loss_cls[0.3436] d0.loss_bbox[0.6688] d1.loss_cls[0.3142] d1.loss_bbox[0.5751] d2.loss_cls[0.3079] d2.loss_bbox[0.5403] d3.loss_cls[0.3004] d3.loss_bbox[0.5317] d4.loss_cls[0.2865] d4.loss_bbox[0.5239] loss_occ[2.2036] 
-2026-07-09 09:21:49,191 INFO [lr_updater.py:204] Node[0] Epoch[0] Step[499] GlobalStep[499] lr=0.000399
-2026-07-09 09:24:02,508 INFO [monitor.py:131] Node[0] Epoch[0] Step[400-599] Cost Time: 263.951s Speed: 3.03 samples/sec Remaining Time: 15:15:23 Remaining step percent: 98.58%
-2026-07-09 09:24:03,699 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[599] GlobalStep[599] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2661] loss_bbox[0.4924] d0.loss_cls[0.3229] d0.loss_bbox[0.6466] d1.loss_cls[0.3016] d1.loss_bbox[0.5469] d2.loss_cls[0.2915] d2.loss_bbox[0.5114] d3.loss_cls[0.2807] d3.loss_bbox[0.5018] d4.loss_cls[0.2677] d4.loss_bbox[0.4939] loss_occ[2.0399] 
-2026-07-09 09:28:21,969 INFO [monitor.py:131] Node[0] Epoch[0] Step[600-799] Cost Time: 259.459s Speed: 3.08 samples/sec Remaining Time: 14:55:28 Remaining step percent: 98.10%
-2026-07-09 09:28:23,301 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[799] GlobalStep[799] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2558] loss_bbox[0.4742] d0.loss_cls[0.3123] d0.loss_bbox[0.6314] d1.loss_cls[0.2949] d1.loss_bbox[0.5291] d2.loss_cls[0.2827] d2.loss_bbox[0.4937] d3.loss_cls[0.2699] d3.loss_bbox[0.4836] d4.loss_cls[0.2573] d4.loss_bbox[0.4754] loss_occ[1.9530] 
-2026-07-09 09:32:44,037 INFO [monitor.py:131] Node[0] Epoch[0] Step[800-999] Cost Time: 262.065s Speed: 3.05 samples/sec Remaining Time: 15:00:06 Remaining step percent: 97.63%
-2026-07-09 09:32:45,222 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[999] GlobalStep[999] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2471] loss_bbox[0.4556] d0.loss_cls[0.3041] d0.loss_bbox[0.6135] d1.loss_cls[0.2891] d1.loss_bbox[0.5102] d2.loss_cls[0.2758] d2.loss_bbox[0.4752] d3.loss_cls[0.2614] d3.loss_bbox[0.4650] d4.loss_cls[0.2487] d4.loss_bbox[0.4569] loss_occ[1.8997] 
-2026-07-09 09:37:05,717 INFO [monitor.py:131] Node[0] Epoch[0] Step[1000-1199] Cost Time: 261.678s Speed: 3.06 samples/sec Remaining Time: 14:54:24 Remaining step percent: 97.16%
-2026-07-09 09:37:06,932 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1199] GlobalStep[1199] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2428] loss_bbox[0.4457] d0.loss_cls[0.3000] d0.loss_bbox[0.6050] d1.loss_cls[0.2867] d1.loss_bbox[0.5010] d2.loss_cls[0.2728] d2.loss_bbox[0.4656] d3.loss_cls[0.2572] d3.loss_bbox[0.4551] d4.loss_cls[0.2445] d4.loss_bbox[0.4470] loss_occ[1.8561] 
-2026-07-09 09:41:33,364 INFO [monitor.py:131] Node[0] Epoch[0] Step[1200-1399] Cost Time: 267.644s Speed: 2.99 samples/sec Remaining Time: 15:10:20 Remaining step percent: 96.68%
-2026-07-09 09:41:34,734 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1399] GlobalStep[1399] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2405] loss_bbox[0.4405] d0.loss_cls[0.2982] d0.loss_bbox[0.6025] d1.loss_cls[0.2861] d1.loss_bbox[0.4964] d2.loss_cls[0.2715] d2.loss_bbox[0.4608] d3.loss_cls[0.2552] d3.loss_bbox[0.4499] d4.loss_cls[0.2421] d4.loss_bbox[0.4419] loss_occ[1.8169] 
-2026-07-09 09:46:12,611 INFO [monitor.py:131] Node[0] Epoch[0] Step[1400-1599] Cost Time: 279.244s Speed: 2.86 samples/sec Remaining Time: 15:45:08 Remaining step percent: 96.21%
-2026-07-09 09:46:13,950 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1599] GlobalStep[1599] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2370] loss_bbox[0.4330] d0.loss_cls[0.2949] d0.loss_bbox[0.5944] d1.loss_cls[0.2838] d1.loss_bbox[0.4886] d2.loss_cls[0.2685] d2.loss_bbox[0.4534] d3.loss_cls[0.2515] d3.loss_bbox[0.4426] d4.loss_cls[0.2386] d4.loss_bbox[0.4345] loss_occ[1.7865] 
-2026-07-09 09:49:50,670 INFO [monitor.py:146] Node[0] Epoch[0] End   ==================================================
-2026-07-09 09:49:50,673 INFO [monitor.py:149] Node[0] Epoch[0] Cost Time: 2352.669s
-2026-07-09 09:49:50,673 INFO [metric_updater.py:360] Node[0] Epoch[0] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2345] loss_bbox[0.4274] d0.loss_cls[0.2923] d0.loss_bbox[0.5887] d1.loss_cls[0.2820] d1.loss_bbox[0.4831] d2.loss_cls[0.2665] d2.loss_bbox[0.4482] d3.loss_cls[0.2489] d3.loss_bbox[0.4372] d4.loss_cls[0.2361] d4.loss_bbox[0.4290] loss_occ[1.7703] 
-2026-07-09 09:49:50,673 INFO [validation.py:156] Node[0] [32mUse train `model` as val model.[0m
-2026-07-09 09:49:50,848 INFO [loop_base.py:482] Node[0] [32mStart Predictor loop from epoch 0, num_epochs=1[0m
-2026-07-09 09:49:50,853 INFO [fake_quantize.py:253] Node[0] Set fake quantize state to FakeQuantState.VALIDATION
-2026-07-09 09:49:56,649 INFO [loop_base.py:553] Node[0] 0 / 1505
-2026-07-09 09:50:54,516 INFO [loop_base.py:553] Node[0] 200 / 1505
-2026-07-09 09:51:36,552 INFO [loop_base.py:553] Node[0] 400 / 1505
-2026-07-09 09:52:16,795 INFO [loop_base.py:553] Node[0] 600 / 1505
-2026-07-09 09:52:57,037 INFO [loop_base.py:553] Node[0] 800 / 1505
-2026-07-09 09:53:35,638 INFO [loop_base.py:553] Node[0] 1000 / 1505
-2026-07-09 09:54:12,997 INFO [loop_base.py:553] Node[0] 1200 / 1505
-2026-07-09 09:54:55,149 INFO [loop_base.py:553] Node[0] 1400 / 1505
-2026-07-09 09:55:15,835 INFO [nuscenes_metric.py:322] Node[0] The length of self.nusc_annos is: 1505
-2026-07-09 09:55:24,973 INFO [nuscenes_metric.py:346] Node[0] Results writes to ./metric_results/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/results_nusc.json
-2026-07-09 09:59:34,403 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5674, mAP:0.5082
-car_AP: [0.5]:0.6748  [1.0]:0.8059  [2.0]:0.8479  [4.0]:0.8736 
-truck_AP: [0.5]:0.3154  [1.0]:0.5031  [2.0]:0.6183  [4.0]:0.6653 
-trailer_AP: [0.5]:0.0897  [1.0]:0.2512  [2.0]:0.3785  [4.0]:0.4943 
-bus_AP: [0.5]:0.4097  [1.0]:0.6295  [2.0]:0.7736  [4.0]:0.8044 
-construction_vehicle_AP: [0.5]:0.0015  [1.0]:0.0963  [2.0]:0.2581  [4.0]:0.3349 
-bicycle_AP: [0.5]:0.2573  [1.0]:0.3796  [2.0]:0.4132  [4.0]:0.4416 
-motorcycle_AP: [0.5]:0.3103  [1.0]:0.5181  [2.0]:0.5934  [4.0]:0.6278 
-pedestrian_AP: [0.5]:0.5630  [1.0]:0.6944  [2.0]:0.7562  [4.0]:0.7947 
-traffic_cone_AP: [0.5]:0.4180  [1.0]:0.5281  [2.0]:0.6081  [4.0]:0.6949 
-barrier_AP: [0.5]:0.1778  [1.0]:0.4208  [2.0]:0.6032  [4.0]:0.7020 
+2026-05-27 08:10:55,480 INFO [monitor.py:143] Node[0] Epoch[0] Begin ==================================================
+2026-05-27 08:10:55,480 INFO [lr_updater.py:204] Node[0] Epoch[0] Step[0] GlobalStep[0] lr=0.000400
+2026-05-27 08:15:14,030 INFO [monitor.py:131] Node[0] Epoch[0] Step[0-199] Cost Time: 258.548s Speed: 3.09 samples/sec Remaining Time: 15:09:48 Remaining step percent: 99.53%
+2026-05-27 08:15:15,174 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[199] GlobalStep[199] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.3381] loss_bbox[0.5975] d0.loss_cls[0.3802] d0.loss_bbox[0.7296] d1.loss_cls[0.3592] d1.loss_bbox[0.6452] d2.loss_cls[0.3505] d2.loss_bbox[0.6155] d3.loss_cls[0.3547] d3.loss_bbox[0.6073] d4.loss_cls[0.3412] d4.loss_bbox[0.5994] loss_occ[2.5751] 
+2026-05-27 08:19:11,323 INFO [monitor.py:131] Node[0] Epoch[0] Step[200-399] Cost Time: 237.292s Speed: 3.37 samples/sec Remaining Time: 13:46:53 Remaining step percent: 99.05%
+2026-05-27 08:19:12,432 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[399] GlobalStep[399] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2782] loss_bbox[0.5115] d0.loss_cls[0.3223] d0.loss_bbox[0.6589] d1.loss_cls[0.3090] d1.loss_bbox[0.5650] d2.loss_cls[0.2974] d2.loss_bbox[0.5318] d3.loss_cls[0.2920] d3.loss_bbox[0.5215] d4.loss_cls[0.2805] d4.loss_bbox[0.5130] loss_occ[2.1814] 
+2026-05-27 08:21:10,831 INFO [lr_updater.py:204] Node[0] Epoch[0] Step[499] GlobalStep[499] lr=0.000399
+2026-05-27 08:23:12,110 INFO [monitor.py:131] Node[0] Epoch[0] Step[400-599] Cost Time: 240.785s Speed: 3.32 samples/sec Remaining Time: 13:55:02 Remaining step percent: 98.58%
+2026-05-27 08:23:13,404 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[599] GlobalStep[599] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2623] loss_bbox[0.4842] d0.loss_cls[0.3092] d0.loss_bbox[0.6389] d1.loss_cls[0.2980] d1.loss_bbox[0.5393] d2.loss_cls[0.2848] d2.loss_bbox[0.5047] d3.loss_cls[0.2753] d3.loss_bbox[0.4939] d4.loss_cls[0.2643] d4.loss_bbox[0.4856] loss_occ[2.0264] 
+2026-05-27 08:27:15,010 INFO [monitor.py:131] Node[0] Epoch[0] Step[600-799] Cost Time: 242.899s Speed: 3.29 samples/sec Remaining Time: 13:58:19 Remaining step percent: 98.10%
+2026-05-27 08:27:16,265 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[799] GlobalStep[799] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2536] loss_bbox[0.4673] d0.loss_cls[0.3013] d0.loss_bbox[0.6250] d1.loss_cls[0.2917] d1.loss_bbox[0.5232] d2.loss_cls[0.2776] d2.loss_bbox[0.4889] d3.loss_cls[0.2662] d3.loss_bbox[0.4775] d4.loss_cls[0.2551] d4.loss_bbox[0.4688] loss_occ[1.9443] 
+2026-05-27 08:31:17,633 INFO [monitor.py:131] Node[0] Epoch[0] Step[800-999] Cost Time: 242.621s Speed: 3.30 samples/sec Remaining Time: 13:53:19 Remaining step percent: 97.63%
+2026-05-27 08:31:19,019 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[999] GlobalStep[999] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2448] loss_bbox[0.4500] d0.loss_cls[0.2940] d0.loss_bbox[0.6074] d1.loss_cls[0.2851] d1.loss_bbox[0.5050] d2.loss_cls[0.2704] d2.loss_bbox[0.4711] d3.loss_cls[0.2576] d3.loss_bbox[0.4597] d4.loss_cls[0.2462] d4.loss_bbox[0.4515] loss_occ[1.8897] 
+2026-05-27 08:35:18,391 INFO [monitor.py:131] Node[0] Epoch[0] Step[1000-1199] Cost Time: 240.757s Speed: 3.32 samples/sec Remaining Time: 13:42:54 Remaining step percent: 97.16%
+2026-05-27 08:35:19,602 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1199] GlobalStep[1199] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2404] loss_bbox[0.4398] d0.loss_cls[0.2905] d0.loss_bbox[0.5994] d1.loss_cls[0.2826] d1.loss_bbox[0.4952] d2.loss_cls[0.2676] d2.loss_bbox[0.4609] d3.loss_cls[0.2534] d3.loss_bbox[0.4496] d4.loss_cls[0.2418] d4.loss_bbox[0.4413] loss_occ[1.8466] 
+2026-05-27 08:39:18,858 INFO [monitor.py:131] Node[0] Epoch[0] Step[1200-1399] Cost Time: 240.464s Speed: 3.33 samples/sec Remaining Time: 13:37:53 Remaining step percent: 96.68%
+2026-05-27 08:39:20,102 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1399] GlobalStep[1399] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2386] loss_bbox[0.4358] d0.loss_cls[0.2902] d0.loss_bbox[0.5971] d1.loss_cls[0.2828] d1.loss_bbox[0.4918] d2.loss_cls[0.2676] d2.loss_bbox[0.4572] d3.loss_cls[0.2520] d3.loss_bbox[0.4457] d4.loss_cls[0.2402] d4.loss_bbox[0.4374] loss_occ[1.8093] 
+2026-05-27 08:43:20,492 INFO [monitor.py:131] Node[0] Epoch[0] Step[1400-1599] Cost Time: 241.632s Speed: 3.31 samples/sec Remaining Time: 13:37:50 Remaining step percent: 96.21%
+2026-05-27 08:43:21,527 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1599] GlobalStep[1599] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2352] loss_bbox[0.4287] d0.loss_cls[0.2883] d0.loss_bbox[0.5893] d1.loss_cls[0.2809] d1.loss_bbox[0.4846] d2.loss_cls[0.2653] d2.loss_bbox[0.4501] d3.loss_cls[0.2487] d3.loss_bbox[0.4387] d4.loss_cls[0.2367] d4.loss_bbox[0.4303] loss_occ[1.7795] 
+2026-05-27 08:46:39,839 INFO [monitor.py:146] Node[0] Epoch[0] End   ==================================================
+2026-05-27 08:46:39,842 INFO [monitor.py:149] Node[0] Epoch[0] Cost Time: 2144.361s
+2026-05-27 08:46:39,842 INFO [metric_updater.py:360] Node[0] Epoch[0] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2324] loss_bbox[0.4237] d0.loss_cls[0.2863] d0.loss_bbox[0.5837] d1.loss_cls[0.2791] d1.loss_bbox[0.4795] d2.loss_cls[0.2633] d2.loss_bbox[0.4451] d3.loss_cls[0.2462] d3.loss_bbox[0.4336] d4.loss_cls[0.2340] d4.loss_bbox[0.4254] loss_occ[1.7629] 
+2026-05-27 08:46:39,842 INFO [validation.py:156] Node[0] [32mUse train `model` as val model.[0m
+2026-05-27 08:46:40,188 INFO [loop_base.py:482] Node[0] [32mStart Predictor loop from epoch 0, num_epochs=1[0m
+2026-05-27 08:46:40,191 INFO [fake_quantize.py:253] Node[0] Set fake quantize state to FakeQuantState.VALIDATION
+2026-05-27 08:46:45,665 INFO [loop_base.py:553] Node[0] 0 / 1505
+2026-05-27 08:47:43,286 INFO [loop_base.py:553] Node[0] 200 / 1505
+2026-05-27 08:48:59,983 INFO [loop_base.py:553] Node[0] 400 / 1505
+2026-05-27 08:49:35,137 INFO [loop_base.py:553] Node[0] 600 / 1505
+2026-05-27 08:50:07,101 INFO [loop_base.py:553] Node[0] 800 / 1505
+2026-05-27 08:50:45,448 INFO [loop_base.py:553] Node[0] 1000 / 1505
+2026-05-27 08:51:33,200 INFO [loop_base.py:553] Node[0] 1200 / 1505
+2026-05-27 08:52:09,771 INFO [loop_base.py:553] Node[0] 1400 / 1505
+2026-05-27 08:52:51,493 INFO [nuscenes_metric.py:322] Node[0] The length of self.nusc_annos is: 1505
+2026-05-27 08:53:00,674 INFO [nuscenes_metric.py:346] Node[0] Results writes to ./metric_results/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/results_nusc.json
+2026-05-27 08:56:57,582 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5716, mAP:0.5167
+car_AP: [0.5]:0.6734  [1.0]:0.8113  [2.0]:0.8515  [4.0]:0.8776 
+truck_AP: [0.5]:0.3160  [1.0]:0.5084  [2.0]:0.6083  [4.0]:0.6562 
+trailer_AP: [0.5]:0.0983  [1.0]:0.2634  [2.0]:0.4128  [4.0]:0.5218 
+bus_AP: [0.5]:0.4076  [1.0]:0.6515  [2.0]:0.7881  [4.0]:0.8197 
+construction_vehicle_AP: [0.5]:0.0044  [1.0]:0.1059  [2.0]:0.2732  [4.0]:0.3402 
+bicycle_AP: [0.5]:0.2674  [1.0]:0.3937  [2.0]:0.4339  [4.0]:0.4595 
+motorcycle_AP: [0.5]:0.3506  [1.0]:0.5451  [2.0]:0.5986  [4.0]:0.6219 
+pedestrian_AP: [0.5]:0.5599  [1.0]:0.6982  [2.0]:0.7646  [4.0]:0.8014 
+traffic_cone_AP: [0.5]:0.4193  [1.0]:0.5291  [2.0]:0.5997  [4.0]:0.6791 
+barrier_AP: [0.5]:0.1899  [1.0]:0.4459  [2.0]:0.6199  [4.0]:0.7001 
 
-2026-07-09 09:59:35,325 WARNING [metric.py:200] Node[0] <class 'hat.metrics.nuscenes_metric.NuscenesMetric'> not ready for distributed environment, should not be used together with DistributedSampler.Might be slow in validation due to resource competition
-2026-07-09 09:59:35,356 INFO [mean_iou.py:170] Node[0] ~~~~ MeanIOU Summary metrics ~~~~
+2026-05-27 08:56:58,253 WARNING [metric.py:200] Node[0] <class 'hat.metrics.nuscenes_metric.NuscenesMetric'> not ready for distributed environment, should not be used together with DistributedSampler.Might be slow in validation due to resource competition
+2026-05-27 08:56:58,288 INFO [mean_iou.py:170] Node[0] ~~~~ MeanIOU Summary metrics ~~~~
 Summary:
 Scope                 mIoU       mAcc       aAcc
-global               45.72      53.86      74.30
+global               46.70      55.03      75.87
 Per Class Results:
 Class                  IoU        Acc
-others                4.26       4.42
-barrier              50.36      66.49
-bicycle              21.40      24.01
-bus                  64.82      68.54
-car                  69.97      80.97
-construction_vehicle      29.60      33.81
-motorcycle           34.15      37.31
-pedestrian           51.99      57.88
-traffic_cone         30.83      38.89
-trailer              42.84      58.46
-truck                53.60      64.09
-driveable_surface      78.50      88.59
-other_flat           22.83      24.24
-sidewalk             38.61      44.86
-terrain              48.83      76.74
-manmade              65.16      71.22
-vegetation           69.52      75.06
+others                3.94       4.07
+barrier              49.75      62.78
+bicycle              24.95      30.74
+bus                  70.90      79.25
+car                  69.92      79.42
+construction_vehicle      28.84      31.56
+motorcycle           34.15      36.70
+pedestrian           53.23      60.98
+traffic_cone         26.97      32.35
+trailer              45.80      68.41
+truck                54.47      63.72
+driveable_surface      77.48      90.18
+other_flat           23.69      25.29
+sidewalk             38.73      44.07
+terrain              51.70      73.92
+manmade              68.13      76.32
+vegetation           71.21      75.73
 
-2026-07-09 09:59:35,378 INFO [metric_updater.py:360] Node[0] Epoch[0] Validation bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: NDS[0.5674] MeanIOU[tensor(0.4572, device='cuda:0')] 
-2026-07-09 09:59:45,660 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/float-checkpoint-epoch-0000-98e62d1f.pth.tar
-2026-07-09 09:59:47,041 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/float-checkpoint-last-852371df.pth.tar
-2026-07-09 09:59:47,050 INFO [monitor.py:143] Node[0] Epoch[1] Begin ==================================================
-2026-07-09 09:59:47,050 INFO [lr_updater.py:204] Node[0] Epoch[1] Step[0] GlobalStep[1759] lr=0.000398
-2026-07-09 10:05:05,899 INFO [monitor.py:131] Node[0] Epoch[1] Step[0-199] Cost Time: 318.845s Speed: 2.51 samples/sec Remaining Time: 17:55:01 Remaining step percent: 95.36%
-2026-07-09 10:05:07,143 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[199] GlobalStep[1958] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2082] loss_bbox[0.3725] d0.loss_cls[0.2680] d0.loss_bbox[0.5358] d1.loss_cls[0.2646] d1.loss_bbox[0.4278] d2.loss_cls[0.2453] d2.loss_bbox[0.3943] d3.loss_cls[0.2230] d3.loss_bbox[0.3838] d4.loss_cls[0.2096] d4.loss_bbox[0.3753] loss_occ[1.5517] 
-2026-07-09 10:10:16,901 INFO [monitor.py:131] Node[0] Epoch[1] Step[200-399] Cost Time: 311.000s Speed: 2.57 samples/sec Remaining Time: 17:18:08 Remaining step percent: 94.89%
-2026-07-09 10:10:18,138 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[399] GlobalStep[2158] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2039] loss_bbox[0.3703] d0.loss_cls[0.2668] d0.loss_bbox[0.5290] d1.loss_cls[0.2626] d1.loss_bbox[0.4236] d2.loss_cls[0.2430] d2.loss_bbox[0.3912] d3.loss_cls[0.2198] d3.loss_bbox[0.3808] d4.loss_cls[0.2066] d4.loss_bbox[0.3719] loss_occ[1.5278] 
-2026-07-09 10:14:56,230 INFO [monitor.py:131] Node[0] Epoch[1] Step[400-599] Cost Time: 279.328s Speed: 2.86 samples/sec Remaining Time: 15:27:45 Remaining step percent: 94.41%
-2026-07-09 10:14:57,545 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[599] GlobalStep[2358] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2044] loss_bbox[0.3704] d0.loss_cls[0.2696] d0.loss_bbox[0.5281] d1.loss_cls[0.2653] d1.loss_bbox[0.4231] d2.loss_cls[0.2457] d2.loss_bbox[0.3911] d3.loss_cls[0.2213] d3.loss_bbox[0.3804] d4.loss_cls[0.2073] d4.loss_bbox[0.3720] loss_occ[1.5324] 
-2026-07-09 10:20:06,730 INFO [monitor.py:131] Node[0] Epoch[1] Step[600-799] Cost Time: 310.499s Speed: 2.58 samples/sec Remaining Time: 17:06:07 Remaining step percent: 93.94%
-2026-07-09 10:20:07,906 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[799] GlobalStep[2558] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2035] loss_bbox[0.3667] d0.loss_cls[0.2696] d0.loss_bbox[0.5231] d1.loss_cls[0.2646] d1.loss_bbox[0.4186] d2.loss_cls[0.2449] d2.loss_bbox[0.3870] d3.loss_cls[0.2204] d3.loss_bbox[0.3767] d4.loss_cls[0.2061] d4.loss_bbox[0.3683] loss_occ[1.5351] 
-2026-07-09 10:25:28,084 INFO [monitor.py:131] Node[0] Epoch[1] Step[800-999] Cost Time: 321.350s Speed: 2.49 samples/sec Remaining Time: 17:36:37 Remaining step percent: 93.46%
-2026-07-09 10:25:29,220 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[999] GlobalStep[2758] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2015] loss_bbox[0.3619] d0.loss_cls[0.2684] d0.loss_bbox[0.5164] d1.loss_cls[0.2639] d1.loss_bbox[0.4124] d2.loss_cls[0.2438] d2.loss_bbox[0.3819] d3.loss_cls[0.2188] d3.loss_bbox[0.3719] d4.loss_cls[0.2042] d4.loss_bbox[0.3636] loss_occ[1.5284] 
-2026-07-09 10:30:34,712 INFO [monitor.py:131] Node[0] Epoch[1] Step[1000-1199] Cost Time: 306.626s Speed: 2.61 samples/sec Remaining Time: 16:43:06 Remaining step percent: 92.99%
-2026-07-09 10:30:35,983 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[1199] GlobalStep[2958] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2019] loss_bbox[0.3611] d0.loss_cls[0.2694] d0.loss_bbox[0.5146] d1.loss_cls[0.2649] d1.loss_bbox[0.4110] d2.loss_cls[0.2450] d2.loss_bbox[0.3811] d3.loss_cls[0.2194] d3.loss_bbox[0.3711] d4.loss_cls[0.2046] d4.loss_bbox[0.3628] loss_occ[1.5192] 
-2026-07-09 10:35:46,352 INFO [monitor.py:131] Node[0] Epoch[1] Step[1200-1399] Cost Time: 311.638s Speed: 2.57 samples/sec Remaining Time: 16:54:18 Remaining step percent: 92.52%
-2026-07-09 10:35:50,061 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[1399] GlobalStep[3158] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2018] loss_bbox[0.3609] d0.loss_cls[0.2701] d0.loss_bbox[0.5138] d1.loss_cls[0.2658] d1.loss_bbox[0.4101] d2.loss_cls[0.2453] d2.loss_bbox[0.3812] d3.loss_cls[0.2194] d3.loss_bbox[0.3708] d4.loss_cls[0.2047] d4.loss_bbox[0.3625] loss_occ[1.5171] 
-2026-07-09 10:40:36,147 INFO [monitor.py:131] Node[0] Epoch[1] Step[1400-1599] Cost Time: 289.791s Speed: 2.76 samples/sec Remaining Time: 15:38:22 Remaining step percent: 92.04%
-2026-07-09 10:40:38,108 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[1599] GlobalStep[3358] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2015] loss_bbox[0.3613] d0.loss_cls[0.2709] d0.loss_bbox[0.5134] d1.loss_cls[0.2669] d1.loss_bbox[0.4099] d2.loss_cls[0.2457] d2.loss_bbox[0.3816] d3.loss_cls[0.2192] d3.loss_bbox[0.3712] d4.loss_cls[0.2043] d4.loss_bbox[0.3629] loss_occ[1.5155] 
-2026-07-09 10:45:20,015 INFO [monitor.py:146] Node[0] Epoch[1] End   ==================================================
-2026-07-09 10:45:20,017 INFO [monitor.py:149] Node[0] Epoch[1] Cost Time: 2732.967s
-2026-07-09 10:45:20,017 INFO [metric_updater.py:360] Node[0] Epoch[1] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2021] loss_bbox[0.3637] d0.loss_cls[0.2715] d0.loss_bbox[0.5154] d1.loss_cls[0.2678] d1.loss_bbox[0.4120] d2.loss_cls[0.2464] d2.loss_bbox[0.3842] d3.loss_cls[0.2198] d3.loss_bbox[0.3740] d4.loss_cls[0.2048] d4.loss_bbox[0.3655] loss_occ[1.5110] 
-2026-07-09 10:45:20,017 INFO [validation.py:156] Node[0] [32mUse train `model` as val model.[0m
-2026-07-09 10:45:20,153 INFO [loop_base.py:482] Node[0] [32mStart Predictor loop from epoch 1, num_epochs=1[0m
-2026-07-09 10:45:20,158 INFO [fake_quantize.py:253] Node[0] Set fake quantize state to FakeQuantState.VALIDATION
-2026-07-09 10:45:28,649 INFO [loop_base.py:553] Node[0] 0 / 1505
-2026-07-09 10:46:25,289 INFO [loop_base.py:553] Node[0] 200 / 1505
-2026-07-09 10:47:10,541 INFO [loop_base.py:553] Node[0] 400 / 1505
-2026-07-09 10:47:55,534 INFO [loop_base.py:553] Node[0] 600 / 1505
-2026-07-09 10:48:42,448 INFO [loop_base.py:553] Node[0] 800 / 1505
-2026-07-09 10:49:22,740 INFO [loop_base.py:553] Node[0] 1000 / 1505
-2026-07-09 10:50:00,805 INFO [loop_base.py:553] Node[0] 1200 / 1505
-2026-07-09 10:50:39,221 INFO [loop_base.py:553] Node[0] 1400 / 1505
-2026-07-09 10:50:59,259 INFO [nuscenes_metric.py:322] Node[0] The length of self.nusc_annos is: 1505
-2026-07-09 10:51:09,448 INFO [nuscenes_metric.py:346] Node[0] Results writes to ./metric_results/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/results_nusc.json
-2026-07-09 10:55:32,395 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.4612, mAP:0.4362
-car_AP: [0.5]:0.1709  [1.0]:0.6431  [2.0]:0.8014  [4.0]:0.8406 
-truck_AP: [0.5]:0.0397  [1.0]:0.3841  [2.0]:0.5850  [4.0]:0.6370 
-trailer_AP: [0.5]:0.0000  [1.0]:0.0954  [2.0]:0.3187  [4.0]:0.4472 
-bus_AP: [0.5]:0.0465  [1.0]:0.4322  [2.0]:0.7141  [4.0]:0.7870 
-construction_vehicle_AP: [0.5]:0.0000  [1.0]:0.0135  [2.0]:0.2346  [4.0]:0.3629 
-bicycle_AP: [0.5]:0.1746  [1.0]:0.3583  [2.0]:0.4108  [4.0]:0.4321 
-motorcycle_AP: [0.5]:0.1951  [1.0]:0.4632  [2.0]:0.5819  [4.0]:0.6105 
-pedestrian_AP: [0.5]:0.4834  [1.0]:0.6748  [2.0]:0.7509  [4.0]:0.7871 
-traffic_cone_AP: [0.5]:0.3479  [1.0]:0.4945  [2.0]:0.5660  [4.0]:0.6471 
-barrier_AP: [0.5]:0.1406  [1.0]:0.4500  [2.0]:0.6221  [4.0]:0.7020 
+2026-05-27 08:56:58,306 INFO [metric_updater.py:360] Node[0] Epoch[0] Validation bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: NDS[0.5716] MeanIOU[tensor(0.4670, device='cuda:0')] 
+2026-05-27 08:57:07,465 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/float-checkpoint-epoch-0000-d903570f.pth.tar
+2026-05-27 08:57:08,359 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/float-checkpoint-last-4aa702ac.pth.tar
+2026-05-27 08:57:08,369 INFO [monitor.py:143] Node[0] Epoch[1] Begin ==================================================
+2026-05-27 08:57:08,369 INFO [lr_updater.py:204] Node[0] Epoch[1] Step[0] GlobalStep[1759] lr=0.000398
+2026-05-27 09:01:40,834 INFO [monitor.py:131] Node[0] Epoch[1] Step[0-199] Cost Time: 272.462s Speed: 2.94 samples/sec Remaining Time: 15:18:38 Remaining step percent: 95.36%
+2026-05-27 09:01:42,004 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[199] GlobalStep[1958] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2046] loss_bbox[0.3750] d0.loss_cls[0.2692] d0.loss_bbox[0.5297] d1.loss_cls[0.2644] d1.loss_bbox[0.4263] d2.loss_cls[0.2437] d2.loss_bbox[0.3928] d3.loss_cls[0.2208] d3.loss_bbox[0.3830] d4.loss_cls[0.2071] d4.loss_bbox[0.3751] loss_occ[1.5475] 
+2026-05-27 09:06:33,455 INFO [monitor.py:131] Node[0] Epoch[1] Step[200-399] Cost Time: 292.619s Speed: 2.73 samples/sec Remaining Time: 16:16:47 Remaining step percent: 94.89%
+2026-05-27 09:06:35,052 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[399] GlobalStep[2158] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2024] loss_bbox[0.3718] d0.loss_cls[0.2652] d0.loss_bbox[0.5259] d1.loss_cls[0.2610] d1.loss_bbox[0.4239] d2.loss_cls[0.2413] d2.loss_bbox[0.3912] d3.loss_cls[0.2177] d3.loss_bbox[0.3807] d4.loss_cls[0.2051] d4.loss_bbox[0.3727] loss_occ[1.5279] 
+2026-05-27 09:11:35,258 INFO [monitor.py:131] Node[0] Epoch[1] Step[400-599] Cost Time: 301.800s Speed: 2.65 samples/sec Remaining Time: 16:42:24 Remaining step percent: 94.41%
+2026-05-27 09:11:36,422 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[599] GlobalStep[2358] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2038] loss_bbox[0.3702] d0.loss_cls[0.2697] d0.loss_bbox[0.5265] d1.loss_cls[0.2650] d1.loss_bbox[0.4228] d2.loss_cls[0.2445] d2.loss_bbox[0.3905] d3.loss_cls[0.2201] d3.loss_bbox[0.3794] d4.loss_cls[0.2067] d4.loss_bbox[0.3715] loss_occ[1.5320] 
+2026-05-27 09:16:21,148 INFO [monitor.py:131] Node[0] Epoch[1] Step[600-799] Cost Time: 285.889s Speed: 2.80 samples/sec Remaining Time: 15:44:47 Remaining step percent: 93.94%
+2026-05-27 09:16:22,236 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[799] GlobalStep[2558] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2022] loss_bbox[0.3669] d0.loss_cls[0.2680] d0.loss_bbox[0.5212] d1.loss_cls[0.2639] d1.loss_bbox[0.4179] d2.loss_cls[0.2436] d2.loss_bbox[0.3868] d3.loss_cls[0.2188] d3.loss_bbox[0.3760] d4.loss_cls[0.2052] d4.loss_bbox[0.3682] loss_occ[1.5342] 
+2026-05-27 09:20:50,985 INFO [monitor.py:131] Node[0] Epoch[1] Step[800-999] Cost Time: 269.834s Speed: 2.96 samples/sec Remaining Time: 14:47:14 Remaining step percent: 93.46%
+2026-05-27 09:20:52,182 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[999] GlobalStep[2758] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.1992] loss_bbox[0.3617] d0.loss_cls[0.2660] d0.loss_bbox[0.5141] d1.loss_cls[0.2621] d1.loss_bbox[0.4115] d2.loss_cls[0.2412] d2.loss_bbox[0.3815] d3.loss_cls[0.2157] d3.loss_bbox[0.3710] d4.loss_cls[0.2021] d4.loss_bbox[0.3629] loss_occ[1.5260] 
+2026-05-27 09:25:54,333 INFO [monitor.py:131] Node[0] Epoch[1] Step[1000-1199] Cost Time: 303.347s Speed: 2.64 samples/sec Remaining Time: 16:32:22 Remaining step percent: 92.99%
+2026-05-27 09:25:55,433 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[1199] GlobalStep[2958] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.1993] loss_bbox[0.3612] d0.loss_cls[0.2667] d0.loss_bbox[0.5131] d1.loss_cls[0.2627] d1.loss_bbox[0.4107] d2.loss_cls[0.2415] d2.loss_bbox[0.3811] d3.loss_cls[0.2160] d3.loss_bbox[0.3706] d4.loss_cls[0.2021] d4.loss_bbox[0.3624] loss_occ[1.5163] 
+2026-05-27 09:30:33,992 INFO [monitor.py:131] Node[0] Epoch[1] Step[1200-1399] Cost Time: 279.657s Speed: 2.86 samples/sec Remaining Time: 15:10:12 Remaining step percent: 92.52%
+2026-05-27 09:30:35,049 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[1399] GlobalStep[3158] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2000] loss_bbox[0.3609] d0.loss_cls[0.2675] d0.loss_bbox[0.5129] d1.loss_cls[0.2639] d1.loss_bbox[0.4103] d2.loss_cls[0.2426] d2.loss_bbox[0.3816] d3.loss_cls[0.2168] d3.loss_bbox[0.3707] d4.loss_cls[0.2026] d4.loss_bbox[0.3624] loss_occ[1.5140] 
+2026-05-27 09:35:22,628 INFO [monitor.py:131] Node[0] Epoch[1] Step[1400-1599] Cost Time: 288.633s Speed: 2.77 samples/sec Remaining Time: 15:34:37 Remaining step percent: 92.04%
+2026-05-27 09:35:23,914 INFO [metric_updater.py:360] Node[0] Epoch[1] Step[1599] GlobalStep[3358] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2004] loss_bbox[0.3607] d0.loss_cls[0.2688] d0.loss_bbox[0.5128] d1.loss_cls[0.2650] d1.loss_bbox[0.4100] d2.loss_cls[0.2436] d2.loss_bbox[0.3816] d3.loss_cls[0.2173] d3.loss_bbox[0.3707] d4.loss_cls[0.2030] d4.loss_bbox[0.3624] loss_occ[1.5135] 
+2026-05-27 09:39:26,525 INFO [monitor.py:146] Node[0] Epoch[1] End   ==================================================
+2026-05-27 09:39:26,528 INFO [monitor.py:149] Node[0] Epoch[1] Cost Time: 2538.160s
+2026-05-27 09:39:26,529 INFO [metric_updater.py:360] Node[0] Epoch[1] loss_bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: loss_cls[0.2010] loss_bbox[0.3610] d0.loss_cls[0.2699] d0.loss_bbox[0.5132] d1.loss_cls[0.2662] d1.loss_bbox[0.4102] d2.loss_cls[0.2446] d2.loss_bbox[0.3820] d3.loss_cls[0.2178] d3.loss_bbox[0.3711] d4.loss_cls[0.2035] d4.loss_bbox[0.3628] loss_occ[1.5088] 
+2026-05-27 09:39:26,529 INFO [validation.py:156] Node[0] [32mUse train `model` as val model.[0m
+2026-05-27 09:39:26,697 INFO [loop_base.py:482] Node[0] [32mStart Predictor loop from epoch 1, num_epochs=1[0m
+2026-05-27 09:39:26,700 INFO [fake_quantize.py:253] Node[0] Set fake quantize state to FakeQuantState.VALIDATION
+2026-05-27 09:39:34,580 INFO [loop_base.py:553] Node[0] 0 / 1505
+2026-05-27 09:40:15,108 INFO [loop_base.py:553] Node[0] 200 / 1505
+2026-05-27 09:41:14,886 INFO [loop_base.py:553] Node[0] 400 / 1505
+2026-05-27 09:42:06,511 INFO [loop_base.py:553] Node[0] 600 / 1505
+2026-05-27 09:42:57,798 INFO [loop_base.py:553] Node[0] 800 / 1505
+2026-05-27 09:43:49,803 INFO [loop_base.py:553] Node[0] 1000 / 1505
+2026-05-27 09:44:21,718 INFO [loop_base.py:553] Node[0] 1200 / 1505
+2026-05-27 09:44:52,880 INFO [loop_base.py:553] Node[0] 1400 / 1505
+2026-05-27 09:45:12,854 INFO [nuscenes_metric.py:322] Node[0] The length of self.nusc_annos is: 1505
+2026-05-27 09:45:22,242 INFO [nuscenes_metric.py:346] Node[0] Results writes to ./metric_results/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/results_nusc.json
+2026-05-27 09:49:15,997 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5821, mAP:0.5241
+car_AP: [0.5]:0.6923  [1.0]:0.8276  [2.0]:0.8676  [4.0]:0.8888 
+truck_AP: [0.5]:0.3248  [1.0]:0.5432  [2.0]:0.6339  [4.0]:0.6777 
+trailer_AP: [0.5]:0.0977  [1.0]:0.2464  [2.0]:0.4223  [4.0]:0.5456 
+bus_AP: [0.5]:0.4110  [1.0]:0.6706  [2.0]:0.7887  [4.0]:0.8251 
+construction_vehicle_AP: [0.5]:0.0039  [1.0]:0.1127  [2.0]:0.3110  [4.0]:0.4057 
+bicycle_AP: [0.5]:0.2498  [1.0]:0.3782  [2.0]:0.4065  [4.0]:0.4275 
+motorcycle_AP: [0.5]:0.3653  [1.0]:0.5550  [2.0]:0.6187  [4.0]:0.6375 
+pedestrian_AP: [0.5]:0.5541  [1.0]:0.6987  [2.0]:0.7630  [4.0]:0.7952 
+traffic_cone_AP: [0.5]:0.3999  [1.0]:0.5367  [2.0]:0.6087  [4.0]:0.6806 
+barrier_AP: [0.5]:0.2125  [1.0]:0.4685  [2.0]:0.6162  [4.0]:0.6968 
 
-2026-07-09 10:55:33,076 WARNING [metric.py:200] Node[0] <class 'hat.metrics.nuscenes_metric.NuscenesMetric'> not ready for distributed environment, should not be used together with DistributedSampler.Might be slow in validation due to resource competition
-2026-07-09 10:55:33,094 INFO [mean_iou.py:170] Node[0] ~~~~ MeanIOU Summary metrics ~~~~
+2026-05-27 09:49:16,734 WARNING [metric.py:200] Node[0] <class 'hat.metrics.nuscenes_metric.NuscenesMetric'> not ready for distributed environment, should not be used together with DistributedSampler.Might be slow in validation due to resource competition
+2026-05-27 09:49:16,751 INFO [mean_iou.py:170] Node[0] ~~~~ MeanIOU Summary metrics ~~~~
 Summary:
 Scope                 mIoU       mAcc       aAcc
-global               45.58      53.02      69.43
+global               46.61      53.81      74.34
 Per Class Results:
 Class                  IoU        Acc
-others                5.60       6.18
-barrier              49.42      61.95
-bicycle              22.51      24.67
-bus                  64.44      68.30
-car                  66.06      73.93
-construction_vehicle      31.47      38.90
-motorcycle           36.09      39.28
-pedestrian           52.20      59.60
-traffic_cone         27.58      31.89
-trailer              44.26      61.69
-truck                53.42      64.13
-driveable_surface      76.68      81.92
-other_flat           29.31      35.45
-sidewalk             41.62      50.02
-terrain              49.53      67.84
-manmade              59.14      64.62
-vegetation           65.59      70.97
+others                5.95       6.72
+barrier              47.34      57.30
+bicycle              23.25      28.14
+bus                  68.41      74.45
+car                  66.94      75.46
+construction_vehicle      34.14      42.95
+motorcycle           36.74      40.69
+pedestrian           49.12      55.54
+traffic_cone         21.77      24.07
+trailer              46.11      56.46
+truck                54.86      64.13
+driveable_surface      77.57      83.37
+other_flat           30.67      35.19
+sidewalk             41.04      49.95
+terrain              50.38      67.03
+manmade              66.27      73.95
+vegetation           71.79      79.40
 
-2026-07-09 10:55:33,096 INFO [metric_updater.py:360] Node[0] Epoch[1] Validation bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: NDS[0.4612] MeanIOU[tensor(0.4558, device='cuda:0')] 
-2026-07-09 10:55:46,985 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/float-checkpoint-epoch-0001-17d60187.pth.tar
-2026-07-09 10:55:48,071 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevfusion_pointpillar_henet_multisensor_multitask_nuscenes/float-checkpoint-last-70350cee.pth.tar
-2026-07-09 10:55:48,080 INFO [monitor.py:143] Node[0] Epoch[2] Begin ==================================================
-2026-07-09 10:55:48,081 INFO [lr_updater.py:204] Node[0] Epoch[2] Step[0] GlobalStep[3518] lr=0.000393
+2026-05-27 09:49:16,752 INFO [metric_updater.py:360] Node[0] Epoch[1] Validation bevfusion_pointpillar_henet_multisensor_multitask_nuscenes: NDS[0.5821] MeanIOU[tensor(0.4661, device='cuda:0')] 
+2026-05-27 09:49:26,417 INFO [checkpoint.py:233] Node[0] Sav
