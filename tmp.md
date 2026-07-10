@@ -1,83 +1,17 @@
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
-    trainer = build_from_registry(trainer)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 414, in build_from_registry
-    return _impl(x)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
-    obj = build_from_cfg(OBJECT_REGISTRY, x)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
-    instance = obj_cls(**cfg)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 217, in __init__
-    super(DistributedDataParallelTrainer, self).__init__(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/trainer.py", line 92, in __init__
-    super(Trainer, self).__init__(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 290, in __init__
-    self._resume_from_checkpoint(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 361, in _resume_from_checkpoint
-    assert (
-AssertionError: Resume only when number of devices is consistent
-
-2026-07-10 09:27:34,841 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
-    trainer = build_from_registry(trainer)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 414, in build_from_registry
-    return _impl(x)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
-    obj = build_from_cfg(OBJECT_REGISTRY, x)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
-    instance = obj_cls(**cfg)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 217, in __init__
-    super(DistributedDataParallelTrainer, self).__init__(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/trainer.py", line 92, in __init__
-    super(Trainer, self).__init__(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 290, in __init__
-    self._resume_from_checkpoint(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 361, in _resume_from_checkpoint
-    assert (
-AssertionError: Resume only when number of devices is consistent
-
-2026-07-10 09:27:34,847 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
-    trainer = build_from_registry(trainer)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 414, in build_from_registry
-    return _impl(x)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
-    obj = build_from_cfg(OBJECT_REGISTRY, x)
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
-    instance = obj_cls(**cfg)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 217, in __init__
-    super(DistributedDataParallelTrainer, self).__init__(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/trainer.py", line 92, in __init__
-    super(Trainer, self).__init__(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 290, in __init__
-    self._resume_from_checkpoint(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 361, in _resume_from_checkpoint
-    assert (
-AssertionError: Resume only when number of devices is consistent
-
-[rank0]:[W710 09:27:35.333699233 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
-W0710 09:27:36.175000 272635 torch/multiprocessing/spawn.py:169] Terminating process 272777 via signal SIGTERM
-W0710 09:27:36.177000 272635 torch/multiprocessing/spawn.py:169] Terminating process 272778 via signal SIGTERM
-W0710 09:27:36.177000 272635 torch/multiprocessing/spawn.py:169] Terminating process 272779 via signal SIGTERM
-ERROR:__main__:train failed! process 0 terminated with exit code 1
+python3 -c "
+import torch
+ckpt = torch.load('./tmp_models/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes/float-checkpoint-last.pth.tar', map_location='cpu')
+print('devices:', ckpt.get('devices'))
+print('epoch:', ckpt.get('epoch'))
+print('step:', ckpt.get('step'))
+"
 Traceback (most recent call last):
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
-    raise e
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 273, in <module>
-    train(
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 254, in train
-    launch(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 426, in launch
-    mp.spawn(
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 340, in spawn
-    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 296, in start_processes
-    while not context.join():
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
-    raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
+  File "<string>", line 3, in <module>
+  File "/usr/local/lib/python3.10/dist-packages/torch/serialization.py", line 1470, in load
+    raise pickle.UnpicklingError(_get_wo_message(str(e))) from None
+_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, do those steps only if you trust the source of the checkpoint. 
+	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
+	WeightsUnpickler error: Unsupported global: GLOBAL numpy.core.multiarray.scalar was not an allowed global by default. Please use `torch.serialization.add_safe_globals([scalar])` or the `torch.serialization.safe_globals([scalar])` context manager to allowlist this global if you trust this class/function.
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
