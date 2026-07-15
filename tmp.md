@@ -1,3 +1,4 @@
+2026-07-15 09:16:56,580 INFO [monitor.py:143] Node[0] Epoch[0] Begin ==================================================
 2026-07-15 09:16:56,580 INFO [lr_updater.py:204] Node[0] Epoch[0] Step[0] GlobalStep[0] lr=0.000400
 2026-07-15 09:21:38,767 INFO [monitor.py:131] Node[0] Epoch[0] Step[0-199] Cost Time: 282.187s Speed: 4.25 samples/sec Remaining Time: 11:00:36 Remaining step percent: 99.29%
 2026-07-15 09:21:39,938 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[199] GlobalStep[199] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[1.0837] car_reg_loss[0.8425] truck_cls_loss[3.4037] truck_reg_loss[0.9305] bus_cls_loss[9.7211] bus_reg_loss[1.0021] barrier_cls_loss[4.2308] barrier_reg_loss[0.8438] bicycle_cls_loss[19.7160] bicycle_reg_loss[0.8602] pedestrian_cls_loss[1.6458] pedestrian_reg_loss[0.9005] loss_occ[2.9068] 
@@ -538,3 +539,145 @@ sidewalk             43.72      55.71
 terrain              49.07      71.40
 manmade              63.59      70.54
 vegetation           68.29      76.04
+
+2026-07-15 13:24:10,749 INFO [metric_updater.py:360] Node[0] Epoch[7] Validation bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: NDS[0.5707] MeanIOU[tensor(0.4731, device='cuda:0')] 
+2026-07-15 13:24:18,442 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt/float-checkpoint-epoch-0007-8c6b876e.pth.tar
+2026-07-15 13:24:19,410 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt/float-checkpoint-last-23da37ff.pth.tar
+2026-07-15 13:24:19,419 INFO [monitor.py:143] Node[0] Epoch[8] Begin ==================================================
+2026-07-15 13:24:19,419 INFO [lr_updater.py:204] Node[0] Epoch[8] Step[0] GlobalStep[9384] lr=0.000300
+2026-07-15 13:28:39,809 INFO [monitor.py:131] Node[0] Epoch[8] Step[0-199] Cost Time: 260.389s Speed: 4.61 samples/sec Remaining Time: 6:44:56 Remaining step percent: 65.96%
+2026-07-15 13:28:40,946 INFO [metric_updater.py:360] Node[0] Epoch[8] Step[199] GlobalStep[9583] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3774] car_reg_loss[0.3680] truck_cls_loss[0.3834] truck_reg_loss[0.3596] bus_cls_loss[0.2876] bus_reg_loss[0.3594] barrier_cls_loss[0.3144] barrier_reg_loss[0.4204] bicycle_cls_loss[0.2257] bicycle_reg_loss[0.3578] pedestrian_cls_loss[0.3227] pedestrian_reg_loss[0.5485] loss_occ[1.4225] 
+2026-07-15 13:32:34,994 INFO [monitor.py:131] Node[0] Epoch[8] Step[200-399] Cost Time: 235.184s Speed: 5.10 samples/sec Remaining Time: 5:59:59 Remaining step percent: 65.25%
+2026-07-15 13:32:36,213 INFO [metric_updater.py:360] Node[0] Epoch[8] Step[399] GlobalStep[9783] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3772] car_reg_loss[0.3663] truck_cls_loss[0.3740] truck_reg_loss[0.3576] bus_cls_loss[0.2805] bus_reg_loss[0.3594] barrier_cls_loss[0.3126] barrier_reg_loss[0.4182] bicycle_cls_loss[0.2458] bicycle_reg_loss[0.3587] pedestrian_cls_loss[0.3171] pedestrian_reg_loss[0.5476] loss_occ[1.4370] 
+2026-07-15 13:36:27,663 INFO [monitor.py:131] Node[0] Epoch[8] Step[400-599] Cost Time: 232.668s Speed: 5.16 samples/sec Remaining Time: 5:52:15 Remaining step percent: 64.54%
+2026-07-15 13:36:28,762 INFO [metric_updater.py:360] Node[0] Epoch[8] Step[599] GlobalStep[9983] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3761] car_reg_loss[0.3661] truck_cls_loss[0.3798] truck_reg_loss[0.3620] bus_cls_loss[0.2748] bus_reg_loss[0.3589] barrier_cls_loss[0.3164] barrier_reg_loss[0.4191] bicycle_cls_loss[0.2560] bicycle_reg_loss[0.3592] pedestrian_cls_loss[0.3203] pedestrian_reg_loss[0.5467] loss_occ[1.4351] 
+2026-07-15 13:40:19,096 INFO [monitor.py:131] Node[0] Epoch[8] Step[600-799] Cost Time: 231.432s Speed: 5.19 samples/sec Remaining Time: 5:46:31 Remaining step percent: 63.82%
+2026-07-15 13:40:20,142 INFO [metric_updater.py:360] Node[0] Epoch[8] Step[799] GlobalStep[10183] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3765] car_reg_loss[0.3678] truck_cls_loss[0.3793] truck_reg_loss[0.3642] bus_cls_loss[0.2680] bus_reg_loss[0.3539] barrier_cls_loss[0.3278] barrier_reg_loss[0.4226] bicycle_cls_loss[0.2594] bicycle_reg_loss[0.3582] pedestrian_cls_loss[0.3219] pedestrian_reg_loss[0.5469] loss_occ[1.4325] 
+2026-07-15 13:44:17,727 INFO [monitor.py:131] Node[0] Epoch[8] Step[800-999] Cost Time: 238.630s Speed: 5.03 samples/sec Remaining Time: 5:53:19 Remaining step percent: 63.11%
+2026-07-15 13:44:18,753 INFO [metric_updater.py:360] Node[0] Epoch[8] Step[999] GlobalStep[10383] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3787] car_reg_loss[0.3679] truck_cls_loss[0.3831] truck_reg_loss[0.3653] bus_cls_loss[0.2727] bus_reg_loss[0.3539] barrier_cls_loss[0.3284] barrier_reg_loss[0.4227] bicycle_cls_loss[0.2633] bicycle_reg_loss[0.3593] pedestrian_cls_loss[0.3218] pedestrian_reg_loss[0.5467] loss_occ[1.4351] 
+2026-07-15 13:47:48,876 INFO [monitor.py:146] Node[0] Epoch[8] End   ==================================================
+2026-07-15 13:47:48,878 INFO [monitor.py:149] Node[0] Epoch[8] Cost Time: 1409.459s
+2026-07-15 13:47:48,879 INFO [metric_updater.py:360] Node[0] Epoch[8] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3780] car_reg_loss[0.3670] truck_cls_loss[0.3856] truck_reg_loss[0.3650] bus_cls_loss[0.2719] bus_reg_loss[0.3492] barrier_cls_loss[0.3265] barrier_reg_loss[0.4210] bicycle_cls_loss[0.2642] bicycle_reg_loss[0.3587] pedestrian_cls_loss[0.3229] pedestrian_reg_loss[0.5452] loss_occ[1.4353] 
+2026-07-15 13:47:48,880 INFO [validation.py:156] Node[0] [32mUse train `model` as val model.[0m
+2026-07-15 13:47:49,101 INFO [loop_base.py:482] Node[0] [32mStart Predictor loop from epoch 8, num_epochs=1[0m
+2026-07-15 13:47:49,106 INFO [fake_quantize.py:253] Node[0] Set fake quantize state to FakeQuantState.VALIDATION
+2026-07-15 13:47:55,831 INFO [loop_base.py:553] Node[0] 0 / 1505
+2026-07-15 13:48:33,244 INFO [loop_base.py:553] Node[0] 200 / 1505
+2026-07-15 13:49:28,707 INFO [loop_base.py:553] Node[0] 400 / 1505
+2026-07-15 13:50:05,282 INFO [loop_base.py:553] Node[0] 600 / 1505
+2026-07-15 13:50:29,667 INFO [loop_base.py:553] Node[0] 800 / 1505
+2026-07-15 13:51:01,531 INFO [loop_base.py:553] Node[0] 1000 / 1505
+2026-07-15 13:51:26,575 INFO [loop_base.py:553] Node[0] 1200 / 1505
+2026-07-15 13:52:05,156 INFO [loop_base.py:553] Node[0] 1400 / 1505
+2026-07-15 13:52:19,540 INFO [nuscenes_metric.py:322] Node[0] The length of self.nusc_annos is: 1505
+2026-07-15 13:52:21,622 INFO [nuscenes_metric.py:346] Node[0] Results writes to ./metric_results/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt/results_nusc.json
+2026-07-15 13:54:26,051 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5847, mAP:0.5161
+car_AP: [0.5]:0.6803  [1.0]:0.8436  [2.0]:0.8919  [4.0]:0.9101 
+truck_AP: [0.5]:0.3099  [1.0]:0.5288  [2.0]:0.6421  [4.0]:0.6765 
+trailer_AP: [0.5]:0.0739  [1.0]:0.3024  [2.0]:0.4443  [4.0]:0.5303 
+bus_AP: [0.5]:0.4041  [1.0]:0.6551  [2.0]:0.7952  [4.0]:0.8252 
+construction_vehicle_AP: [0.5]:0.0040  [1.0]:0.1057  [2.0]:0.2482  [4.0]:0.3202 
+bicycle_AP: [0.5]:0.3391  [1.0]:0.4345  [2.0]:0.4478  [4.0]:0.4596 
+motorcycle_AP: [0.5]:0.3766  [1.0]:0.5932  [2.0]:0.6097  [4.0]:0.6203 
+pedestrian_AP: [0.5]:0.3936  [1.0]:0.5627  [2.0]:0.5948  [4.0]:0.6302 
+traffic_cone_AP: [0.5]:0.4562  [1.0]:0.5744  [2.0]:0.6166  [4.0]:0.6711 
+barrier_AP: [0.5]:0.2816  [1.0]:0.5461  [2.0]:0.6127  [4.0]:0.6297 
+
+2026-07-15 13:54:26,208 WARNING [metric.py:200] Node[0] <class 'hat.metrics.nuscenes_metric.NuscenesMetric'> not ready for distributed environment, should not be used together with DistributedSampler.Might be slow in validation due to resource competition
+2026-07-15 13:54:26,231 INFO [mean_iou.py:170] Node[0] ~~~~ MeanIOU Summary metrics ~~~~
+Summary:
+Scope                 mIoU       mAcc       aAcc
+global               47.60      54.18      75.66
+Per Class Results:
+Class                  IoU        Acc
+others                4.35       4.59
+barrier              48.60      56.21
+bicycle              27.87      31.45
+bus                  64.66      68.17
+car                  69.12      78.14
+construction_vehicle      25.16      27.59
+motorcycle           36.66      39.08
+pedestrian           51.70      57.13
+traffic_cone         28.47      33.06
+trailer              47.02      57.54
+truck                54.69      62.38
+driveable_surface      80.56      88.14
+other_flat           34.12      39.48
+sidewalk             45.67      57.68
+terrain              53.68      68.96
+manmade              67.99      76.46
+vegetation           68.96      75.07
+
+2026-07-15 13:54:26,232 INFO [metric_updater.py:360] Node[0] Epoch[8] Validation bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: NDS[0.5847] MeanIOU[tensor(0.4760, device='cuda:0')] 
+2026-07-15 13:54:33,770 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt/float-checkpoint-epoch-0008-7dba7ed3.pth.tar
+2026-07-15 13:54:34,702 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt/float-checkpoint-last-4e3ea55a.pth.tar
+2026-07-15 13:54:34,712 INFO [monitor.py:143] Node[0] Epoch[9] Begin ==================================================
+2026-07-15 13:54:34,713 INFO [lr_updater.py:204] Node[0] Epoch[9] Step[0] GlobalStep[10557] lr=0.000277
+2026-07-15 13:59:31,683 INFO [monitor.py:131] Node[0] Epoch[9] Step[0-199] Cost Time: 296.970s Speed: 4.04 samples/sec Remaining Time: 7:12:38 Remaining step percent: 61.79%
+2026-07-15 13:59:32,849 INFO [metric_updater.py:360] Node[0] Epoch[9] Step[199] GlobalStep[10756] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3774] car_reg_loss[0.3714] truck_cls_loss[0.3661] truck_reg_loss[0.3596] bus_cls_loss[0.2451] bus_reg_loss[0.3238] barrier_cls_loss[0.3001] barrier_reg_loss[0.4205] bicycle_cls_loss[0.2535] bicycle_reg_loss[0.3363] pedestrian_cls_loss[0.3149] pedestrian_reg_loss[0.5421] loss_occ[1.4290] 
+2026-07-15 14:03:29,682 INFO [monitor.py:131] Node[0] Epoch[9] Step[200-399] Cost Time: 237.998s Speed: 5.04 samples/sec Remaining Time: 5:41:01 Remaining step percent: 61.08%
+2026-07-15 14:03:30,854 INFO [metric_updater.py:360] Node[0] Epoch[9] Step[399] GlobalStep[10956] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3692] car_reg_loss[0.3651] truck_cls_loss[0.3644] truck_reg_loss[0.3613] bus_cls_loss[0.2459] bus_reg_loss[0.3323] barrier_cls_loss[0.3166] barrier_reg_loss[0.4277] bicycle_cls_loss[0.2382] bicycle_reg_loss[0.3306] pedestrian_cls_loss[0.3075] pedestrian_reg_loss[0.5436] loss_occ[1.4085] 
+2026-07-15 14:07:26,121 INFO [monitor.py:131] Node[0] Epoch[9] Step[400-599] Cost Time: 236.438s Speed: 5.08 samples/sec Remaining Time: 5:34:51 Remaining step percent: 60.37%
+2026-07-15 14:07:27,408 INFO [metric_updater.py:360] Node[0] Epoch[9] Step[599] GlobalStep[11156] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3666] car_reg_loss[0.3637] truck_cls_loss[0.3604] truck_reg_loss[0.3589] bus_cls_loss[0.2554] bus_reg_loss[0.3330] barrier_cls_loss[0.3276] barrier_reg_loss[0.4223] bicycle_cls_loss[0.2423] bicycle_reg_loss[0.3373] pedestrian_cls_loss[0.3052] pedestrian_reg_loss[0.5423] loss_occ[1.4056] 
+2026-07-15 14:11:26,397 INFO [monitor.py:131] Node[0] Epoch[9] Step[600-799] Cost Time: 240.275s Speed: 4.99 samples/sec Remaining Time: 5:36:17 Remaining step percent: 59.66%
+2026-07-15 14:11:27,480 INFO [metric_updater.py:360] Node[0] Epoch[9] Step[799] GlobalStep[11356] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3700] car_reg_loss[0.3641] truck_cls_loss[0.3621] truck_reg_loss[0.3583] bus_cls_loss[0.2588] bus_reg_loss[0.3339] barrier_cls_loss[0.3234] barrier_reg_loss[0.4201] bicycle_cls_loss[0.2525] bicycle_reg_loss[0.3439] pedestrian_cls_loss[0.3081] pedestrian_reg_loss[0.5414] loss_occ[1.4023] 
+2026-07-15 14:15:27,853 INFO [monitor.py:131] Node[0] Epoch[9] Step[800-999] Cost Time: 241.454s Speed: 4.97 samples/sec Remaining Time: 5:33:54 Remaining step percent: 58.95%
+2026-07-15 14:15:29,143 INFO [metric_updater.py:360] Node[0] Epoch[9] Step[999] GlobalStep[11556] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3696] car_reg_loss[0.3639] truck_cls_loss[0.3666] truck_reg_loss[0.3589] bus_cls_loss[0.2666] bus_reg_loss[0.3389] barrier_cls_loss[0.3292] barrier_reg_loss[0.4241] bicycle_cls_loss[0.2516] bicycle_reg_loss[0.3466] pedestrian_cls_loss[0.3110] pedestrian_reg_loss[0.5421] loss_occ[1.4046] 
+2026-07-15 14:18:57,015 INFO [monitor.py:146] Node[0] Epoch[9] End   ==================================================
+2026-07-15 14:18:57,017 INFO [monitor.py:149] Node[0] Epoch[9] Cost Time: 1462.304s
+2026-07-15 14:18:57,017 INFO [metric_updater.py:360] Node[0] Epoch[9] loss_bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: car_cls_loss[0.3703] car_reg_loss[0.3640] truck_cls_loss[0.3658] truck_reg_loss[0.3586] bus_cls_loss[0.2602] bus_reg_loss[0.3375] barrier_cls_loss[0.3274] barrier_reg_loss[0.4218] bicycle_cls_loss[0.2526] bicycle_reg_loss[0.3453] pedestrian_cls_loss[0.3124] pedestrian_reg_loss[0.5420] loss_occ[1.4018] 
+2026-07-15 14:18:57,017 INFO [validation.py:156] Node[0] [32mUse train `model` as val model.[0m
+2026-07-15 14:18:57,839 INFO [loop_base.py:482] Node[0] [32mStart Predictor loop from epoch 9, num_epochs=1[0m
+2026-07-15 14:18:57,841 INFO [fake_quantize.py:253] Node[0] Set fake quantize state to FakeQuantState.VALIDATION
+2026-07-15 14:19:04,033 INFO [loop_base.py:553] Node[0] 0 / 1505
+2026-07-15 14:19:31,187 INFO [loop_base.py:553] Node[0] 200 / 1505
+2026-07-15 14:19:54,844 INFO [loop_base.py:553] Node[0] 400 / 1505
+2026-07-15 14:20:29,356 INFO [loop_base.py:553] Node[0] 600 / 1505
+2026-07-15 14:21:02,113 INFO [loop_base.py:553] Node[0] 800 / 1505
+2026-07-15 14:21:33,585 INFO [loop_base.py:553] Node[0] 1000 / 1505
+2026-07-15 14:22:02,117 INFO [loop_base.py:553] Node[0] 1200 / 1505
+2026-07-15 14:22:27,088 INFO [loop_base.py:553] Node[0] 1400 / 1505
+2026-07-15 14:22:41,046 INFO [nuscenes_metric.py:322] Node[0] The length of self.nusc_annos is: 1505
+2026-07-15 14:22:43,149 INFO [nuscenes_metric.py:346] Node[0] Results writes to ./metric_results/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt/results_nusc.json
+2026-07-15 14:24:36,289 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5828, mAP:0.5099
+car_AP: [0.5]:0.6817  [1.0]:0.8349  [2.0]:0.8831  [4.0]:0.8972 
+truck_AP: [0.5]:0.3194  [1.0]:0.5094  [2.0]:0.6221  [4.0]:0.6524 
+trailer_AP: [0.5]:0.0565  [1.0]:0.2844  [2.0]:0.4029  [4.0]:0.5025 
+bus_AP: [0.5]:0.3652  [1.0]:0.6161  [2.0]:0.7362  [4.0]:0.7854 
+construction_vehicle_AP: [0.5]:0.0023  [1.0]:0.1087  [2.0]:0.2756  [4.0]:0.3319 
+bicycle_AP: [0.5]:0.3266  [1.0]:0.4275  [2.0]:0.4438  [4.0]:0.4553 
+motorcycle_AP: [0.5]:0.3879  [1.0]:0.5939  [2.0]:0.6446  [4.0]:0.6556 
+pedestrian_AP: [0.5]:0.4042  [1.0]:0.5648  [2.0]:0.5957  [4.0]:0.6323 
+traffic_cone_AP: [0.5]:0.4439  [1.0]:0.5708  [2.0]:0.6159  [4.0]:0.6706 
+barrier_AP: [0.5]:0.2763  [1.0]:0.5495  [2.0]:0.6239  [4.0]:0.6469 
+
+2026-07-15 14:24:36,442 WARNING [metric.py:200] Node[0] <class 'hat.metrics.nuscenes_metric.NuscenesMetric'> not ready for distributed environment, should not be used together with DistributedSampler.Might be slow in validation due to resource competition
+2026-07-15 14:24:36,462 INFO [mean_iou.py:170] Node[0] ~~~~ MeanIOU Summary metrics ~~~~
+Summary:
+Scope                 mIoU       mAcc       aAcc
+global               47.00      54.51      74.55
+Per Class Results:
+Class                  IoU        Acc
+others                5.49       6.52
+barrier              47.47      55.94
+bicycle              28.29      33.79
+bus                  62.64      66.30
+car                  66.99      74.32
+construction_vehicle      26.56      29.39
+motorcycle           40.81      45.56
+pedestrian           53.07      61.17
+traffic_cone         28.13      32.82
+trailer              44.67      60.88
+truck                52.00      59.65
+driveable_surface      78.21      82.66
+other_flat           32.98      38.42
+sidewalk             44.28      60.30
+terrain              50.86      66.06
+manmade              65.74      74.40
+vegetation           70.78      78.44
+
+2026-07-15 14:24:36,463 INFO [metric_updater.py:360] Node[0] Epoch[9] Validation bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt: NDS[0.5828] MeanIOU[tensor(0.4700, device='cuda:0')] 
+2026-07-15 14:24:42,842 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt/float-checkpoint-epoch-0009-96f7059f.pth.tar
+2026-07-15 14:24:43,789 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevfusion_centerpoint_pointpillar_henet_multisensor_multitask_nuscenes_opt/float-checkpoint-last-a1e1cfb0.pth.tar
+2026-07-15 14:24:43,796 INFO [monitor.py:143] Node[0] Epoch[10] Begin ==================================================
+2026-07-15 14:24:43,796 INFO [lr_updater.py:204] Node[0] Epoch[10] Step[0] GlobalStep[11730] lr=0.000252
