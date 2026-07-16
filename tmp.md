@@ -1,39 +1,32 @@
-2026-07-16 10:02:41,431 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/predict.py", line 146, in predict_entrance
-    load_pred_ckpt_func(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/checkpoint.py", line 420, in load_state_dict
-    raise ValueError("set allow_miss=True to skip this check")
-ValueError: set allow_miss=True to skip this check
+mAP: 0.0886
+mATE: 0.7193
+mASE: 0.3702
+mAOE: 0.8083
+mAVE: 0.9002
+mAAE: 0.2367
+NDS: 0.2408
+Eval time: 115.6s
 
-2026-07-16 10:02:41,432 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/predict.py", line 146, in predict_entrance
-    load_pred_ckpt_func(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/checkpoint.py", line 420, in load_state_dict
-    raise ValueError("set allow_miss=True to skip this check")
-ValueError: set allow_miss=True to skip this check
-
-[rank0]:[W716 10:02:41.495490400 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
-W0716 10:02:42.401000 9018 torch/multiprocessing/spawn.py:169] Terminating process 9159 via signal SIGTERM
-W0716 10:02:42.402000 9018 torch/multiprocessing/spawn.py:169] Terminating process 9160 via signal SIGTERM
-W0716 10:02:42.403000 9018 torch/multiprocessing/spawn.py:169] Terminating process 9162 via signal SIGTERM
-ERROR:__main__:predict failed! process 2 terminated with exit code 1
-Traceback (most recent call last):
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/predict.py", line 241, in <module>
-    raise e
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/predict.py", line 228, in <module>
-    predict(
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/predict.py", line 213, in predict
-    launch(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 426, in launch
-    mp.spawn(
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 340, in spawn
-    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 296, in start_processes
-    while not context.join():
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
-    raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 2 terminated with exit code 1
+Per-class results:
+Object Class	AP	ATE	ASE	AOE	AVE	AAE
+car	0.273	0.401	0.192	0.374	0.735	0.224
+truck	0.052	0.683	0.276	0.648	0.738	0.258
+bus	0.034	0.898	0.274	0.778	2.010	0.372
+trailer	0.005	1.092	0.339	1.481	0.433	0.163
+construction_vehicle	0.000	0.948	0.599	1.502	0.130	0.361
+pedestrian	0.289	0.561	0.295	0.510	0.440	0.129
+motorcycle	0.006	0.547	0.384	1.018	1.814	0.347
+bicycle	0.000	0.490	0.493	0.768	0.902	0.040
+traffic_cone	0.129	0.653	0.444	nan	nan	nan
+barrier	0.098	0.921	0.406	0.195	nan	nan
+2026-07-16 13:43:23,179 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.2408, mAP:0.0886
+car_AP: [0.5]:0.1634  [1.0]:0.2679  [2.0]:0.3045  [4.0]:0.3551 
+truck_AP: [0.5]:0.0022  [1.0]:0.0356  [2.0]:0.0708  [4.0]:0.0983 
+trailer_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0033  [4.0]:0.0166 
+bus_AP: [0.5]:0.0000  [1.0]:0.0118  [2.0]:0.0504  [4.0]:0.0750 
+construction_vehicle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0000  [4.0]:0.0002 
+bicycle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0000  [4.0]:0.0000 
+motorcycle_AP: [0.5]:0.0001  [1.0]:0.0045  [2.0]:0.0079  [4.0]:0.0099 
+pedestrian_AP: [0.5]:0.1369  [1.0]:0.2784  [2.0]:0.3472  [4.0]:0.3941 
+traffic_cone_AP: [0.5]:0.0345  [1.0]:0.0969  [2.0]:0.1544  [4.0]:0.2316 
+barrier_AP: [0.5]:0.0064  [1.0]:0.0557  [2.0]:0.1315  [4.0]:0.1996
