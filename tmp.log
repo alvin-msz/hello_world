@@ -908,3 +908,72 @@ motorcycle_AP: [0.5]:0.2096  [1.0]:0.3244  [2.0]:0.3572  [4.0]:0.3781
 pedestrian_AP: [0.5]:0.5618  [1.0]:0.6393  [2.0]:0.6851  [4.0]:0.7179 
 traffic_cone_AP: [0.5]:0.3294  [1.0]:0.3873  [2.0]:0.4449  [4.0]:0.5168 
 barrier_AP: [0.5]:0.1487  [1.0]:0.4234  [2.0]:0.5915  [4.0]:0.6439 
+
+2026-07-17 11:10:11,513 WARNING [metric.py:200] Node[0] <class 'hat.metrics.nuscenes_metric.NuscenesMetric'> not ready for distributed environment, should not be used together with DistributedSampler.Might be slow in validation due to resource competition
+2026-07-17 11:10:11,514 INFO [metric_updater.py:360] Node[0] Epoch[31] Validation bevformer_pointpillar_nuscenes: NDS[0.4699] 
+2026-07-17 11:10:22,724 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevformer_pointpillar_nuscenes/float-checkpoint-epoch-0031-4f9cf9b1.pth.tar
+2026-07-17 11:10:23,352 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevformer_pointpillar_nuscenes/float-checkpoint-last-8bcda700.pth.tar
+2026-07-17 11:10:23,358 INFO [monitor.py:143] Node[0] Epoch[32] Begin ==================================================
+2026-07-17 11:10:23,358 INFO [lr_updater.py:204] Node[0] Epoch[32] Step[0] GlobalStep[2200] lr=0.000000
+2026-07-17 11:16:41,780 INFO [monitor.py:131] Node[0] Epoch[32] Step[0-199] Cost Time: 378.417s Speed: 8.46 samples/sec Remaining Time: 3:36:46 Remaining step percent: 32.39%
+2026-07-17 11:16:43,426 INFO [metric_updater.py:360] Node[0] Epoch[32] Step[199] GlobalStep[2399] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2744] loss_bbox[0.4358] d0.loss_cls[0.3559] d0.loss_bbox[0.5960] d1.loss_cls[0.3253] d1.loss_bbox[0.5138] d2.loss_cls[0.3050] d2.loss_bbox[0.4795] d3.loss_cls[0.2891] d3.loss_bbox[0.4630] d4.loss_cls[0.2794] d4.loss_bbox[0.4473] 
+2026-07-17 11:22:52,532 INFO [monitor.py:131] Node[0] Epoch[32] Step[200-399] Cost Time: 370.749s Speed: 8.63 samples/sec Remaining Time: 3:25:08 Remaining step percent: 31.44%
+2026-07-17 11:22:54,601 INFO [metric_updater.py:360] Node[0] Epoch[32] Step[399] GlobalStep[2599] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2712] loss_bbox[0.4337] d0.loss_cls[0.3527] d0.loss_bbox[0.5920] d1.loss_cls[0.3218] d1.loss_bbox[0.5098] d2.loss_cls[0.3015] d2.loss_bbox[0.4760] d3.loss_cls[0.2859] d3.loss_bbox[0.4595] d4.loss_cls[0.2761] d4.loss_bbox[0.4446] 
+2026-07-17 11:24:06,668 INFO [monitor.py:146] Node[0] Epoch[32] End   ==================================================
+2026-07-17 11:24:06,669 INFO [monitor.py:149] Node[0] Epoch[32] Cost Time: 823.311s
+2026-07-17 11:24:06,669 INFO [metric_updater.py:360] Node[0] Epoch[32] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2708] loss_bbox[0.4325] d0.loss_cls[0.3523] d0.loss_bbox[0.5901] d1.loss_cls[0.3215] d1.loss_bbox[0.5081] d2.loss_cls[0.3012] d2.loss_bbox[0.4744] d3.loss_cls[0.2855] d3.loss_bbox[0.4581] d4.loss_cls[0.2757] d4.loss_bbox[0.4433] 
+2026-07-17 11:24:07,028 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevformer_pointpillar_nuscenes/float-checkpoint-epoch-0032-2a0d7de8.pth.tar
+2026-07-17 11:24:07,815 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevformer_pointpillar_nuscenes/float-checkpoint-last-d62cbeeb.pth.tar
+2026-07-17 11:24:07,821 INFO [monitor.py:143] Node[0] Epoch[33] Begin ==================================================
+2026-07-17 11:24:07,821 INFO [lr_updater.py:204] Node[0] Epoch[33] Step[0] GlobalStep[2640] lr=0.000000
+2026-07-17 11:30:21,187 INFO [monitor.py:131] Node[0] Epoch[33] Step[0-199] Cost Time: 373.365s Speed: 8.57 samples/sec Remaining Time: 3:20:07 Remaining step percent: 30.30%
+2026-07-17 11:30:22,638 INFO [metric_updater.py:360] Node[0] Epoch[33] Step[199] GlobalStep[2839] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2681] loss_bbox[0.4283] d0.loss_cls[0.3501] d0.loss_bbox[0.5839] d1.loss_cls[0.3184] d1.loss_bbox[0.5018] d2.loss_cls[0.2991] d2.loss_bbox[0.4691] d3.loss_cls[0.2829] d3.loss_bbox[0.4529] d4.loss_cls[0.2734] d4.loss_bbox[0.4387] 
+2026-07-17 11:36:26,334 INFO [monitor.py:131] Node[0] Epoch[33] Step[200-399] Cost Time: 365.145s Speed: 8.76 samples/sec Remaining Time: 3:08:39 Remaining step percent: 29.36%
+2026-07-17 11:36:27,842 INFO [metric_updater.py:360] Node[0] Epoch[33] Step[399] GlobalStep[3039] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2687] loss_bbox[0.4286] d0.loss_cls[0.3512] d0.loss_bbox[0.5848] d1.loss_cls[0.3190] d1.loss_bbox[0.5030] d2.loss_cls[0.2996] d2.loss_bbox[0.4698] d3.loss_cls[0.2837] d3.loss_bbox[0.4534] d4.loss_cls[0.2738] d4.loss_bbox[0.4391] 
+2026-07-17 11:37:40,742 INFO [monitor.py:146] Node[0] Epoch[33] End   ==================================================
+2026-07-17 11:37:40,744 INFO [monitor.py:149] Node[0] Epoch[33] Cost Time: 812.923s
+2026-07-17 11:37:40,744 INFO [metric_updater.py:360] Node[0] Epoch[33] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2683] loss_bbox[0.4287] d0.loss_cls[0.3503] d0.loss_bbox[0.5845] d1.loss_cls[0.3184] d1.loss_bbox[0.5029] d2.loss_cls[0.2990] d2.loss_bbox[0.4698] d3.loss_cls[0.2831] d3.loss_bbox[0.4535] d4.loss_cls[0.2734] d4.loss_bbox[0.4393] 
+2026-07-17 11:37:40,744 INFO [validation.py:156] Node[0] [32mUse train `model` as val model.[0m
+2026-07-17 11:37:40,816 INFO [loop_base.py:482] Node[0] [32mStart Predictor loop from epoch 33, num_epochs=1[0m
+2026-07-17 11:37:40,818 INFO [fake_quantize.py:253] Node[0] Set fake quantize state to FakeQuantState.VALIDATION
+2026-07-17 11:37:48,318 INFO [loop_base.py:553] Node[0] 0 / 1505
+2026-07-17 11:38:10,169 INFO [loop_base.py:553] Node[0] 200 / 1505
+2026-07-17 11:38:29,279 INFO [loop_base.py:553] Node[0] 400 / 1505
+2026-07-17 11:38:52,008 INFO [loop_base.py:553] Node[0] 600 / 1505
+2026-07-17 11:39:11,843 INFO [loop_base.py:553] Node[0] 800 / 1505
+2026-07-17 11:39:30,817 INFO [loop_base.py:553] Node[0] 1000 / 1505
+2026-07-17 11:39:50,237 INFO [loop_base.py:553] Node[0] 1200 / 1505
+2026-07-17 11:40:11,730 INFO [loop_base.py:553] Node[0] 1400 / 1505
+2026-07-17 11:40:23,078 INFO [nuscenes_metric.py:322] Node[0] The length of self.nusc_annos is: 1505
+2026-07-17 11:40:32,552 INFO [nuscenes_metric.py:346] Node[0] Results writes to ./metric_results/bevformer_pointpillar_nuscenes/results_nusc.json
+2026-07-17 11:44:58,982 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.4686, mAP:0.3885
+car_AP: [0.5]:0.6528  [1.0]:0.7801  [2.0]:0.8322  [4.0]:0.8583 
+truck_AP: [0.5]:0.2013  [1.0]:0.3758  [2.0]:0.4855  [4.0]:0.5325 
+trailer_AP: [0.5]:0.0317  [1.0]:0.1787  [2.0]:0.3478  [4.0]:0.4434 
+bus_AP: [0.5]:0.2104  [1.0]:0.4631  [2.0]:0.6237  [4.0]:0.6812 
+construction_vehicle_AP: [0.5]:0.0000  [1.0]:0.0316  [2.0]:0.1141  [4.0]:0.1581 
+bicycle_AP: [0.5]:0.0279  [1.0]:0.0529  [2.0]:0.0622  [4.0]:0.0763 
+motorcycle_AP: [0.5]:0.1976  [1.0]:0.3115  [2.0]:0.3497  [4.0]:0.3691 
+pedestrian_AP: [0.5]:0.5623  [1.0]:0.6393  [2.0]:0.6861  [4.0]:0.7188 
+traffic_cone_AP: [0.5]:0.3290  [1.0]:0.3897  [2.0]:0.4467  [4.0]:0.5177 
+barrier_AP: [0.5]:0.1429  [1.0]:0.4221  [2.0]:0.5919  [4.0]:0.6426 
+
+2026-07-17 11:44:59,792 WARNING [metric.py:200] Node[0] <class 'hat.metrics.nuscenes_metric.NuscenesMetric'> not ready for distributed environment, should not be used together with DistributedSampler.Might be slow in validation due to resource competition
+2026-07-17 11:44:59,793 INFO [metric_updater.py:360] Node[0] Epoch[33] Validation bevformer_pointpillar_nuscenes: NDS[0.4686] 
+2026-07-17 11:45:11,391 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevformer_pointpillar_nuscenes/float-checkpoint-epoch-0033-a31ddb2a.pth.tar
+2026-07-17 11:45:11,915 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevformer_pointpillar_nuscenes/float-checkpoint-last-c069357d.pth.tar
+2026-07-17 11:45:11,920 INFO [monitor.py:143] Node[0] Epoch[34] Begin ==================================================
+2026-07-17 11:45:11,921 INFO [lr_updater.py:204] Node[0] Epoch[34] Step[0] GlobalStep[3080] lr=0.000000
+2026-07-17 11:51:31,821 INFO [monitor.py:131] Node[0] Epoch[34] Step[0-199] Cost Time: 379.897s Speed: 8.42 samples/sec Remaining Time: 3:09:37 Remaining step percent: 28.22%
+2026-07-17 11:51:33,185 INFO [metric_updater.py:360] Node[0] Epoch[34] Step[199] GlobalStep[3279] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2776] loss_bbox[0.4467] d0.loss_cls[0.3624] d0.loss_bbox[0.6054] d1.loss_cls[0.3303] d1.loss_bbox[0.5233] d2.loss_cls[0.3096] d2.loss_bbox[0.4898] d3.loss_cls[0.2934] d3.loss_bbox[0.4733] d4.loss_cls[0.2834] d4.loss_bbox[0.4576] 
+2026-07-17 11:57:42,018 INFO [monitor.py:131] Node[0] Epoch[34] Step[200-399] Cost Time: 370.195s Speed: 8.64 samples/sec Remaining Time: 2:57:41 Remaining step percent: 27.27%
+2026-07-17 11:57:43,529 INFO [metric_updater.py:360] Node[0] Epoch[34] Step[399] GlobalStep[3479] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2727] loss_bbox[0.4393] d0.loss_cls[0.3561] d0.loss_bbox[0.5971] d1.loss_cls[0.3246] d1.loss_bbox[0.5151] d2.loss_cls[0.3041] d2.loss_bbox[0.4821] d3.loss_cls[0.2880] d3.loss_bbox[0.4656] d4.loss_cls[0.2782] d4.loss_bbox[0.4501] 
+2026-07-17 11:58:56,116 INFO [monitor.py:146] Node[0] Epoch[34] End   ==================================================
+2026-07-17 11:58:56,119 INFO [monitor.py:149] Node[0] Epoch[34] Cost Time: 824.198s
+2026-07-17 11:58:56,119 INFO [metric_updater.py:360] Node[0] Epoch[34] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2721] loss_bbox[0.4372] d0.loss_cls[0.3554] d0.loss_bbox[0.5947] d1.loss_cls[0.3240] d1.loss_bbox[0.5126] d2.loss_cls[0.3036] d2.loss_bbox[0.4797] d3.loss_cls[0.2874] d3.loss_bbox[0.4633] d4.loss_cls[0.2776] d4.loss_bbox[0.4478] 
+2026-07-17 11:58:56,494 INFO [checkpoint.py:233] Node[0] Save model checkpoint: ./tmp_models/bevformer_pointpillar_nuscenes/float-checkpoint-epoch-0034-fda02fe6.pth.tar
+2026-07-17 11:58:57,159 INFO [checkpoint.py:270] Node[0] Save last model checkpoint: ./tmp_models/bevformer_pointpillar_nuscenes/float-checkpoint-last-63302e88.pth.tar
+2026-07-17 11:58:57,163 INFO [monitor.py:143] Node[0] Epoch[35] Begin ==================================================
+2026-07-17 11:58:57,164 INFO [lr_updater.py:204] Node[0] Epoch[35] Step[0] GlobalStep[3520] lr=0.000000
+2026-07-17 12:05:05,113 INFO [monitor.py:131] Node[0] Epoch[35] Step[0-199] Cost Time: 367.949s Speed: 8.70 samples/sec Remaining Time: 2:50:06 Remaining step percent: 26.14%
+2026-07-17 12:05:06,630 INFO [metric_updater.py:360] Node[0] Epoch[35] Step[199] GlobalStep[3719] loss_bevformer_pointpillar_nuscenes: loss_cls[0.2716] loss_bbox[0.4345] d0.loss_cls[0.3537] d0.loss_bbox[0.5947] d1.loss_cls[0.3227] d1.loss_bbox[0.5116] d2.loss_cls[0.3024] d2.loss_bbox[0.4784] d3.loss_cls[0.2866] d3.loss_bbox[0.4608] d4.loss_cls[0.2764] d4.loss_bbox[0.4456] 
