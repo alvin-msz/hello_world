@@ -1,68 +1,199 @@
-model1:
-mAP: 0.4872
-mATE: 0.3226
-mASE: 0.2615
-mAOE: 0.3776
-mAVE: 0.4138
-mAAE: 0.2053
-NDS: 0.5855
-Eval time: 73.4s
+2026-07-21 10:42:59,010 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
+    fn(*args)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
+    trainer = build_from_registry(trainer)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 414, in build_from_registry
+    return _impl(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in _impl
+    x = type(x)((_impl(x_i) for x_i in x))
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in <genexpr>
+    x = type(x)((_impl(x_i) for x_i in x))
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
+    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
+    instance = obj_cls(**cfg)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/lidar_utils/sample_ops.py", line 80, in __init__
+    with open(info_path, "rb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes/nuscenes_dbinfos_train.pkl'
 
-Per-class results:
-Object Class	AP	ATE	ASE	AOE	AVE	AAE
-car	0.831	0.190	0.154	0.152	0.361	0.209
-truck	0.514	0.344	0.192	0.143	0.339	0.248
-bus	0.620	0.354	0.181	0.109	0.832	0.369
-trailer	0.336	0.529	0.208	0.436	0.239	0.155
-construction_vehicle	0.103	0.697	0.445	0.967	0.129	0.362
-pedestrian	0.768	0.165	0.279	0.427	0.254	0.097
-motorcycle	0.429	0.242	0.236	0.419	0.915	0.145
-bicycle	0.138	0.223	0.283	0.650	0.241	0.057
-traffic_cone	0.532	0.203	0.342	nan	nan	nan
-barrier	0.601	0.279	0.294	0.094	nan	nan
-2026-07-20 14:16:12,223 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5855, mAP:0.4872
-car_AP: [0.5]:0.7276  [1.0]:0.8379  [2.0]:0.8700  [4.0]:0.8877 
-truck_AP: [0.5]:0.3326  [1.0]:0.5072  [2.0]:0.5903  [4.0]:0.6254 
-construction_vehicle_AP: [0.5]:0.0108  [1.0]:0.0642  [2.0]:0.1359  [4.0]:0.2005 
-bus_AP: [0.5]:0.3876  [1.0]:0.6006  [2.0]:0.7312  [4.0]:0.7607 
-trailer_AP: [0.5]:0.1025  [1.0]:0.2687  [2.0]:0.4351  [4.0]:0.5379 
-barrier_AP: [0.5]:0.4460  [1.0]:0.6105  [2.0]:0.6644  [4.0]:0.6849 
-motorcycle_AP: [0.5]:0.3685  [1.0]:0.4398  [2.0]:0.4517  [4.0]:0.4578 
-bicycle_AP: [0.5]:0.1285  [1.0]:0.1379  [2.0]:0.1398  [4.0]:0.1445 
-pedestrian_AP: [0.5]:0.7396  [1.0]:0.7601  [2.0]:0.7773  [4.0]:0.7948 
-traffic_cone_AP: [0.5]:0.4911  [1.0]:0.5122  [2.0]:0.5381  [4.0]:0.5867
+[-1]
+{'car': 5, 'truck': 5, 'bus': 5, 'trailer': 5, 'construction_vehicle': 5, 'traffic_cone': 5, 'barrier': 5, 'motorcycle': 5, 'bicycle': 5, 'pedestrian': 5}
+2026-07-21 10:42:59,024 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
+    fn(*args)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
+    trainer = build_from_registry(trainer)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 414, in build_from_registry
+    return _impl(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in _impl
+    x = type(x)((_impl(x_i) for x_i in x))
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in <genexpr>
+    x = type(x)((_impl(x_i) for x_i in x))
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
+    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
+    instance = obj_cls(**cfg)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/lidar_utils/sample_ops.py", line 80, in __init__
+    with open(info_path, "rb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes/nuscenes_dbinfos_train.pkl'
 
+[-1]
+{'car': 5, 'truck': 5, 'bus': 5, 'trailer': 5, 'construction_vehicle': 5, 'traffic_cone': 5, 'barrier': 5, 'motorcycle': 5, 'bicycle': 5, 'pedestrian': 5}
+2026-07-21 10:42:59,051 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
+    fn(*args)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
+    trainer = build_from_registry(trainer)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 414, in build_from_registry
+    return _impl(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in _impl
+    x = type(x)((_impl(x_i) for x_i in x))
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in <genexpr>
+    x = type(x)((_impl(x_i) for x_i in x))
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
+    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
+    instance = obj_cls(**cfg)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/lidar_utils/sample_ops.py", line 80, in __init__
+    with open(info_path, "rb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes/nuscenes_dbinfos_train.pkl'
 
-model2:
-mAP: 0.4599
-mATE: 0.4044
-mASE: 0.2770
-mAOE: 0.4595
-mAVE: 0.4923
-mAAE: 0.1929
-NDS: 0.5473
-Eval time: 92.6s
+[-1]
+{'car': 5, 'truck': 5, 'bus': 5, 'trailer': 5, 'construction_vehicle': 5, 'traffic_cone': 5, 'barrier': 5, 'motorcycle': 5, 'bicycle': 5, 'pedestrian': 5}
+2026-07-21 10:42:59,054 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
+    fn(*args)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
+    trainer = build_from_registry(trainer)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 414, in build_from_registry
+    return _impl(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in _impl
+    x = type(x)((_impl(x_i) for x_i in x))
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in <genexpr>
+    x = type(x)((_impl(x_i) for x_i in x))
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
+    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
+    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
+    instance = obj_cls(**cfg)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/lidar_utils/sample_ops.py", line 80, in __init__
+    with open(info_path, "rb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes/nuscenes_dbinfos_train.pkl'
 
-Per-class results:
-Object Class	AP	ATE	ASE	AOE	AVE	AAE
-car	0.805	0.201	0.157	0.140	0.458	0.207
-truck	0.439	0.401	0.205	0.192	0.409	0.233
-bus	0.581	0.403	0.186	0.147	0.905	0.268
-trailer	0.340	0.628	0.234	0.730	0.263	0.174
-construction_vehicle	0.162	0.769	0.466	1.152	0.126	0.335
-pedestrian	0.689	0.195	0.302	0.465	0.364	0.124
-motorcycle	0.443	0.334	0.264	0.495	0.966	0.187
-bicycle	0.122	0.432	0.293	0.745	0.448	0.015
-traffic_cone	0.470	0.249	0.345	nan	nan	nan
-barrier	0.547	0.433	0.317	0.070	nan	nan
-2026-07-21 05:46:13,112 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5473, mAP:0.4599
-car_AP: [0.5]:0.6845  [1.0]:0.8056  [2.0]:0.8536  [4.0]:0.8751 
-truck_AP: [0.5]:0.2368  [1.0]:0.4340  [2.0]:0.5222  [4.0]:0.5631 
-trailer_AP: [0.5]:0.0669  [1.0]:0.2679  [2.0]:0.4538  [4.0]:0.5716 
-bus_AP: [0.5]:0.3147  [1.0]:0.5746  [2.0]:0.6939  [4.0]:0.7417 
-construction_vehicle_AP: [0.5]:0.0027  [1.0]:0.1046  [2.0]:0.2402  [4.0]:0.2998 
-bicycle_AP: [0.5]:0.0737  [1.0]:0.1212  [2.0]:0.1380  [4.0]:0.1563 
-motorcycle_AP: [0.5]:0.3085  [1.0]:0.4607  [2.0]:0.4944  [4.0]:0.5097 
-pedestrian_AP: [0.5]:0.6274  [1.0]:0.6800  [2.0]:0.7114  [4.0]:0.7369 
-traffic_cone_AP: [0.5]:0.3881  [1.0]:0.4473  [2.0]:0.4971  [4.0]:0.5486 
-barrier_AP: [0.5]:0.2918  [1.0]:0.5449  [2.0]:0.6585  [4.0]:0.6939
+[rank0]:[W721 10:42:59.903866878 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0721 10:42:59.982000 63074 torch/multiprocessing/spawn.py:169] Terminating process 63215 via signal SIGTERM
+W0721 10:42:59.983000 63074 torch/multiprocessing/spawn.py:169] Terminating process 63216 via signal SIGTERM
+W0721 10:42:59.984000 63074 torch/multiprocessing/spawn.py:169] Terminating process 63217 via signal SIGTERM
+ERROR:__main__:train failed! process 0 terminated with exit code 1
+Traceback (most recent call last):
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
+    raise e
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 273, in <module>
+    train(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 254, in train
+    launch(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 426, in launch
+    mp.spawn(
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 340, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 296, in start_processes
+    while not context.join():
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
+    raise ProcessExitedException(
+torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
