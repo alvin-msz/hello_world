@@ -1,4 +1,4 @@
-2026-07-21 10:42:59,010 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
+2026-07-21 10:48:18,020 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
@@ -21,29 +21,45 @@
     build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
   File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
     build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in _impl
-    x = type(x)((_impl(x_i) for x_i in x))
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in <genexpr>
-    x = type(x)((_impl(x_i) for x_i in x))
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
-    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 391, in _impl
+    obj = _build_dataset(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 261, in _build_dataset
+    obj = build_from_cfg(OBJECT_REGISTRY, cfg)
   File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
     instance = obj_cls(**cfg)
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/lidar_utils/sample_ops.py", line 80, in __init__
-    with open(info_path, "rb") as f:
-FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes/nuscenes_dbinfos_train.pkl'
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1975, in __init__
+    super(NuscenesBevSequenceDataset, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1723, in __init__
+    super(NuscenesBevDataset, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/package_helper.py", line 243, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1516, in __init__
+    self.pack_type = get_packtype_from_path(data_path)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/pack_type/utils.py", line 36, in get_packtype_from_path
+    assert os.path.exists(path), f"{path} does not exist!"
+AssertionError: data/bevfusion_nuscenes/train_lmdb/ does not exist!
 
-[-1]
-{'car': 5, 'truck': 5, 'bus': 5, 'trailer': 5, 'construction_vehicle': 5, 'traffic_cone': 5, 'barrier': 5, 'motorcycle': 5, 'bicycle': 5, 'pedestrian': 5}
-2026-07-21 10:42:59,024 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
+After filter database:
+load 56455 traffic_cone database infos
+load 60691 truck database infos
+load 296423 car database infos
+load 149198 pedestrian database infos
+load 19195 movable_object.pushable_pullable database infos
+load 10622 construction_vehicle database infos
+load 102476 barrier database infos
+load 2120 movable_object.debris database infos
+load 8094 motorcycle database infos
+load 7565 bicycle database infos
+load 11662 bus database infos
+load 2259 static_object.bicycle_rack database infos
+load 18165 trailer database infos
+load 751 human.pedestrian.stroller database infos
+load 619 animal database infos
+load 352 human.pedestrian.personal_mobility database infos
+load 492 human.pedestrian.wheelchair database infos
+load 11 vehicle.emergency.ambulance database infos
+load 498 vehicle.emergency.police database infos
+2026-07-21 10:48:18,075 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
@@ -66,29 +82,45 @@ FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes
     build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
   File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
     build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in _impl
-    x = type(x)((_impl(x_i) for x_i in x))
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in <genexpr>
-    x = type(x)((_impl(x_i) for x_i in x))
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
-    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 391, in _impl
+    obj = _build_dataset(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 261, in _build_dataset
+    obj = build_from_cfg(OBJECT_REGISTRY, cfg)
   File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
     instance = obj_cls(**cfg)
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/lidar_utils/sample_ops.py", line 80, in __init__
-    with open(info_path, "rb") as f:
-FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes/nuscenes_dbinfos_train.pkl'
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1975, in __init__
+    super(NuscenesBevSequenceDataset, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1723, in __init__
+    super(NuscenesBevDataset, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/package_helper.py", line 243, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1516, in __init__
+    self.pack_type = get_packtype_from_path(data_path)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/pack_type/utils.py", line 36, in get_packtype_from_path
+    assert os.path.exists(path), f"{path} does not exist!"
+AssertionError: data/bevfusion_nuscenes/train_lmdb/ does not exist!
 
-[-1]
-{'car': 5, 'truck': 5, 'bus': 5, 'trailer': 5, 'construction_vehicle': 5, 'traffic_cone': 5, 'barrier': 5, 'motorcycle': 5, 'bicycle': 5, 'pedestrian': 5}
-2026-07-21 10:42:59,051 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
+After filter database:
+load 56455 traffic_cone database infos
+load 60691 truck database infos
+load 296423 car database infos
+load 149198 pedestrian database infos
+load 19195 movable_object.pushable_pullable database infos
+load 10622 construction_vehicle database infos
+load 102476 barrier database infos
+load 2120 movable_object.debris database infos
+load 8094 motorcycle database infos
+load 7565 bicycle database infos
+load 11662 bus database infos
+load 2259 static_object.bicycle_rack database infos
+load 18165 trailer database infos
+load 751 human.pedestrian.stroller database infos
+load 619 animal database infos
+load 352 human.pedestrian.personal_mobility database infos
+load 492 human.pedestrian.wheelchair database infos
+load 11 vehicle.emergency.ambulance database infos
+load 498 vehicle.emergency.police database infos
+2026-07-21 10:48:18,261 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
@@ -111,29 +143,45 @@ FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes
     build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
   File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
     build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in _impl
-    x = type(x)((_impl(x_i) for x_i in x))
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in <genexpr>
-    x = type(x)((_impl(x_i) for x_i in x))
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
-    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 391, in _impl
+    obj = _build_dataset(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 261, in _build_dataset
+    obj = build_from_cfg(OBJECT_REGISTRY, cfg)
   File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
     instance = obj_cls(**cfg)
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/lidar_utils/sample_ops.py", line 80, in __init__
-    with open(info_path, "rb") as f:
-FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes/nuscenes_dbinfos_train.pkl'
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1975, in __init__
+    super(NuscenesBevSequenceDataset, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1723, in __init__
+    super(NuscenesBevDataset, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/package_helper.py", line 243, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1516, in __init__
+    self.pack_type = get_packtype_from_path(data_path)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/pack_type/utils.py", line 36, in get_packtype_from_path
+    assert os.path.exists(path), f"{path} does not exist!"
+AssertionError: data/bevfusion_nuscenes/train_lmdb/ does not exist!
 
-[-1]
-{'car': 5, 'truck': 5, 'bus': 5, 'trailer': 5, 'construction_vehicle': 5, 'traffic_cone': 5, 'barrier': 5, 'motorcycle': 5, 'bicycle': 5, 'pedestrian': 5}
-2026-07-21 10:42:59,054 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
+After filter database:
+load 56455 traffic_cone database infos
+load 60691 truck database infos
+load 296423 car database infos
+load 149198 pedestrian database infos
+load 19195 movable_object.pushable_pullable database infos
+load 10622 construction_vehicle database infos
+load 102476 barrier database infos
+load 2120 movable_object.debris database infos
+load 8094 motorcycle database infos
+load 7565 bicycle database infos
+load 11662 bus database infos
+load 2259 static_object.bicycle_rack database infos
+load 18165 trailer database infos
+load 751 human.pedestrian.stroller database infos
+load 619 animal database infos
+load 352 human.pedestrian.personal_mobility database infos
+load 492 human.pedestrian.wheelchair database infos
+load 11 vehicle.emergency.ambulance database infos
+load 498 vehicle.emergency.police database infos
+2026-07-21 10:48:18,735 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
@@ -156,31 +204,29 @@ FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes
     build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
   File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
     build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in _impl
-    x = type(x)((_impl(x_i) for x_i in x))
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 353, in <genexpr>
-    x = type(x)((_impl(x_i) for x_i in x))
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in _impl
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 370, in <genexpr>
-    build_x = dict(((key, _impl(value)) for key, value in x.items()))  # noqa
-  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
-    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 391, in _impl
+    obj = _build_dataset(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 261, in _build_dataset
+    obj = build_from_cfg(OBJECT_REGISTRY, cfg)
   File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
     instance = obj_cls(**cfg)
-  File "/usr/local/lib/python3.10/dist-packages/hat/data/transforms/lidar_utils/sample_ops.py", line 80, in __init__
-    with open(info_path, "rb") as f:
-FileNotFoundError: [Errno 2] No such file or directory: 'data/bevfusion_nuscenes/nuscenes_dbinfos_train.pkl'
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1975, in __init__
+    super(NuscenesBevSequenceDataset, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1723, in __init__
+    super(NuscenesBevDataset, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/package_helper.py", line 243, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/data/datasets/nuscenes_dataset.py", line 1516, in __init__
+    self.pack_type = get_packtype_from_path(data_path)
+  File "/usr/local/lib/python3.10/dist-packages/hat/utils/pack_type/utils.py", line 36, in get_packtype_from_path
+    assert os.path.exists(path), f"{path} does not exist!"
+AssertionError: data/bevfusion_nuscenes/train_lmdb/ does not exist!
 
-[rank0]:[W721 10:42:59.903866878 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
-W0721 10:42:59.982000 63074 torch/multiprocessing/spawn.py:169] Terminating process 63215 via signal SIGTERM
-W0721 10:42:59.983000 63074 torch/multiprocessing/spawn.py:169] Terminating process 63216 via signal SIGTERM
-W0721 10:42:59.984000 63074 torch/multiprocessing/spawn.py:169] Terminating process 63217 via signal SIGTERM
-ERROR:__main__:train failed! process 0 terminated with exit code 1
+[rank0]:[W721 10:48:19.840593899 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0721 10:48:19.428000 63772 torch/multiprocessing/spawn.py:169] Terminating process 63912 via signal SIGTERM
+W0721 10:48:19.430000 63772 torch/multiprocessing/spawn.py:169] Terminating process 63913 via signal SIGTERM
+W0721 10:48:19.432000 63772 torch/multiprocessing/spawn.py:169] Terminating process 63914 via signal SIGTERM
+ERROR:__main__:train failed! process 3 terminated with exit code 1
 Traceback (most recent call last):
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
     raise e
@@ -196,4 +242,4 @@ Traceback (most recent call last):
     while not context.join():
   File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
     raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
+torch.multiprocessing.spawn.ProcessExitedException: process 3 terminated with exit code 1
