@@ -85,3 +85,22 @@ zero_point data: (0)
 
 
 ego_motion.bin  imgs.bin  points.bin  uv.bin  valid.bin  zcam.bin
+
+
+I20260318 16:37:15.461673 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=0 pre_ms=0.732 infer_ms=101.913 post_ms=0.418
+I20260318 16:37:15.617733 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=1 pre_ms=61.110 infer_ms=100.171 post_ms=0.301
+I20260318 16:37:15.723694 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=2 pre_ms=60.554 infer_ms=100.391 post_ms=0.268
+I20260318 16:37:15.829391 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=3 pre_ms=59.479 infer_ms=100.061 post_ms=0.269
+I20260318 16:37:15.934947 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=4 pre_ms=59.218 infer_ms=100.037 post_ms=0.268
+I20260318 16:37:16.040242 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=5 pre_ms=59.188 infer_ms=99.802 post_ms=0.255
+I20260318 16:37:16.146133 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=6 pre_ms=59.028 infer_ms=100.203 post_ms=0.264
+I20260318 16:37:16.251732 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=7 pre_ms=58.954 infer_ms=100.022 post_ms=0.259
+I20260318 16:37:16.357484 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=8 pre_ms=59.150 infer_ms=100.220 post_ms=0.278
+I20260318 16:37:16.462821 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=9 pre_ms=60.649 infer_ms=99.760 post_ms=0.275
+I20260318 16:37:16.568475 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=10 pre_ms=59.096 infer_ms=100.064 post_ms=0.254
+I20260318 16:37:16.674043 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=11 pre_ms=59.126 infer_ms=99.761 post_ms=0.276
+I20260318 16:37:16.779805 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=12 pre_ms=59.027 infer_ms=100.079 post_ms=0.275
+I20260318 16:37:16.885306 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=13 pre_ms=59.069 infer_ms=99.828 post_ms=0.277
+I20260318 16:37:16.991029 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=14 pre_ms=59.163 infer_ms=100.044 post_ms=0.275
+I20260318 16:37:17.096432 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=15 pre_ms=58.994 infer_ms=99.816 post_ms=0.275
+I20260318 16:37:17.202836 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=16 pre_ms=59.150 infer_ms=99.950 post_ms=0.275
