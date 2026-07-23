@@ -1,0 +1,13 @@
+{
+  "auxiliary_bin_names": [
+    "imgs.bin",
+    "uv.bin",
+    "zcam.bin"
+  ],
+  "lidar_bin_name": "points.bin",
+  "prev_bev_bin_name": "prev_bev.bin",
+  "prev_bev_src_scale": 0.0,
+  "point_cloud_range": [-40, -40, -1.0, 40, 40, 5.4],
+  "max_num_points": 35000,
+  "point_dim": 4
+}

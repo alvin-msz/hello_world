@@ -1,20 +1,87 @@
-2026-07-21 12:26:10,023 INFO [monitor.py:131] Node[0] Epoch[0] Step[0-199] Cost Time: 529.575s Speed: 6.04 samples/sec Remaining Time: 7 days, 14:33:46 Remaining step percent: 99.92%
-2026-07-21 12:26:12,166 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[199] GlobalStep[199] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[1.0975] loss_bbox[1.4783] d0.loss_cls[1.1026] d0.loss_bbox[1.5850] d1.loss_cls[1.0924] d1.loss_bbox[1.5290] d2.loss_cls[1.0916] d2.loss_bbox[1.5046] d3.loss_cls[1.0940] d3.loss_bbox[1.4907] d4.loss_cls[1.0959] d4.loss_bbox[1.4833] 
-2026-07-21 12:33:26,162 INFO [monitor.py:131] Node[0] Epoch[0] Step[200-399] Cost Time: 436.138s Speed: 7.34 samples/sec Remaining Time: 6 days, 5:28:44 Remaining step percent: 99.84%
-2026-07-21 12:33:28,141 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[399] GlobalStep[399] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[0.9584] loss_bbox[1.3068] d0.loss_cls[0.9546] d0.loss_bbox[1.4378] d1.loss_cls[0.9487] d1.loss_bbox[1.3666] d2.loss_cls[0.9507] d2.loss_bbox[1.3394] d3.loss_cls[0.9551] d3.loss_bbox[1.3228] d4.loss_cls[0.9578] d4.loss_bbox[1.3122] 
-2026-07-21 12:36:59,127 INFO [lr_updater.py:204] Node[0] Epoch[0] Step[499] GlobalStep[499] lr=0.000399
-2026-07-21 12:40:36,402 INFO [monitor.py:131] Node[0] Epoch[0] Step[400-599] Cost Time: 430.239s Speed: 7.44 samples/sec Remaining Time: 6 days, 3:20:15 Remaining step percent: 99.76%
-2026-07-21 12:40:38,266 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[599] GlobalStep[599] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[0.8802] loss_bbox[1.2088] d0.loss_cls[0.8776] d0.loss_bbox[1.3474] d1.loss_cls[0.8709] d1.loss_bbox[1.2719] d2.loss_cls[0.8729] d2.loss_bbox[1.2429] d3.loss_cls[0.8770] d3.loss_bbox[1.2253] d4.loss_cls[0.8796] d4.loss_bbox[1.2142] 
-2026-07-21 12:47:42,594 INFO [monitor.py:131] Node[0] Epoch[0] Step[600-799] Cost Time: 426.190s Speed: 7.51 samples/sec Remaining Time: 6 days, 1:49:58 Remaining step percent: 99.68%
-2026-07-21 12:47:44,441 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[799] GlobalStep[799] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[0.8290] loss_bbox[1.1490] d0.loss_cls[0.8279] d0.loss_bbox[1.2868] d1.loss_cls[0.8209] d1.loss_bbox[1.2105] d2.loss_cls[0.8229] d2.loss_bbox[1.1821] d3.loss_cls[0.8261] d3.loss_bbox[1.1651] d4.loss_cls[0.8283] d4.loss_bbox[1.1544] 
-2026-07-21 12:54:52,853 INFO [monitor.py:131] Node[0] Epoch[0] Step[800-999] Cost Time: 430.258s Speed: 7.44 samples/sec Remaining Time: 6 days, 3:06:18 Remaining step percent: 99.60%
-2026-07-21 12:54:54,716 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[999] GlobalStep[999] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[0.7874] loss_bbox[1.1006] d0.loss_cls[0.7883] d0.loss_bbox[1.2329] d1.loss_cls[0.7804] d1.loss_bbox[1.1584] d2.loss_cls[0.7818] d2.loss_bbox[1.1315] d3.loss_cls[0.7844] d3.loss_bbox[1.1159] d4.loss_cls[0.7863] d4.loss_bbox[1.1061] 
-2026-07-21 13:02:08,269 INFO [monitor.py:131] Node[0] Epoch[0] Step[1000-1199] Cost Time: 435.414s Speed: 7.35 samples/sec Remaining Time: 6 days, 4:44:49 Remaining step percent: 99.51%
-2026-07-21 13:02:10,282 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1199] GlobalStep[1199] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[0.7543] loss_bbox[1.0629] d0.loss_cls[0.7579] d0.loss_bbox[1.1912] d1.loss_cls[0.7491] d1.loss_bbox[1.1186] d2.loss_cls[0.7496] d2.loss_bbox[1.0930] d3.loss_cls[0.7515] d3.loss_bbox[1.0783] d4.loss_cls[0.7532] d4.loss_bbox[1.0690] 
-2026-07-21 13:09:15,872 INFO [monitor.py:131] Node[0] Epoch[0] Step[1200-1399] Cost Time: 427.602s Speed: 7.48 samples/sec Remaining Time: 6 days, 1:57:34 Remaining step percent: 99.43%
-2026-07-21 13:09:17,904 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1399] GlobalStep[1399] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[0.7267] loss_bbox[1.0329] d0.loss_cls[0.7332] d0.loss_bbox[1.1591] d1.loss_cls[0.7235] d1.loss_bbox[1.0883] d2.loss_cls[0.7231] d2.loss_bbox[1.0636] d3.loss_cls[0.7246] d3.loss_bbox[1.0495] d4.loss_cls[0.7258] d4.loss_bbox[1.0400] 
-2026-07-21 13:17:35,158 INFO [monitor.py:131] Node[0] Epoch[0] Step[1400-1599] Cost Time: 499.284s Speed: 6.41 samples/sec Remaining Time: 7 days, 2:17:21 Remaining step percent: 99.35%
-2026-07-21 13:17:38,253 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1599] GlobalStep[1599] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[0.7028] loss_bbox[1.0043] d0.loss_cls[0.7120] d0.loss_bbox[1.1318] d1.loss_cls[0.7015] d1.loss_bbox[1.0622] d2.loss_cls[0.7002] d2.loss_bbox[1.0378] d3.loss_cls[0.7014] d3.loss_bbox[1.0240] d4.loss_cls[0.7021] d4.loss_bbox[1.0136] 
-2026-07-21 13:25:48,195 INFO [monitor.py:131] Node[0] Epoch[0] Step[1600-1799] Cost Time: 493.036s Speed: 6.49 samples/sec Remaining Time: 7 days, 0:01:15 Remaining step percent: 99.27%
-2026-07-21 13:25:50,281 INFO [metric_updater.py:360] Node[0] Epoch[0] Step[1799] GlobalStep[1799] loss_bevformer_pointpillar_nuscenes_opt: loss_cls[0.6813] loss_bbox[0.9783] d0.loss_cls[0.6935] d0.loss_bbox[1.1075] d1.loss_cls[0.6822] d1.loss_bbox[1.0393] d2.loss_cls[0.6802] d2.loss_bbox[1.0153] d3.loss_cls[0.6809] d3.loss_bbox[1.0006] d4.loss_cls[0.6812] d4.loss_bbox[0.9888] 
-2026-07-21 13:30:41,488 INFO [monitor.py:146] Node[0] Epoch[0] End   ==================================================
+input[0]: 
+name: _input_0
+valid shape: (1,6,3,256,704)
+aligned byte size: 6488064
+tensor type: HB_DNN_TENSOR_TYPE_S16
+quanti type: SCALE
+stride: (6488064,1081344,360448,1408,2)
+scale data: (0.0177)
+zero_point data: (0)
+
+input[1]: 
+name: _input_1
+valid shape: (1,6,160000,2)
+aligned byte size: 3840000
+tensor type: HB_DNN_TENSOR_TYPE_S16
+quanti type: SCALE
+stride: (3840000,640000,4,2)
+scale data: (0.00323519)
+zero_point data: (0)
+
+input[2]: 
+name: _input_2
+valid shape: (1,6,160000)
+aligned byte size: 1920000
+tensor type: HB_DNN_TENSOR_TYPE_S16
+quanti type: SCALE
+stride: (1920000,320000,2)
+scale data: (0.00137362)
+zero_point data: (0)
+
+input[3]: 
+name: _input_3
+valid shape: (1,6,160000)
+aligned byte size: 960000
+tensor type: HB_DNN_TENSOR_TYPE_BOOL8
+quanti type: NONE
+stride: (960000,160000,1)
+
+input[4]: 
+name: _input_4
+valid shape: (35000,4)
+aligned byte size: 560000
+tensor type: HB_DNN_TENSOR_TYPE_F32
+quanti type: NONE
+stride: (16,4)
+
+input[5]: 
+name: _input_5
+valid shape: (1,384,200,200)
+aligned byte size: 19660800
+tensor type: HB_DNN_TENSOR_TYPE_S8
+quanti type: SCALE
+stride: (19660800,51200,256,1)
+scale data: (0.0472441)
+zero_point data: (0)
+
+input[6]: 
+name: _input_6
+valid shape: (1,4)
+aligned byte size: 128
+tensor type: HB_DNN_TENSOR_TYPE_F32
+quanti type: NONE
+stride: (16,4)
+
+output[0]: 
+name: _output_0
+valid shape: (1,200,200,16)
+aligned byte size: 2560000
+tensor type: HB_DNN_TENSOR_TYPE_S32
+quanti type: NONE
+stride: (2560000,12800,64,4)
+
+output[1]: 
+name: _output_1
+valid shape: (1,384,200,200)
+aligned byte size: 19660800
+tensor type: HB_DNN_TENSOR_TYPE_S8
+quanti type: SCALE
+stride: (19660800,51200,256,1)
+scale data: (0.0463431)
+zero_point data: (0)
+
+---------------------------------------------------------------------
+
+
+
+ego_motion.bin  imgs.bin  points.bin  uv.bin  valid.bin  zcam.bin
