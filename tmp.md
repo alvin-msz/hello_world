@@ -1,106 +1,68 @@
-input[0]: 
-name: _input_0
-valid shape: (1,6,3,256,704)
-aligned byte size: 6488064
-tensor type: HB_DNN_TENSOR_TYPE_S16
-quanti type: SCALE
-stride: (6488064,1081344,360448,1408,2)
-scale data: (0.0177)
-zero_point data: (0)
+model1:
+mAP: 0.4872
+mATE: 0.3226
+mASE: 0.2615
+mAOE: 0.3776
+mAVE: 0.4138
+mAAE: 0.2053
+NDS: 0.5855
+Eval time: 73.4s
 
-input[1]: 
-name: _input_1
-valid shape: (1,6,160000,2)
-aligned byte size: 3840000
-tensor type: HB_DNN_TENSOR_TYPE_S16
-quanti type: SCALE
-stride: (3840000,640000,4,2)
-scale data: (0.00323519)
-zero_point data: (0)
-
-input[2]: 
-name: _input_2
-valid shape: (1,6,160000)
-aligned byte size: 1920000
-tensor type: HB_DNN_TENSOR_TYPE_S16
-quanti type: SCALE
-stride: (1920000,320000,2)
-scale data: (0.00137362)
-zero_point data: (0)
-
-input[3]: 
-name: _input_3
-valid shape: (1,6,160000)
-aligned byte size: 960000
-tensor type: HB_DNN_TENSOR_TYPE_BOOL8
-quanti type: NONE
-stride: (960000,160000,1)
-
-input[4]: 
-name: _input_4
-valid shape: (35000,4)
-aligned byte size: 560000
-tensor type: HB_DNN_TENSOR_TYPE_F32
-quanti type: NONE
-stride: (16,4)
-
-input[5]: 
-name: _input_5
-valid shape: (1,384,200,200)
-aligned byte size: 19660800
-tensor type: HB_DNN_TENSOR_TYPE_S8
-quanti type: SCALE
-stride: (19660800,51200,256,1)
-scale data: (0.0472441)
-zero_point data: (0)
-
-input[6]: 
-name: _input_6
-valid shape: (1,4)
-aligned byte size: 128
-tensor type: HB_DNN_TENSOR_TYPE_F32
-quanti type: NONE
-stride: (16,4)
-
-output[0]: 
-name: _output_0
-valid shape: (1,200,200,16)
-aligned byte size: 2560000
-tensor type: HB_DNN_TENSOR_TYPE_S32
-quanti type: NONE
-stride: (2560000,12800,64,4)
-
-output[1]: 
-name: _output_1
-valid shape: (1,384,200,200)
-aligned byte size: 19660800
-tensor type: HB_DNN_TENSOR_TYPE_S8
-quanti type: SCALE
-stride: (19660800,51200,256,1)
-scale data: (0.0463431)
-zero_point data: (0)
-
----------------------------------------------------------------------
+Per-class results:
+Object Class	AP	ATE	ASE	AOE	AVE	AAE
+car	0.831	0.190	0.154	0.152	0.361	0.209
+truck	0.514	0.344	0.192	0.143	0.339	0.248
+bus	0.620	0.354	0.181	0.109	0.832	0.369
+trailer	0.336	0.529	0.208	0.436	0.239	0.155
+construction_vehicle	0.103	0.697	0.445	0.967	0.129	0.362
+pedestrian	0.768	0.165	0.279	0.427	0.254	0.097
+motorcycle	0.429	0.242	0.236	0.419	0.915	0.145
+bicycle	0.138	0.223	0.283	0.650	0.241	0.057
+traffic_cone	0.532	0.203	0.342	nan	nan	nan
+barrier	0.601	0.279	0.294	0.094	nan	nan
+2026-07-20 14:16:12,223 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5855, mAP:0.4872
+car_AP: [0.5]:0.7276  [1.0]:0.8379  [2.0]:0.8700  [4.0]:0.8877 
+truck_AP: [0.5]:0.3326  [1.0]:0.5072  [2.0]:0.5903  [4.0]:0.6254 
+construction_vehicle_AP: [0.5]:0.0108  [1.0]:0.0642  [2.0]:0.1359  [4.0]:0.2005 
+bus_AP: [0.5]:0.3876  [1.0]:0.6006  [2.0]:0.7312  [4.0]:0.7607 
+trailer_AP: [0.5]:0.1025  [1.0]:0.2687  [2.0]:0.4351  [4.0]:0.5379 
+barrier_AP: [0.5]:0.4460  [1.0]:0.6105  [2.0]:0.6644  [4.0]:0.6849 
+motorcycle_AP: [0.5]:0.3685  [1.0]:0.4398  [2.0]:0.4517  [4.0]:0.4578 
+bicycle_AP: [0.5]:0.1285  [1.0]:0.1379  [2.0]:0.1398  [4.0]:0.1445 
+pedestrian_AP: [0.5]:0.7396  [1.0]:0.7601  [2.0]:0.7773  [4.0]:0.7948 
+traffic_cone_AP: [0.5]:0.4911  [1.0]:0.5122  [2.0]:0.5381  [4.0]:0.5867
 
 
+model2:
+mAP: 0.4533
+mATE: 0.3934
+mASE: 0.2823
+mAOE: 0.3813
+mAVE: 0.4225
+mAAE: 0.1869
+NDS: 0.5600
+Eval time: 115.1s
 
-ego_motion.bin  imgs.bin  points.bin  uv.bin  valid.bin  zcam.bin
-
-
-I20260318 16:37:15.461673 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=0 pre_ms=0.732 infer_ms=101.913 post_ms=0.418
-I20260318 16:37:15.617733 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=1 pre_ms=61.110 infer_ms=100.171 post_ms=0.301
-I20260318 16:37:15.723694 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=2 pre_ms=60.554 infer_ms=100.391 post_ms=0.268
-I20260318 16:37:15.829391 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=3 pre_ms=59.479 infer_ms=100.061 post_ms=0.269
-I20260318 16:37:15.934947 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=4 pre_ms=59.218 infer_ms=100.037 post_ms=0.268
-I20260318 16:37:16.040242 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=5 pre_ms=59.188 infer_ms=99.802 post_ms=0.255
-I20260318 16:37:16.146133 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=6 pre_ms=59.028 infer_ms=100.203 post_ms=0.264
-I20260318 16:37:16.251732 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=7 pre_ms=58.954 infer_ms=100.022 post_ms=0.259
-I20260318 16:37:16.357484 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=8 pre_ms=59.150 infer_ms=100.220 post_ms=0.278
-I20260318 16:37:16.462821 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=9 pre_ms=60.649 infer_ms=99.760 post_ms=0.275
-I20260318 16:37:16.568475 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=10 pre_ms=59.096 infer_ms=100.064 post_ms=0.254
-I20260318 16:37:16.674043 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=11 pre_ms=59.126 infer_ms=99.761 post_ms=0.276
-I20260318 16:37:16.779805 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=12 pre_ms=59.027 infer_ms=100.079 post_ms=0.275
-I20260318 16:37:16.885306 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=13 pre_ms=59.069 infer_ms=99.828 post_ms=0.277
-I20260318 16:37:16.991029 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=14 pre_ms=59.163 infer_ms=100.044 post_ms=0.275
-I20260318 16:37:17.096432 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=15 pre_ms=58.994 infer_ms=99.816 post_ms=0.275
-I20260318 16:37:17.202836 520055 qat_bevfusion_occ_4d_post_process_method.cc:295] BevFusion OCC latency frame_id=16 pre_ms=59.150 infer_ms=99.950 post_ms=0.275
+Per-class results:
+Object Class	AP	ATE	ASE	AOE	AVE	AAE
+car	0.807	0.201	0.159	0.128	0.421	0.205
+truck	0.416	0.424	0.211	0.147	0.389	0.230
+bus	0.544	0.385	0.197	0.108	0.745	0.244
+trailer	0.342	0.590	0.244	0.445	0.285	0.175
+construction_vehicle	0.148	0.766	0.474	1.057	0.112	0.315
+pedestrian	0.685	0.179	0.311	0.475	0.356	0.122
+motorcycle	0.458	0.297	0.271	0.427	0.686	0.197
+bicycle	0.135	0.402	0.296	0.582	0.387	0.008
+traffic_cone	0.483	0.242	0.341	nan	nan	nan
+barrier	0.515	0.448	0.317	0.063	nan	nan
+2026-07-24 04:04:05,624 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5600, mAP:0.4533
+car_AP: [0.5]:0.6879  [1.0]:0.8089  [2.0]:0.8545  [4.0]:0.8757 
+truck_AP: [0.5]:0.2269  [1.0]:0.3864  [2.0]:0.5041  [4.0]:0.5463 
+trailer_AP: [0.5]:0.0911  [1.0]:0.2948  [2.0]:0.4473  [4.0]:0.5337 
+bus_AP: [0.5]:0.3038  [1.0]:0.5306  [2.0]:0.6516  [4.0]:0.6889 
+construction_vehicle_AP: [0.5]:0.0001  [1.0]:0.1083  [2.0]:0.2196  [4.0]:0.2643 
+bicycle_AP: [0.5]:0.0839  [1.0]:0.1371  [2.0]:0.1536  [4.0]:0.1670 
+motorcycle_AP: [0.5]:0.3434  [1.0]:0.4755  [2.0]:0.4984  [4.0]:0.5150 
+pedestrian_AP: [0.5]:0.6313  [1.0]:0.6782  [2.0]:0.7045  [4.0]:0.7274 
+traffic_cone_AP: [0.5]:0.4031  [1.0]:0.4672  [2.0]:0.5100  [4.0]:0.5529 
+barrier_AP: [0.5]:0.2627  [1.0]:0.5088  [2.0]:0.6251  [4.0]:0.6620 
