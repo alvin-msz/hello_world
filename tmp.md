@@ -52,3 +52,37 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
     raise ProcessExitedException(
 torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
+
+
+mAP: 0.4715
+mATE: 0.4047
+mASE: 0.2797
+mAOE: 0.4515
+mAVE: 0.3662
+mAAE: 0.1922
+NDS: 0.5663
+Eval time: 105.0s
+
+Per-class results:
+Object Class	AP	ATE	ASE	AOE	AVE	AAE
+car	0.834	0.198	0.158	0.140	0.317	0.203
+truck	0.450	0.408	0.211	0.171	0.320	0.232
+bus	0.597	0.413	0.206	0.188	0.723	0.249
+trailer	0.341	0.613	0.230	0.529	0.259	0.191
+construction_vehicle	0.154	0.794	0.479	1.068	0.151	0.338
+pedestrian	0.743	0.188	0.284	0.391	0.245	0.092
+motorcycle	0.470	0.333	0.276	0.635	0.554	0.214
+bicycle	0.135	0.391	0.299	0.875	0.361	0.019
+traffic_cone	0.486	0.265	0.346	nan	nan	nan
+barrier	0.505	0.445	0.306	0.067	nan	nan
+2026-07-28 17:04:53,054 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5663, mAP:0.4715
+car_AP: [0.5]:0.7239  [1.0]:0.8393  [2.0]:0.8782  [4.0]:0.8947 
+truck_AP: [0.5]:0.2638  [1.0]:0.4223  [2.0]:0.5371  [4.0]:0.5778 
+trailer_AP: [0.5]:0.0699  [1.0]:0.2759  [2.0]:0.4358  [4.0]:0.5806 
+bus_AP: [0.5]:0.3394  [1.0]:0.5691  [2.0]:0.7230  [4.0]:0.7583 
+construction_vehicle_AP: [0.5]:0.0025  [1.0]:0.0876  [2.0]:0.2274  [4.0]:0.2982 
+bicycle_AP: [0.5]:0.0934  [1.0]:0.1371  [2.0]:0.1471  [4.0]:0.1608 
+motorcycle_AP: [0.5]:0.3319  [1.0]:0.4811  [2.0]:0.5213  [4.0]:0.5462 
+pedestrian_AP: [0.5]:0.6797  [1.0]:0.7339  [2.0]:0.7678  [4.0]:0.7916 
+traffic_cone_AP: [0.5]:0.4032  [1.0]:0.4633  [2.0]:0.5139  [4.0]:0.5626 
+barrier_AP: [0.5]:0.2718  [1.0]:0.4914  [2.0]:0.6083  [4.0]:0.6477
