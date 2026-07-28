@@ -1,68 +1,54 @@
-model1:
-mAP: 0.4872
-mATE: 0.3226
-mASE: 0.2615
-mAOE: 0.3776
-mAVE: 0.4138
-mAAE: 0.2053
-NDS: 0.5855
-Eval time: 73.4s
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
+    fn(*args)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 185, in train_entrance
+    trainer = build_from_registry(trainer)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 414, in build_from_registry
+    return _impl(x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 397, in _impl
+    obj = build_from_cfg(OBJECT_REGISTRY, x)
+  File "/usr/local/lib/python3.10/dist-packages/hat/registry.py", line 248, in build_from_cfg
+    instance = obj_cls(**cfg)
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/calibrator.py", line 120, in __init__
+    super(Calibrator, self).__init__(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 274, in __init__
+    self.model = model_convert_pipeline(self.model)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/model_convert/pipelines.py", line 63, in __call__
+    model = converter(model)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/model_convert/converters.py", line 396, in __call__
+    model = horizon.quantization.prepare_qat_fx(
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/typeguard.py", line 1096, in wrapper
+    retval = func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/quantization/quantize_fx.py", line 605, in prepare_qat_fx
+    model = _prepare_fx(
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/quantization/quantize_fx.py", line 297, in _prepare_fx
+    graph = tracer.trace(model)
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/fx/tracer.py", line 248, in trace
+    return super(CustomTracer, self).trace(root, *args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/fx/_symbolic_trace.py", line 843, in trace
+    (self.create_arg(fn(*args)),),
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 96, in forward
+    lidar_feature = self.forward_lidar_feature(data)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 71, in forward_lidar_feature
+    batch_size=len(example["points"]),
+  File "/usr/local/lib/python3.10/dist-packages/torch/fx/proxy.py", line 556, in __len__
+    raise RuntimeError(
+RuntimeError: 'len' is not supported in symbolic tracing by default. If you want this call to be recorded, please call torch.fx.wrap('len') at module scope
 
-Per-class results:
-Object Class	AP	ATE	ASE	AOE	AVE	AAE
-car	0.831	0.190	0.154	0.152	0.361	0.209
-truck	0.514	0.344	0.192	0.143	0.339	0.248
-bus	0.620	0.354	0.181	0.109	0.832	0.369
-trailer	0.336	0.529	0.208	0.436	0.239	0.155
-construction_vehicle	0.103	0.697	0.445	0.967	0.129	0.362
-pedestrian	0.768	0.165	0.279	0.427	0.254	0.097
-motorcycle	0.429	0.242	0.236	0.419	0.915	0.145
-bicycle	0.138	0.223	0.283	0.650	0.241	0.057
-traffic_cone	0.532	0.203	0.342	nan	nan	nan
-barrier	0.601	0.279	0.294	0.094	nan	nan
-2026-07-20 14:16:12,223 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5855, mAP:0.4872
-car_AP: [0.5]:0.7276  [1.0]:0.8379  [2.0]:0.8700  [4.0]:0.8877 
-truck_AP: [0.5]:0.3326  [1.0]:0.5072  [2.0]:0.5903  [4.0]:0.6254 
-construction_vehicle_AP: [0.5]:0.0108  [1.0]:0.0642  [2.0]:0.1359  [4.0]:0.2005 
-bus_AP: [0.5]:0.3876  [1.0]:0.6006  [2.0]:0.7312  [4.0]:0.7607 
-trailer_AP: [0.5]:0.1025  [1.0]:0.2687  [2.0]:0.4351  [4.0]:0.5379 
-barrier_AP: [0.5]:0.4460  [1.0]:0.6105  [2.0]:0.6644  [4.0]:0.6849 
-motorcycle_AP: [0.5]:0.3685  [1.0]:0.4398  [2.0]:0.4517  [4.0]:0.4578 
-bicycle_AP: [0.5]:0.1285  [1.0]:0.1379  [2.0]:0.1398  [4.0]:0.1445 
-pedestrian_AP: [0.5]:0.7396  [1.0]:0.7601  [2.0]:0.7773  [4.0]:0.7948 
-traffic_cone_AP: [0.5]:0.4911  [1.0]:0.5122  [2.0]:0.5381  [4.0]:0.5867
-
-
-model2:
-mAP: 0.4533
-mATE: 0.3934
-mASE: 0.2823
-mAOE: 0.3813
-mAVE: 0.4225
-mAAE: 0.1869
-NDS: 0.5600
-Eval time: 115.1s
-
-Per-class results:
-Object Class	AP	ATE	ASE	AOE	AVE	AAE
-car	0.807	0.201	0.159	0.128	0.421	0.205
-truck	0.416	0.424	0.211	0.147	0.389	0.230
-bus	0.544	0.385	0.197	0.108	0.745	0.244
-trailer	0.342	0.590	0.244	0.445	0.285	0.175
-construction_vehicle	0.148	0.766	0.474	1.057	0.112	0.315
-pedestrian	0.685	0.179	0.311	0.475	0.356	0.122
-motorcycle	0.458	0.297	0.271	0.427	0.686	0.197
-bicycle	0.135	0.402	0.296	0.582	0.387	0.008
-traffic_cone	0.483	0.242	0.341	nan	nan	nan
-barrier	0.515	0.448	0.317	0.063	nan	nan
-2026-07-24 04:04:05,624 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.5600, mAP:0.4533
-car_AP: [0.5]:0.6879  [1.0]:0.8089  [2.0]:0.8545  [4.0]:0.8757 
-truck_AP: [0.5]:0.2269  [1.0]:0.3864  [2.0]:0.5041  [4.0]:0.5463 
-trailer_AP: [0.5]:0.0911  [1.0]:0.2948  [2.0]:0.4473  [4.0]:0.5337 
-bus_AP: [0.5]:0.3038  [1.0]:0.5306  [2.0]:0.6516  [4.0]:0.6889 
-construction_vehicle_AP: [0.5]:0.0001  [1.0]:0.1083  [2.0]:0.2196  [4.0]:0.2643 
-bicycle_AP: [0.5]:0.0839  [1.0]:0.1371  [2.0]:0.1536  [4.0]:0.1670 
-motorcycle_AP: [0.5]:0.3434  [1.0]:0.4755  [2.0]:0.4984  [4.0]:0.5150 
-pedestrian_AP: [0.5]:0.6313  [1.0]:0.6782  [2.0]:0.7045  [4.0]:0.7274 
-traffic_cone_AP: [0.5]:0.4031  [1.0]:0.4672  [2.0]:0.5100  [4.0]:0.5529 
-barrier_AP: [0.5]:0.2627  [1.0]:0.5088  [2.0]:0.6251  [4.0]:0.6620 
+[rank0]:[W728 10:20:23.264609737 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ERROR:__main__:train failed! process 0 terminated with exit code 1
+Traceback (most recent call last):
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
+    raise e
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 273, in <module>
+    train(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 254, in train
+    launch(
+  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 426, in launch
+    mp.spawn(
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 340, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 296, in start_processes
+    while not context.join():
+  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
+    raise ProcessExitedException(
+torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
