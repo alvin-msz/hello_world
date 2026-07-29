@@ -34,7 +34,7 @@
     raise RuntimeError(
 RuntimeError: 'len' is not supported in symbolic tracing by default. If you want this call to be recorded, please call torch.fx.wrap('len') at module scope
 
-[rank0]:[W728 10:20:23.264609737 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W729 08:19:58.228583069 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
 ERROR:__main__:train failed! process 0 terminated with exit code 1
 Traceback (most recent call last):
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
@@ -52,6 +52,8 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
     raise ProcessExitedException(
 torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
+
+python3 samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py --stage calibration --config samples/ai_toolchain/horizon_model_train_sample/scripts/configs/detection/centerpoint/bevformer_pointpillar_nuscenes_opt_resume.py --device-ids 7
 
 
 mAP: 0.4715
