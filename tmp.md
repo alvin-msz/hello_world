@@ -1,4 +1,4 @@
-2026-08-03 08:41:48,914 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
+2026-08-03 08:51:21,937 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -37,17 +37,37 @@
     return self._call_impl(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
     return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 400, in forward
-    ) = self.get_encoder_inputs(mlvl_feats)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 360, in get_encoder_inputs
-    feat = self.addcams_embeds[lvl].add(feat, cams_embeds)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 334, in __getitem__
-    return self._modules[self._get_abs_string_index(idx)]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 316, in _get_abs_string_index
-    raise IndexError(f"index {idx} is out of range")
-IndexError: index 1 is out of range
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 405, in forward
+    output = layer(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 455, in forward
+    query = self.ca(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 980, in forward
+    queries_out = self.deformable_attention(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 822, in forward
+    output = super().forward(
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 275, in forward
+    sampling_locations = self.get_sampling_locations(
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 786, in get_sampling_locations
+    sampling_locations = self.add_offset.add(
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/model_helper.py", line 115, in _call_impl
+    result = func(mod, *input, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/nn/quantized/functional_modules.py", line 77, in add
+    return torch.add(x, y)
+RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at non-singleton dimension 3
 
-2026-08-03 08:41:48,914 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
+2026-08-03 08:51:21,937 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -86,17 +106,37 @@ IndexError: index 1 is out of range
     return self._call_impl(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
     return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 400, in forward
-    ) = self.get_encoder_inputs(mlvl_feats)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 360, in get_encoder_inputs
-    feat = self.addcams_embeds[lvl].add(feat, cams_embeds)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 334, in __getitem__
-    return self._modules[self._get_abs_string_index(idx)]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 316, in _get_abs_string_index
-    raise IndexError(f"index {idx} is out of range")
-IndexError: index 1 is out of range
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 405, in forward
+    output = layer(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 455, in forward
+    query = self.ca(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 980, in forward
+    queries_out = self.deformable_attention(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 822, in forward
+    output = super().forward(
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 275, in forward
+    sampling_locations = self.get_sampling_locations(
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 786, in get_sampling_locations
+    sampling_locations = self.add_offset.add(
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/model_helper.py", line 115, in _call_impl
+    result = func(mod, *input, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/nn/quantized/functional_modules.py", line 77, in add
+    return torch.add(x, y)
+RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at non-singleton dimension 3
 
-2026-08-03 08:41:48,914 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
+2026-08-03 08:51:21,938 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -135,17 +175,37 @@ IndexError: index 1 is out of range
     return self._call_impl(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
     return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 400, in forward
-    ) = self.get_encoder_inputs(mlvl_feats)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 360, in get_encoder_inputs
-    feat = self.addcams_embeds[lvl].add(feat, cams_embeds)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 334, in __getitem__
-    return self._modules[self._get_abs_string_index(idx)]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 316, in _get_abs_string_index
-    raise IndexError(f"index {idx} is out of range")
-IndexError: index 1 is out of range
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 405, in forward
+    output = layer(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 455, in forward
+    query = self.ca(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 980, in forward
+    queries_out = self.deformable_attention(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 822, in forward
+    output = super().forward(
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 275, in forward
+    sampling_locations = self.get_sampling_locations(
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 786, in get_sampling_locations
+    sampling_locations = self.add_offset.add(
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/model_helper.py", line 115, in _call_impl
+    result = func(mod, *input, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/nn/quantized/functional_modules.py", line 77, in add
+    return torch.add(x, y)
+RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at non-singleton dimension 3
 
-2026-08-03 08:41:48,914 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
+2026-08-03 08:51:21,938 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -184,20 +244,40 @@ IndexError: index 1 is out of range
     return self._call_impl(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
     return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 400, in forward
-    ) = self.get_encoder_inputs(mlvl_feats)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 360, in get_encoder_inputs
-    feat = self.addcams_embeds[lvl].add(feat, cams_embeds)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 334, in __getitem__
-    return self._modules[self._get_abs_string_index(idx)]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/container.py", line 316, in _get_abs_string_index
-    raise IndexError(f"index {idx} is out of range")
-IndexError: index 1 is out of range
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 405, in forward
+    output = layer(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 455, in forward
+    query = self.ca(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 980, in forward
+    queries_out = self.deformable_attention(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 822, in forward
+    output = super().forward(
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 275, in forward
+    sampling_locations = self.get_sampling_locations(
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 786, in get_sampling_locations
+    sampling_locations = self.add_offset.add(
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/model_helper.py", line 115, in _call_impl
+    result = func(mod, *input, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/nn/quantized/functional_modules.py", line 77, in add
+    return torch.add(x, y)
+RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at non-singleton dimension 3
 
-W0803 08:41:50.621000 32 torch/multiprocessing/spawn.py:169] Terminating process 109 via signal SIGTERM
-W0803 08:41:50.622000 32 torch/multiprocessing/spawn.py:169] Terminating process 110 via signal SIGTERM
-W0803 08:41:50.622000 32 torch/multiprocessing/spawn.py:169] Terminating process 112 via signal SIGTERM
-ERROR:__main__:train failed! process 2 terminated with exit code 1
+W0803 08:51:23.747000 2888 torch/multiprocessing/spawn.py:169] Terminating process 2965 via signal SIGTERM
+W0803 08:51:23.748000 2888 torch/multiprocessing/spawn.py:169] Terminating process 2966 via signal SIGTERM
+W0803 08:51:23.749000 2888 torch/multiprocessing/spawn.py:169] Terminating process 2967 via signal SIGTERM
+ERROR:__main__:train failed! process 3 terminated with exit code 1
 Traceback (most recent call last):
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
     raise e
@@ -213,4 +293,4 @@ Traceback (most recent call last):
     while not context.join():
   File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
     raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 2 terminated with exit code 1
+torch.multiprocessing.spawn.ProcessExitedException: process 3 terminated with exit code 1
