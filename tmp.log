@@ -36,70 +36,69 @@ traffic_cone_AP: [0.5]:0.2069  [1.0]:0.2184  [2.0]:0.2403  [4.0]:0.2740
 
 
 Node[0] Epoch[0] loss_centerpoint_pointpillar_nuscenes_ego: task0.loss_heatmap[1.2412] task0.loss_bbox[0.5171] task1.loss_heatmap[1.9863] task1.loss_bbox[0.6863] task2.loss_heatmap[2.0332] task2.loss_bbox[0.7168] task3.loss_heatmap[1.3692] task3.loss_bbox[0.5370] task4.loss_heatmap[1.3930] task4.loss_bbox[0.6122] task5.loss_heatmap[1.3669] task5.loss_bbox[0.6034]
-mAP: 0.0801
-mATE: 0.5227
-mASE: 0.3239
-mAOE: 1.7318
-mAVE: 1.0170
-mAAE: 0.3086
-NDS: 0.2245
-Eval time: 93.4s
+mAP: 0.2396
+mATE: 0.4193
+mASE: 0.2927
+mAOE: 2.0233
+mAVE: 0.9384
+mAAE: 0.2390
+NDS: 0.3309
+Eval time: 100.0s
 
 Per-class results:
 Object Class	AP	ATE	ASE	AOE	AVE	AAE
-car	0.331	0.350	0.186	2.153	1.115	0.389
-truck	0.083	0.527	0.288	2.469	0.791	0.338
-bus	0.118	0.556	0.209	2.172	2.346	0.478
-trailer	0.009	0.631	0.243	1.304	0.284	0.176
-construction_vehicle	0.000	0.933	0.498	1.514	0.150	0.428
-pedestrian	0.214	0.284	0.311	2.192	0.795	0.252
-motorcycle	0.000	0.401	0.307	1.700	1.794	0.215
-bicycle	0.000	0.485	0.381	1.761	0.860	0.191
-traffic_cone	0.035	0.371	0.456	nan	nan	nan
-barrier	0.011	0.691	0.361	0.320	nan	nan
-2026-08-14 11:27:55,678 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.2245, mAP:0.0801
-car_AP: [0.5]:0.2126  [1.0]:0.3168  [2.0]:0.3781  [4.0]:0.4181 
-truck_AP: [0.5]:0.0180  [1.0]:0.0651  [2.0]:0.1083  [4.0]:0.1419 
-construction_vehicle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0000  [4.0]:0.0000 
-bus_AP: [0.5]:0.0320  [1.0]:0.1040  [2.0]:0.1582  [4.0]:0.1772 
-trailer_AP: [0.5]:0.0000  [1.0]:0.0049  [2.0]:0.0091  [4.0]:0.0214 
-barrier_AP: [0.5]:0.0000  [1.0]:0.0048  [2.0]:0.0124  [4.0]:0.0251 
-motorcycle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0000  [4.0]:0.0000 
+car	0.667	0.247	0.177	2.698	0.925	0.275
+truck	0.216	0.446	0.252	2.670	0.687	0.317
+bus	0.287	0.485	0.195	2.513	2.004	0.325
+trailer	0.082	0.561	0.232	1.970	0.424	0.185
+construction_vehicle	0.007	0.757	0.465	1.768	0.168	0.364
+pedestrian	0.508	0.245	0.288	2.420	0.570	0.146
+motorcycle	0.074	0.308	0.262	2.126	2.159	0.178
+bicycle	0.000	0.307	0.322	1.907	0.570	0.122
+traffic_cone	0.260	0.280	0.421	nan	nan	nan
+barrier	0.295	0.557	0.314	0.137	nan	nan
+2026-08-14 16:41:10,123 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.3309, mAP:0.2396
+car_AP: [0.5]:0.5347  [1.0]:0.6727  [2.0]:0.7189  [4.0]:0.7433 
+truck_AP: [0.5]:0.0946  [1.0]:0.1981  [2.0]:0.2648  [4.0]:0.3050 
+construction_vehicle_AP: [0.5]:0.0000  [1.0]:0.0024  [2.0]:0.0107  [4.0]:0.0138 
+bus_AP: [0.5]:0.1304  [1.0]:0.2657  [2.0]:0.3652  [4.0]:0.3872 
+trailer_AP: [0.5]:0.0124  [1.0]:0.0714  [2.0]:0.1051  [4.0]:0.1377 
+barrier_AP: [0.5]:0.1007  [1.0]:0.2823  [2.0]:0.3763  [4.0]:0.4211 
+motorcycle_AP: [0.5]:0.0544  [1.0]:0.0782  [2.0]:0.0808  [4.0]:0.0821 
 bicycle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0000  [4.0]:0.0000 
-pedestrian_AP: [0.5]:0.1856  [1.0]:0.2018  [2.0]:0.2182  [4.0]:0.2488 
-traffic_cone_AP: [0.5]:0.0209  [1.0]:0.0269  [2.0]:0.0362  [4.0]:0.0579 
+pedestrian_AP: [0.5]:0.4651  [1.0]:0.4945  [2.0]:0.5195  [4.0]:0.5527 
+traffic_cone_AP: [0.5]:0.2191  [1.0]:0.2370  [2.0]:0.2654  [4.0]:0.3200
 
-
-Node[0] Epoch[1] loss_centerpoint_pointpillar_nuscenes_ego: task0.loss_heatmap[0.8974] task0.loss_bbox[0.4006] task1.loss_heatmap[1.6246] task1.loss_bbox[0.5889] task2.loss_heatmap[1.6055] task2.loss_bbox[0.6042] task3.loss_heatmap[0.9900] task3.loss_bbox[0.4712] task4.loss_heatmap[1.0727] task4.loss_bbox[0.5315] task5.loss_heatmap[0.9606] task5.loss_bbox[0.5171] 
-mAP: 0.1061
-mATE: 0.4907
-mASE: 0.3257
-mAOE: 1.9550
-mAVE: 0.9832
-mAAE: 0.2888
-NDS: 0.2442
-Eval time: 99.2s
+Node[0] Epoch[0] loss_centerpoint_pointpillar_nuscenes_ego: task0.loss_heatmap[1.2517] task0.loss_bbox[0.5142] task1.loss_heatmap[1.9995] task1.loss_bbox[0.6870] task2.loss_heatmap[2.0456] task2.loss_bbox[0.7167] task3.loss_heatmap[1.3830] task3.loss_bbox[0.5373] task4.loss_heatmap[1.4013] task4.loss_bbox[0.6130] task5.loss_heatmap[1.3665] task5.loss_bbox[0.6045] 
+mAP: 0.2268
+mATE: 0.4183
+mASE: 0.2937
+mAOE: 0.8035
+mAVE: 0.9221
+mAAE: 0.2482
+NDS: 0.3448
+Eval time: 104.7s
 
 Per-class results:
 Object Class	AP	ATE	ASE	AOE	AVE	AAE
-car	0.374	0.318	0.183	2.341	0.963	0.314
-truck	0.123	0.526	0.312	2.578	0.719	0.373
-bus	0.206	0.460	0.217	2.269	2.347	0.419
-trailer	0.011	0.682	0.251	1.676	0.483	0.307
-construction_vehicle	0.000	0.901	0.517	1.726	0.210	0.451
-pedestrian	0.280	0.223	0.299	2.596	0.548	0.116
-motorcycle	0.000	0.375	0.279	1.957	1.903	0.200
-bicycle	0.000	0.431	0.370	2.144	0.692	0.130
-traffic_cone	0.048	0.328	0.454	nan	nan	nan
-barrier	0.019	0.664	0.375	0.307	nan	nan
-2026-08-14 13:14:51,480 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.2442, mAP:0.1061
-car_AP: [0.5]:0.2600  [1.0]:0.3657  [2.0]:0.4176  [4.0]:0.4538 
-truck_AP: [0.5]:0.0301  [1.0]:0.1074  [2.0]:0.1602  [4.0]:0.1941 
-construction_vehicle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0000  [4.0]:0.0000 
-bus_AP: [0.5]:0.0897  [1.0]:0.2003  [2.0]:0.2581  [4.0]:0.2764 
-trailer_AP: [0.5]:0.0000  [1.0]:0.0022  [2.0]:0.0123  [4.0]:0.0299 
-barrier_AP: [0.5]:0.0003  [1.0]:0.0091  [2.0]:0.0226  [4.0]:0.0421 
-motorcycle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0000  [4.0]:0.0000 
+car	0.647	0.243	0.177	0.547	0.678	0.242
+truck	0.221	0.432	0.243	0.438	0.750	0.309
+bus	0.312	0.476	0.205	0.641	1.806	0.369
+trailer	0.076	0.641	0.259	1.045	0.695	0.298
+construction_vehicle	0.001	0.777	0.476	1.348	0.129	0.332
+pedestrian	0.525	0.228	0.297	0.744	0.618	0.142
+motorcycle	0.055	0.298	0.247	1.063	2.058	0.168
+bicycle	0.000	0.303	0.309	1.242	0.642	0.125
+traffic_cone	0.217	0.254	0.407	nan	nan	nan
+barrier	0.215	0.533	0.318	0.164	nan	nan
+2026-08-14 16:29:26,838 INFO [nuscenes_metric.py:388] Node[0] NDS: 0.3448, mAP:0.2268
+car_AP: [0.5]:0.5233  [1.0]:0.6520  [2.0]:0.6929  [4.0]:0.7179 
+truck_AP: [0.5]:0.0977  [1.0]:0.2121  [2.0]:0.2742  [4.0]:0.2986 
+construction_vehicle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0018  [4.0]:0.0035 
+bus_AP: [0.5]:0.1314  [1.0]:0.3024  [2.0]:0.3923  [4.0]:0.4204 
+trailer_AP: [0.5]:0.0138  [1.0]:0.0646  [2.0]:0.1022  [4.0]:0.1238 
+barrier_AP: [0.5]:0.0761  [1.0]:0.2061  [2.0]:0.2691  [4.0]:0.3075 
+motorcycle_AP: [0.5]:0.0386  [1.0]:0.0582  [2.0]:0.0609  [4.0]:0.0619 
 bicycle_AP: [0.5]:0.0000  [1.0]:0.0000  [2.0]:0.0000  [4.0]:0.0000 
-pedestrian_AP: [0.5]:0.2582  [1.0]:0.2705  [2.0]:0.2832  [4.0]:0.3080 
-traffic_cone_AP: [0.5]:0.0320  [1.0]:0.0371  [2.0]:0.0495  [4.0]:0.0729
+pedestrian_AP: [0.5]:0.4851  [1.0]:0.5136  [2.0]:0.5361  [4.0]:0.5662 
+traffic_cone_AP: [0.5]:0.1829  [1.0]:0.1951  [2.0]:0.2214  [4.0]:0.2680 
