@@ -142,6 +142,44 @@ loss_cls=dict(
 ),
 ```
 
+#### FocalLoss 的实现 trick：per-class sigmoid（无独立背景类）
+
+看 `hat/models/losses/focal_loss.py` 的实际实现，有一个**教科书公式里容易误解的关键点**：
+
+```python
+pred = pred.float().sigmoid()               # N x C，C = 前景类别数，无独立背景通道
+target[target < 0] = self.num_classes - 1   # 背景 label 映射到第 C 类（仅用于 one-hot 的维度对齐）
+one_hot = F.one_hot(target, self.num_classes)  # N x (C+1)
+one_hot = one_hot[..., : self.num_classes - 1] # N x C —— 剥掉的是"背景类别通道"，不是"背景样本"
+pt = torch.where(torch.eq(one_hot, 1), pred, 1 - pred)
+```
+
+**关键理解**：这是 **sigmoid focal loss**，本质是 **C 个独立的二分类**（"是不是 car？""是不是 pedestrian？"……），而不是 (C+1)-way 的 softmax 竞争。所以：
+
+> **什么是 "softmax 竞争" vs "sigmoid 二分类"**：
+>
+> 先解释 **"K-way"** 这个习惯用语：它在分类语境里表示"分类器**有 K 个输出类别/出口**"。例如 "10-way classification" = 十分类，"2-way" = 二分类。所以 **"(C+1)-way" = "C+1 分类"**，即把 C 个前景类 + 1 个背景类放在一起做分类。它强调的不是"算法怎么算"，而是"输出端有多少个类别在参与决策"。
+>
+> - **softmax（多分类竞争）**：把 C+1 个类别（含背景）的输出做归一化，让它们**总和 = 1、彼此互斥**——每个样本必须"且只能"属于一个类。这是 `occ_head` 的 `CrossEntropyLoss`（`use_sigmoid=False`）做的事，它天然需要一个独立的"背景类"通道来和其他类竞争。
+> - **sigmoid（独立二分类）**：每个类别**独立**判断"我是不是这一类"，互不干扰、不归一化到 1。一个样本理论上可以同时是多个类（多标签），也不需要独立的背景通道——"背景"就是"所有类都不是"。检测/车道线的 `FocalLoss` 走的是这条路，所以 `pred` 是 N×C（只有 C 个前景类，没有背景位）。
+>
+> 两者对"背景"的处理方式完全不同：softmax 需要显式背景类参与竞争；sigmoid 则让背景隐式地由"所有前景类都输出低分"来表达。这决定了后面的"背景通道被剥掉"其实是 sigmoid 的天然属性，而不是一个额外的操作。
+
+- `pred` 是 N×C，**没有独立的背景通道**；`num_classes = C + 1` 多出的那一位只是为了让 `F.one_hot` 的维度对齐（背景 label 能映射到第 C 位），随后立刻被切片 `[..., :C]` 剥掉。
+- **被剥掉的是"背景这个类别通道"，不是"背景样本"**。背景 query（`one_hot` 全 0）**仍然参与 focal loss**，形式是"所有 C 个前景类都输出低分"：
+
+$$\text{loss}_{bg} = -(1-\alpha)\cdot (1-p_t)^\gamma\cdot \log(1-p_t)\quad\text{（对每个前景类，}p_t = p\text{）}$$
+
+即背景样本的 loss 来自 **sigmoid 的负样本项 $\log(1-p)$**，它希望每个前景类的概率 $p$ 都尽量小。
+
+**两个重要澄清**：
+1. **背景没有"交给 label_weights 单独压制"**。源码里 `label_weights = gt_bboxes.new_ones(num_bboxes)`，前景和背景的 weight **都是 1**，都参与分类 loss。区分前景/背景靠的是 `one_hot` 里有没有 1，而不是 weight。
+2. **focal 对背景依然有效**：背景样本数量压倒性（900 query 里匹配到 GT 的只有几十个），且大多是"易分负样本"（$p$ 很小，$(1-p_t)^\gamma\to 0$），**γ 正是用来压制这些海量易分背景的**。
+
+**所以"背景剥离"和"有必要用 focal"并不矛盾**：剥离的只是背景的**显式类别通道**（因为 sigmoid 是 per-class 二分类，本来就不需要独立的背景类），而背景样本的压倒性数量和易分性**原封不动**，focal 的 $\gamma$ 和 $\alpha$ 正是为它而设。
+
+> 一句话：这里不是"背景被剥离、交给 label_weights"，而是 **sigmoid focal 天然没有独立背景类**——背景样本仍以"所有前景类低分"的形式留在 loss 里，靠 $\alpha(1-\alpha)$ 和 $\gamma$ 调节，这才是 focal loss 在此处不可替代的原因。
+
 ### 3.3 小结：CE vs FocalLoss
 
 | 维度 | CrossEntropyLoss | FocalLoss |
@@ -304,6 +342,66 @@ loss_dir=dict(type="PtsDirCosLoss", loss_weight=0.005),
 **权重为什么很小（0.005）**：方向是"锦上添花"的弱约束，主约束还是点位置（`PtsL1Loss` 权重 2.5）。方向 loss 只需轻轻拉住，避免方向倒转即可。
 
 **为什么 box 检测没有方向 loss**：box 的朝向 `yaw` 已经作为回归变量之一被 `L1Loss` 直接监督了，方向信息编码在 box 参数里，不需要单独的余弦约束——这也是"输出结构决定 loss"的又一体现。
+
+#### 实现细节：CosineEmbeddingLoss + dir_interval + 物理空间算方向
+
+看 `hat/models/task_modules/maptr/criterion.py`，方向 loss 有三个文档公式没体现的实现细节：
+
+**1. 底层借用了 `CosineEmbeddingLoss`**
+
+```python
+loss_func = torch.nn.CosineEmbeddingLoss(reduction="none")
+tgt_param = target.new_ones((num_samples, num_dir))   # 全 1 = "应该相似"
+loss = loss_func(pred.flatten(0, 1), target.flatten(0, 1), tgt_param)
+```
+
+`CosineEmbeddingLoss(y=1)` 的公式是 $\max(0,\ 1-\cos\theta)$，数值上等价于上面的 $1-\cos$，所以公式没变，只是实现借用了现成 API（比手写余弦更省事、更不易出错）。
+
+**2. `dir_interval`：方向向量是"间隔 k 个点"的差分**
+
+```python
+dir_weights = pts_weights[:, : -self.dir_interval, 0]
+denormed_pts_preds_dir = (
+    denormed_pts_preds[:, self.dir_interval:, :]     # 后段
+    - denormed_pts_preds[:, :-self.dir_interval, :]  # 前段
+)
+```
+
+方向向量不是严格的"相邻点差分"（点 k+1 − 点 k），而是"间隔 `dir_interval` 个点的差分"（点 k+d − 点 k）。你的配置 `dir_interval=1` 时才是相邻点。
+
+**好处**：车道线采样点很密（20 个点），相邻点之间距离极短，方向向量噪声大、数值不稳定；用间隔 d 个点的差分，方向向量更长、更稳定，对噪声更鲁棒。`dir_interval` 就是"隔几个点取方向"的旋钮。
+
+**3. 方向 loss 在"反归一化后的物理空间"算**
+
+```python
+denormed_pts_preds = denormalize_2d_pts(pts_preds, self.pc_range)  # 先还原物理坐标
+denormed_pts_preds_dir = denormed_pts_preds[:, d:, :] - denormed_pts_preds[:, :-d, :]
+```
+
+点坐标在归一化时 x/y 被分别缩放到 $[0,1]$（各轴缩放因子可能不同），会**扭曲方向角**（各向异性缩放不保角）。所以在物理空间算方向差分，方向角才准确。
+
+**好处**：保证 `PtsDirCosLoss` 度量的是真实的方向偏差，而不是被归一化畸变污染的角度。
+
+### num_orders：车道线的双向匹配（方向对称性）
+
+这是车道线检测里**最重要、最容易被忽略的 trick**，藏在 `OrderedPtsL1Cost` 里：
+
+```python
+num_gts, num_orders, num_pts, num_coords = gt_bboxes.shape
+gt_bboxes = gt_bboxes.flatten(2).view(num_gts * num_orders, -1)  # 展开正反两个方向
+bbox_cost = torch.cdist(bbox_pred, gt_bboxes, p=1)
+```
+
+GT 折线被存成 `num_orders` 个方向（通常是**正序 + 反序**两个版本）。匹配时把两个方向都展开，与预测折线算 L1 距离后，**取代价最小的那个方向**。
+
+**为什么必须这样**：车道线**没有固定的"起点 → 终点"**。同一条线，从 A 端标到 B 端、或从 B 端标到 A 端，物理上是**同一条线**。如果只按一个方向匹配，模型会被"方向标签"误导——明明预测对了，只因起点方向相反就被误判为错。
+
+**好处**：
+1. **消除方向歧义**：匹配时对"正反两个方向"都试，取最小代价，模型不再被起点方向束缚，只需学"线在哪、长什么样"。
+2. **`Ordered` 与 `num_orders` 不矛盾**：`Ordered` 指的是"点序对齐后逐个比较"（点 0↔点 0、点 1↔点 1，保证方向监督有效）；而 `num_orders` 解决的是"整体起点可以翻转"这个更高层的对称性。两者配合，既保留了有序点监督，又不惩罚起点方向倒置。
+3. **配合 `loss_dir` 才有意义**：正因为匹配阶段已经消除了起点歧义，`PtsDirCosLoss` 监督的方向才是"确定的、无歧义的"方向，不会和双向匹配打架。
+
+> 一句话：**`num_orders` 把"一条线两种标法"统一成"同一条线"，是车道线匹配阶段消除方向歧义的关键**；没有它，`Ordered` 匹配 + `PtsDirCosLoss` 都会被错误的起点方向干扰。
 
 ---
 
