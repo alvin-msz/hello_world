@@ -209,6 +209,77 @@ loss_pts=dict(type="PtsL1Loss", loss_weight=2.5, beta=0.01),
 
 注意区分：`BBox3DL1Cost` 和 `OrderedPtsL1Cost` 是**匈牙利匹配的代价**（用于配对），不是训练 loss。但它们的公式和 L1Loss/PtsL1Loss 一致，只是用途不同（一个是"分配"，一个是"监督"）。详见《DETR Query 原理专题》第 7 节。
 
+### 4.5 bbox 的回归编码：`normalize_bbox`（尺寸 log、朝向 sin/cos）
+
+前面 4.1 说"L1Loss 对 box 的 7~9 维逐维回归"，但**网络回归的不是原始物理量**，而是先经过一层**编码（normalize_bbox）**。这层编码决定了 L1 实际度量的是什么。以 `BevFormerCriterion`（`bev_head`）为例，它的 GT 在算 loss 之前会被编码：
+
+```mermaid
+flowchart LR
+    GT["GT 原始物理量<br/>[x, y, z, l, w, h, yaw, vx, vy]"] --> NORM[normalize_bbox 编码]
+    NORM --> REG["回归目标<br/>[cx, cy, log_l, log_w, cz, log_h, sin, cos, vx, vy]"]
+    REG --> L1["L1Loss 在编码空间计算"]
+```
+
+#### 正变换 `normalize_bbox`（训练/匹配端）
+
+GT box 布局为 `[x, y, z, l, w, h, yaw, vx, vy]`，编码规则如下：
+
+| 原始分量 | 编码方式 | 为什么 |
+|---|---|---|
+| 中心 `cx, cy, cz` | **线性**（原样保留） | 中心是平移量，动态范围已被场景范围限制 |
+| 尺寸 `l, w, h` | **`.log()`** | 尺寸跨度两个数量级，log 把"绝对误差"变成"相对误差" |
+| 朝向 `yaw` | **`(sin(yaw), cos(yaw))`** | yaw 有周期性（-π 和 π 是同一个角），直接回归会在 ±π 处产生不连续跳变 |
+| 速度 `vx, vy` | **线性**（原样保留） | 速度范围相对集中 |
+
+核心代码（`hat/models/task_modules/bevformer/utils.py`）：
+
+```python
+def normalize_bbox(bboxes):
+    cx  = bboxes[..., 0:1]          # 中心 x  —— 线性
+    cy  = bboxes[..., 1:2]          # 中心 y  —— 线性
+    cz  = bboxes[..., 2:3]          # 中心 z  —— 线性
+    w   = bboxes[..., 3:4].log()    # 尺寸 l  —— log
+    bl  = bboxes[..., 4:5].log()    # 尺寸 w  —— log
+    h   = bboxes[..., 5:6].log()    # 尺寸 h  —— log
+    rot = bboxes[..., 6:7]          # 朝向 yaw —— sin/cos
+    # 输出顺序（BEVFormer 历史格式，注意 cz 被挪到第 5 位）
+    return torch.cat((cx, cy, w, bl, cz, h, rot.sin(), rot.cos(), vx, vy), -1)
+```
+
+> ⚠️ **两个易混淆点**：
+> 1. 变量命名 `w` 实际取的是 GT 第 3 维（长度 `l`），`bl` 取第 4 维（宽度 `w`）——是 BEVFormer 官方历史命名，别被误导。
+> 2. 输出顺序是 `[cx, cy, log_l, log_w, cz, log_h, sin, cos, vx, vy]`，**`cz` 被挪到了第 5 位**（不是紧跟 cy），这是 BEVFormer 的格式遗留。
+
+#### 反变换 `denormalize_bbox`（推理后处理端）
+
+推理时网络输出的是编码空间的预测值，`BevFormerProcess` 后处理会反变换回物理量：
+
+```python
+w  = normalized[..., 2:3].exp()    # log → exp 还原尺寸
+bl = normalized[..., 3:4].exp()
+h  = normalized[..., 5:6].exp()
+rot = torch.atan2(sin, cos)        # sin/cos → atan2 还原朝向
+# 输出回到 [x, y, z, l, w, h, yaw, vx, vy]
+```
+
+#### 三个调用点，保证"编解码一致"
+
+编码必须**在算 loss / 匹配之前**统一作用，解码在**推理之后**统一还原，三处一致才不会错位：
+
+| 调用点 | 位置 | 作用 |
+|---|---|---|
+| 匈牙利匹配 | `assigner.py` | `normalize_bbox(gt_bboxes)`，代价矩阵在**编码空间**算 |
+| 算 loss | `criterion.py` | `normalize_bbox(bbox_targets)`，L1 在**编码空间**算 |
+| 推理后处理 | `postprocess.py` | `denormalize_bbox(bbox_preds)`，`exp`/`atan2` 还原 |
+
+#### 为什么这决定了 L1 的真实含义
+
+因为尺寸先 `log` 再算 L1，所以：
+
+$$\text{L1}_{log} = \left|\log \hat l - \log l\right| = \left|\log\frac{\hat l}{l}\right| \approx \left|\frac{\hat l - l}{l}\right|$$
+
+即 **L1 实际度量的是尺寸的相对误差**，大目标（卡车）和小目标（锥桶）在统一的误差尺度下被监督。朝向用 sin/cos 则避免了 yaw 在 ±π 处的不连续，让 L1 能平滑监督角度。
+
 ---
 
 ## 方向 Loss
