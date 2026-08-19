@@ -1,4 +1,4 @@
-2026-08-03 08:51:21,937 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
+2026-08-19 09:41:35,960 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -29,45 +29,15 @@
     return self._call_impl(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
     return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 877, in forward
-    bev_emb = self.get_bev_embed(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 845, in get_bev_embed
-    bev_embed = self.encoder(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 405, in forward
-    output = layer(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 455, in forward
-    query = self.ca(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 980, in forward
-    queries_out = self.deformable_attention(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 822, in forward
-    output = super().forward(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 275, in forward
-    sampling_locations = self.get_sampling_locations(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 786, in get_sampling_locations
-    sampling_locations = self.add_offset.add(
-  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/model_helper.py", line 115, in _call_impl
-    result = func(mod, *input, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/nn/quantized/functional_modules.py", line 77, in add
-    return torch.add(x, y)
-RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at non-singleton dimension 3
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
+    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
+  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 330, in point_sampling
+    temp_grid[:num_bev_points] = index_grid
+RuntimeError: The expanded size of the tensor (5120) must match the existing size (7221) at non-singleton dimension 0.  Target sizes: [5120, 2].  Tensor sizes: [7221, 2]
 
-2026-08-03 08:51:21,937 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
+2026-08-19 09:41:35,960 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -98,45 +68,15 @@ RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at 
     return self._call_impl(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
     return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 877, in forward
-    bev_emb = self.get_bev_embed(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 845, in get_bev_embed
-    bev_embed = self.encoder(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 405, in forward
-    output = layer(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 455, in forward
-    query = self.ca(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 980, in forward
-    queries_out = self.deformable_attention(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 822, in forward
-    output = super().forward(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 275, in forward
-    sampling_locations = self.get_sampling_locations(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 786, in get_sampling_locations
-    sampling_locations = self.add_offset.add(
-  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/model_helper.py", line 115, in _call_impl
-    result = func(mod, *input, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/nn/quantized/functional_modules.py", line 77, in add
-    return torch.add(x, y)
-RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at non-singleton dimension 3
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
+    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
+  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 330, in point_sampling
+    temp_grid[:num_bev_points] = index_grid
+RuntimeError: The expanded size of the tensor (5120) must match the existing size (7165) at non-singleton dimension 0.  Target sizes: [5120, 2].  Tensor sizes: [7165, 2]
 
-2026-08-03 08:51:21,938 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
+2026-08-19 09:41:35,960 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -167,45 +107,15 @@ RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at 
     return self._call_impl(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
     return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 877, in forward
-    bev_emb = self.get_bev_embed(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 845, in get_bev_embed
-    bev_embed = self.encoder(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 405, in forward
-    output = layer(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 455, in forward
-    query = self.ca(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 980, in forward
-    queries_out = self.deformable_attention(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 822, in forward
-    output = super().forward(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 275, in forward
-    sampling_locations = self.get_sampling_locations(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 786, in get_sampling_locations
-    sampling_locations = self.add_offset.add(
-  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/model_helper.py", line 115, in _call_impl
-    result = func(mod, *input, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/nn/quantized/functional_modules.py", line 77, in add
-    return torch.add(x, y)
-RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at non-singleton dimension 3
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
+    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
+  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 330, in point_sampling
+    temp_grid[:num_bev_points] = index_grid
+RuntimeError: The expanded size of the tensor (5120) must match the existing size (7194) at non-singleton dimension 0.  Target sizes: [5120, 2].  Tensor sizes: [7194, 2]
 
-2026-08-03 08:51:21,938 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
+2026-08-19 09:41:35,965 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -236,48 +146,18 @@ RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at 
     return self._call_impl(*args, **kwargs)
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
     return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 877, in forward
-    bev_emb = self.get_bev_embed(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 845, in get_bev_embed
-    bev_embed = self.encoder(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 405, in forward
-    output = layer(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/encoder.py", line 455, in forward
-    query = self.ca(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 980, in forward
-    queries_out = self.deformable_attention(
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 822, in forward
-    output = super().forward(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 275, in forward
-    sampling_locations = self.get_sampling_locations(
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/attention.py", line 786, in get_sampling_locations
-    sampling_locations = self.add_offset.add(
-  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/utils/model_helper.py", line 115, in _call_impl
-    result = func(mod, *input, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/horizon_plugin_pytorch/nn/quantized/functional_modules.py", line 77, in add
-    return torch.add(x, y)
-RuntimeError: The size of tensor a (16) must match the size of tensor b (64) at non-singleton dimension 3
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
+    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
+  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 330, in point_sampling
+    temp_grid[:num_bev_points] = index_grid
+RuntimeError: The expanded size of the tensor (5120) must match the existing size (7267) at non-singleton dimension 0.  Target sizes: [5120, 2].  Tensor sizes: [7267, 2]
 
-W0803 08:51:23.747000 2888 torch/multiprocessing/spawn.py:169] Terminating process 2965 via signal SIGTERM
-W0803 08:51:23.748000 2888 torch/multiprocessing/spawn.py:169] Terminating process 2966 via signal SIGTERM
-W0803 08:51:23.749000 2888 torch/multiprocessing/spawn.py:169] Terminating process 2967 via signal SIGTERM
-ERROR:__main__:train failed! process 3 terminated with exit code 1
+W0819 09:41:37.611000 306432 torch/multiprocessing/spawn.py:169] Terminating process 306509 via signal SIGTERM
+W0819 09:41:37.612000 306432 torch/multiprocessing/spawn.py:169] Terminating process 306511 via signal SIGTERM
+W0819 09:41:37.612000 306432 torch/multiprocessing/spawn.py:169] Terminating process 306512 via signal SIGTERM
+ERROR:__main__:train failed! process 1 terminated with exit code 1
 Traceback (most recent call last):
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
     raise e
@@ -293,4 +173,4 @@ Traceback (most recent call last):
     while not context.join():
   File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
     raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 3 terminated with exit code 1
+torch.multiprocessing.spawn.ProcessExitedException: process 1 terminated with exit code 1
