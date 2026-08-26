@@ -1,24 +1,30 @@
-/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/maptr/sparse_head.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
-  @autocast(enabled=False)
-/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/maptr/sparse_decoder.py:121: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
-  @autocast(enabled=False)
-/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/maptr/sparse_decoder.py:139: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
-  @autocast(enabled=False)
-2026-08-26 10:08:39,384 WARNING default upsampling behavior when mode=bilinear is changed to align_corners=False since torch 0.4.0. Please specify align_corners=True if the old behavior is desired. 
+/usr/local/lib/python3.10/dist-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
 Traceback (most recent call last):
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/infer_float_occ_one_frame.py", line 764, in <module>
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/infer_float_occ_one_frame.py", line 772, in <module>
     main()
   File "/usr/local/lib/python3.10/dist-packages/torch/utils/_contextlib.py", line 116, in decorate_context
     return func(*args, **kwargs)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/infer_float_occ_one_frame.py", line 744, in main
-    model = build_float_model(cfg, ckpt, device)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/infer_float_occ_one_frame.py", line 381, in build_float_model
-    torch.load(ckpt_path, map_location="cpu"),
-  File "/usr/local/lib/python3.10/dist-packages/torch/serialization.py", line 1470, in load
-    raise pickle.UnpicklingError(_get_wo_message(str(e))) from None
-_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, do those steps only if you trust the source of the checkpoint. 
-	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
-	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
-	WeightsUnpickler error: Unsupported global: GLOBAL numpy.core.multiarray.scalar was not an allowed global by default. Please use `torch.serialization.add_safe_globals([scalar])` or the `torch.serialization.safe_globals([scalar])` context manager to allowlist this global if you trust this class/function.
-
-Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/infer_float_occ_one_frame.py", line 753, in main
+    outs = model(model_input)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 99, in forward
+    camera_feature = self.forward_camera_feature(data)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 91, in forward_camera_feature
+    bev_feat = self.camera_net.view_transformer(feats, data)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
+    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
+  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 233, in point_sampling
+    ego2img = np.asarray(ego2img)
+  File "/usr/local/lib/python3.10/dist-packages/torch/_tensor.py", line 1194, in __array__
+    return self.numpy()
+TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
