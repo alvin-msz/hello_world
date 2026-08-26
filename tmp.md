@@ -1,176 +1,24 @@
-2026-08-19 09:41:35,960 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
-    trainer.fit()
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
-    self.batch_processor(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
-    result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 99, in forward
-    camera_feature = self.forward_camera_feature(data)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 91, in forward_camera_feature
-    bev_feat = self.camera_net.view_transformer(feats, data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
-    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
-  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
-    return func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 330, in point_sampling
-    temp_grid[:num_bev_points] = index_grid
-RuntimeError: The expanded size of the tensor (5120) must match the existing size (7221) at non-singleton dimension 0.  Target sizes: [5120, 2].  Tensor sizes: [7221, 2]
-
-2026-08-19 09:41:35,960 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
-    trainer.fit()
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
-    self.batch_processor(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
-    result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 99, in forward
-    camera_feature = self.forward_camera_feature(data)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 91, in forward_camera_feature
-    bev_feat = self.camera_net.view_transformer(feats, data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
-    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
-  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
-    return func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 330, in point_sampling
-    temp_grid[:num_bev_points] = index_grid
-RuntimeError: The expanded size of the tensor (5120) must match the existing size (7165) at non-singleton dimension 0.  Target sizes: [5120, 2].  Tensor sizes: [7165, 2]
-
-2026-08-19 09:41:35,960 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
-    trainer.fit()
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
-    self.batch_processor(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
-    result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 99, in forward
-    camera_feature = self.forward_camera_feature(data)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 91, in forward_camera_feature
-    bev_feat = self.camera_net.view_transformer(feats, data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
-    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
-  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
-    return func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 330, in point_sampling
-    temp_grid[:num_bev_points] = index_grid
-RuntimeError: The expanded size of the tensor (5120) must match the existing size (7194) at non-singleton dimension 0.  Target sizes: [5120, 2].  Tensor sizes: [7194, 2]
-
-2026-08-19 09:41:35,965 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
-    fn(*args)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
-    trainer.fit()
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/loop_base.py", line 557, in fit
-    self.batch_processor(
-  File "/usr/local/lib/python3.10/dist-packages/hat/utils/deterministic.py", line 253, in wrapper
-    result = func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/processors/processor.py", line 790, in __call__
-    model_outs = model(*_as_list(batch_i))
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1643, in forward
-    else self._run_ddp_forward(*inputs, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
-    return self.module(*inputs, **kwargs)  # type: ignore[index]
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 99, in forward
-    camera_feature = self.forward_camera_feature(data)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/structures/bevfusion.py", line 91, in forward_camera_feature
-    bev_feat = self.camera_net.view_transformer(feats, data)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1750, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 876, in forward
-    ) = self.point_sampling(ref3d, self.pc_range, img_meta, im_shape)
-  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
-    return func(*args, **kwargs)
-  File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/bevformer/view_transformer.py", line 330, in point_sampling
-    temp_grid[:num_bev_points] = index_grid
-RuntimeError: The expanded size of the tensor (5120) must match the existing size (7267) at non-singleton dimension 0.  Target sizes: [5120, 2].  Tensor sizes: [7267, 2]
-
-W0819 09:41:37.611000 306432 torch/multiprocessing/spawn.py:169] Terminating process 306509 via signal SIGTERM
-W0819 09:41:37.612000 306432 torch/multiprocessing/spawn.py:169] Terminating process 306511 via signal SIGTERM
-W0819 09:41:37.612000 306432 torch/multiprocessing/spawn.py:169] Terminating process 306512 via signal SIGTERM
-ERROR:__main__:train failed! process 1 terminated with exit code 1
+/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/maptr/sparse_head.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled=False)
+/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/maptr/sparse_decoder.py:121: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled=False)
+/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/maptr/sparse_decoder.py:139: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled=False)
+2026-08-26 10:08:39,384 WARNING default upsampling behavior when mode=bilinear is changed to align_corners=False since torch 0.4.0. Please specify align_corners=True if the old behavior is desired. 
 Traceback (most recent call last):
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
-    raise e
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 273, in <module>
-    train(
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 254, in train
-    launch(
-  File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 426, in launch
-    mp.spawn(
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 340, in spawn
-    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 296, in start_processes
-    while not context.join():
-  File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
-    raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 1 terminated with exit code 1
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/infer_float_occ_one_frame.py", line 764, in <module>
+    main()
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/infer_float_occ_one_frame.py", line 744, in main
+    model = build_float_model(cfg, ckpt, device)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/infer_float_occ_one_frame.py", line 381, in build_float_model
+    torch.load(ckpt_path, map_location="cpu"),
+  File "/usr/local/lib/python3.10/dist-packages/torch/serialization.py", line 1470, in load
+    raise pickle.UnpicklingError(_get_wo_message(str(e))) from None
+_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, do those steps only if you trust the source of the checkpoint. 
+	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
+	WeightsUnpickler error: Unsupported global: GLOBAL numpy.core.multiarray.scalar was not an allowed global by default. Please use `torch.serialization.add_safe_globals([scalar])` or the `torch.serialization.safe_globals([scalar])` context manager to allowlist this global if you trust this class/function.
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
