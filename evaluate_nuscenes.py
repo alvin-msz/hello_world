@@ -307,13 +307,6 @@ def evaluate_miou(occ_dir, output_dir, cfg, override_ignore_index=None,
             logger.warning(f"Skipping corrupted OCC file {fpath}: {e}")
             continue
 
-        valid = gt != ignore_index
-        pred = pred[valid]
-        gt = gt[valid]
-
-        if pred.size == 0:
-            continue
-
         if num_classes is None:
             num_classes = int(max(pred.max(), gt.max())) + 1
 
@@ -322,6 +315,16 @@ def evaluate_miou(occ_dir, output_dir, cfg, override_ignore_index=None,
 
         pred = np.clip(pred, 0, num_classes - 1)
         gt = np.clip(gt, 0, num_classes - 1)
+
+        # Occ3D/FlashOCC: keep free-space (ignore_index) voxels in the
+        # confusion matrix so wrong preds on GT-free voxels still penalize
+        # semantic classes.  Only exclude ignore_index from the final mIoU mean.
+        valid = (gt >= 0) & (gt < num_classes)
+        pred = pred[valid]
+        gt = gt[valid]
+
+        if pred.size == 0:
+            continue
 
         np.add.at(confusion_matrix, (gt, pred), 1)
         loaded += 1
@@ -338,13 +341,14 @@ def evaluate_miou(occ_dir, output_dir, cfg, override_ignore_index=None,
         + confusion_matrix.sum(axis=0)
         - intersection
     )
-    iou = intersection / np.maximum(union, 1).astype(np.float64)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        iou = intersection.astype(np.float64) / union.astype(np.float64)
+    iou[union == 0] = np.nan
 
     valid_classes = list(range(num_classes))
     if 0 <= ignore_index < num_classes:
         valid_classes = [c for c in valid_classes if c != ignore_index]
-    valid_iou = iou[valid_classes]
-    miou = float(np.nanmean(valid_iou))
+    miou = float(np.nanmean(iou[valid_classes]))
 
     class_labels = (
         list(seg_classes_name) if seg_classes_name
@@ -355,7 +359,8 @@ def evaluate_miou(occ_dir, output_dir, cfg, override_ignore_index=None,
         "mIOU": miou,
         "num_frames": loaded,
         "per_class_iou": {
-            name: float(iou[i]) for i, name in enumerate(class_labels)
+            name: float(iou[i]) if not np.isnan(iou[i]) else 0.0
+            for i, name in enumerate(class_labels)
             if i in valid_classes
         },
     }
