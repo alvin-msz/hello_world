@@ -1,4 +1,4 @@
-2026-09-09 08:54:06,100 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
+2026-09-10 09:49:54,690 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -33,14 +33,14 @@
     pred, result = super(BevformerOccDetDecoder, self).forward(
   File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/flashocc/decoder.py", line 165, in forward
     return [occ_preds], self._post_process(occ_preds, data)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 164, in _post_process
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 135, in _post_process
     return self._loss(occ_preds, voxel_semantics, vis, ceiling)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 152, in _loss
-    loss_occ = loss_occ + self.geo_scal_weight * self._geo_scal_loss(
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 126, in _geo_scal_loss
-    loss = loss + _bce_ones(intersection / pred_pos)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 116, in _bce_ones
-    return F.binary_cross_entropy(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 112, in _loss
+    * sem_scal_loss(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/occ_scal_loss.py", line 87, in sem_scal_loss
+    loss_cls = loss_cls + _bce_ones(nominator / p_sum)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/occ_scal_loss.py", line 24, in _bce_ones
+    return F.binary_cross_entropy(prob, torch.ones_like(prob))
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/functional.py", line 3569, in binary_cross_entropy
     return torch._C._nn.binary_cross_entropy(input, target, weight, reduction_enum)
 RuntimeError: torch.nn.functional.binary_cross_entropy and torch.nn.BCELoss are unsafe to autocast.
@@ -49,7 +49,7 @@ In this case, combine the two layers using torch.nn.functional.binary_cross_entr
 or torch.nn.BCEWithLogitsLoss.  binary_cross_entropy_with_logits and BCEWithLogits are
 safe to autocast.
 
-2026-09-09 08:54:06,100 ERROR [ddp_trainer.py:463] Node[3] Traceback (most recent call last):
+2026-09-10 09:49:54,690 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -84,14 +84,14 @@ safe to autocast.
     pred, result = super(BevformerOccDetDecoder, self).forward(
   File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/flashocc/decoder.py", line 165, in forward
     return [occ_preds], self._post_process(occ_preds, data)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 164, in _post_process
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 135, in _post_process
     return self._loss(occ_preds, voxel_semantics, vis, ceiling)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 152, in _loss
-    loss_occ = loss_occ + self.geo_scal_weight * self._geo_scal_loss(
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 126, in _geo_scal_loss
-    loss = loss + _bce_ones(intersection / pred_pos)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 116, in _bce_ones
-    return F.binary_cross_entropy(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 112, in _loss
+    * sem_scal_loss(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/occ_scal_loss.py", line 87, in sem_scal_loss
+    loss_cls = loss_cls + _bce_ones(nominator / p_sum)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/occ_scal_loss.py", line 24, in _bce_ones
+    return F.binary_cross_entropy(prob, torch.ones_like(prob))
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/functional.py", line 3569, in binary_cross_entropy
     return torch._C._nn.binary_cross_entropy(input, target, weight, reduction_enum)
 RuntimeError: torch.nn.functional.binary_cross_entropy and torch.nn.BCELoss are unsafe to autocast.
@@ -100,7 +100,7 @@ In this case, combine the two layers using torch.nn.functional.binary_cross_entr
 or torch.nn.BCEWithLogitsLoss.  binary_cross_entropy_with_logits and BCEWithLogits are
 safe to autocast.
 
-2026-09-09 08:54:06,100 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
+2026-09-10 09:49:54,690 ERROR [ddp_trainer.py:463] Node[1] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -135,14 +135,14 @@ safe to autocast.
     pred, result = super(BevformerOccDetDecoder, self).forward(
   File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/flashocc/decoder.py", line 165, in forward
     return [occ_preds], self._post_process(occ_preds, data)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 164, in _post_process
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 135, in _post_process
     return self._loss(occ_preds, voxel_semantics, vis, ceiling)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 152, in _loss
-    loss_occ = loss_occ + self.geo_scal_weight * self._geo_scal_loss(
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 126, in _geo_scal_loss
-    loss = loss + _bce_ones(intersection / pred_pos)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 116, in _bce_ones
-    return F.binary_cross_entropy(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 112, in _loss
+    * sem_scal_loss(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/occ_scal_loss.py", line 87, in sem_scal_loss
+    loss_cls = loss_cls + _bce_ones(nominator / p_sum)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/occ_scal_loss.py", line 24, in _bce_ones
+    return F.binary_cross_entropy(prob, torch.ones_like(prob))
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/functional.py", line 3569, in binary_cross_entropy
     return torch._C._nn.binary_cross_entropy(input, target, weight, reduction_enum)
 RuntimeError: torch.nn.functional.binary_cross_entropy and torch.nn.BCELoss are unsafe to autocast.
@@ -151,7 +151,7 @@ In this case, combine the two layers using torch.nn.functional.binary_cross_entr
 or torch.nn.BCEWithLogitsLoss.  binary_cross_entropy_with_logits and BCEWithLogits are
 safe to autocast.
 
-2026-09-09 08:54:06,100 ERROR [ddp_trainer.py:463] Node[0] Traceback (most recent call last):
+2026-09-10 09:49:54,691 ERROR [ddp_trainer.py:463] Node[2] Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/hat/engine/ddp_trainer.py", line 457, in _with_exception
     fn(*args)
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 186, in train_entrance
@@ -186,14 +186,14 @@ safe to autocast.
     pred, result = super(BevformerOccDetDecoder, self).forward(
   File "/usr/local/lib/python3.10/dist-packages/hat/models/task_modules/flashocc/decoder.py", line 165, in forward
     return [occ_preds], self._post_process(occ_preds, data)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 164, in _post_process
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 135, in _post_process
     return self._loss(occ_preds, voxel_semantics, vis, ceiling)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 152, in _loss
-    loss_occ = loss_occ + self.geo_scal_weight * self._geo_scal_loss(
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 126, in _geo_scal_loss
-    loss = loss + _bce_ones(intersection / pred_pos)
-  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 116, in _bce_ones
-    return F.binary_cross_entropy(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/bevformer_occ_union_mask.py", line 112, in _loss
+    * sem_scal_loss(
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/occ_scal_loss.py", line 87, in sem_scal_loss
+    loss_cls = loss_cls + _bce_ones(nominator / p_sum)
+  File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/occ_scal_loss.py", line 24, in _bce_ones
+    return F.binary_cross_entropy(prob, torch.ones_like(prob))
   File "/usr/local/lib/python3.10/dist-packages/torch/nn/functional.py", line 3569, in binary_cross_entropy
     return torch._C._nn.binary_cross_entropy(input, target, weight, reduction_enum)
 RuntimeError: torch.nn.functional.binary_cross_entropy and torch.nn.BCELoss are unsafe to autocast.
@@ -202,10 +202,10 @@ In this case, combine the two layers using torch.nn.functional.binary_cross_entr
 or torch.nn.BCEWithLogitsLoss.  binary_cross_entropy_with_logits and BCEWithLogits are
 safe to autocast.
 
-W0909 08:54:07.970000 139099 torch/multiprocessing/spawn.py:169] Terminating process 139240 via signal SIGTERM
-W0909 08:54:07.971000 139099 torch/multiprocessing/spawn.py:169] Terminating process 139241 via signal SIGTERM
-W0909 08:54:07.971000 139099 torch/multiprocessing/spawn.py:169] Terminating process 139242 via signal SIGTERM
-ERROR:__main__:train failed! process 3 terminated with exit code 1
+W0910 09:49:56.616000 27 torch/multiprocessing/spawn.py:169] Terminating process 169 via signal SIGTERM
+W0910 09:49:56.617000 27 torch/multiprocessing/spawn.py:169] Terminating process 170 via signal SIGTERM
+W0910 09:49:56.618000 27 torch/multiprocessing/spawn.py:169] Terminating process 171 via signal SIGTERM
+ERROR:__main__:train failed! process 0 terminated with exit code 1
 Traceback (most recent call last):
   File "/open_explorer/samples/ai_toolchain/horizon_model_train_sample/scripts/tools/train.py", line 287, in <module>
     raise e
@@ -221,4 +221,4 @@ Traceback (most recent call last):
     while not context.join():
   File "/usr/local/lib/python3.10/dist-packages/torch/multiprocessing/spawn.py", line 204, in join
     raise ProcessExitedException(
-torch.multiprocessing.spawn.ProcessExitedException: process 3 terminated with exit code 1
+torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
