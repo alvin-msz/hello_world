@@ -1,0 +1,47 @@
+'depth': 10
+'min_density': 0.1
+'n_threads': -1
+'downsample': False
+'voxel_size': 0.4
+'max_nn': 20
+'pc_range':  [-40, -40, -1, 40, 40, 5.4]
+'occ_size':  [200, 200, 16]
+'self_range': [3.0, 3.0, 3.0]
+# number of keyframes to accumulate for the static scene (0 = all keyframes)
+'accumulate_frames': 0
+# inflate the box dimensions by this factor when removing dynamic-object points
+# (larger catches fuzzy object edges that would otherwise leak into the static cloud)
+'dynamic_box_scale': 1.5                       # 第一遍剔除的 box 放大倍数
+# second-pass removal: re-apply all frames' boxes on the accumulated static cloud
+# to remove leaked dynamic points (only points above this ego-frame z are removed)
+'dynamic_remove_second_pass': true             # 是否开启第二遍跨帧剔除
+'dynamic_remove_min_z': 0.3                    # 第二遍只删 z 高于此值的点，保护路面
+# BEV surface normalization for ground-like classes (robust to steep slopes).
+# The old per-column *median* anchor kept a thick band of points on slopes and
+# produced scattered bumps.  This fits a continuous, slope-following surface:
+# per-cell low-percentile anchor -> median-smooth the height grid -> bilinear
+# interpolation -> keep only points within z_tol of the surface.
+'bev_median_normalize':
+  'enabled': true
+  'bin_size': 4.0          # BEV bin edge length (meters)
+  'z_tol': 0.4             # keep points within |z - surface(x,y)| <= z_tol
+  'quantile': 0.4          # per-cell percentile used as floor anchor (0.0 = min)
+  'smooth_kernel': 1       # median-filter size on the height grid (odd; 1 = off)
+  'snap': true             # if true, snap kept points' z onto the surface
+  'class_ids': [11, 12, 13, 14]   # driveable_surface, other_flat, sidewalk, terrain
+# remove isolated single-voxel speckle noise (occupied voxel with no occupied
+# neighbor).  neighborhood: 5 = up + 4 horizontal (excludes down),
+# 6 = all 6 faces, 26 = all neighbors.
+'remove_isolated': true
+'isolated_neighborhood': 5
+# remove occupied voxels that lie below the ground floor (matter cannot
+# physically exist under the ground).  For each BEV column the lowest
+# ground-class voxel defines the floor; every occupied voxel strictly below it
+# (including other classes leaking through voids near the floor) is freed.
+'remove_below_ground':
+  'enabled': true
+  'class_ids': [11, 12, 13, 14]   # driveable_surface, other_flat, sidewalk, terrain
+  'tolerance': 0                  # extra z-voxels kept below the floor (0 = remove all below)
+  'fill_holes': true              # interpolate the floor into columns with no ground voxel
+                                  # (e.g. objects piercing through the road) so their
+                                  # under-ground parts are removed too
